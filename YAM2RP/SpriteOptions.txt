@@ -1,4 +1,0 @@
-# This file designates any sprites that should have custom margins, sepMasks, flags, or origin positions. This step takes place after sprites are imported and renames have taken place
-# A '#' at the start of a line indicates a comment
-# Correct syntax is '[SpriteName] [MarginLeft] [MarginRight] [MarginBottom] [MarginTop] [Transparent] [Smooth] [Preload] [SepMasks] [OriginX] [OriginY]'
-# e.g sTestSprite 0 31 35 0 false false false AxisAlignedRect 0 0
