@@ -1,4 +1,4 @@
-targetroom = 109
+targetroom = rm_a2c01
 direction = 0
 height = 48
 targetx = 16
