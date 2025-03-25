@@ -1,0 +1,9 @@
+targetroom = rm_a3m02
+targetx = 624
+targety = 432
+height = 64
+direction = 180
+camstartx = 480
+camstarty = 416
+transitionx = 316 + oControl.widescreen_space / 2
+transitiony = 192
