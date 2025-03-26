@@ -1,0 +1,9 @@
+targetroom = rm_a2h02
+targetx = 2048
+targety = 16
+height = 48
+direction = 270
+camstartx = 2048
+camstarty = 120
+transitionx = 128
+transitiony = -4
