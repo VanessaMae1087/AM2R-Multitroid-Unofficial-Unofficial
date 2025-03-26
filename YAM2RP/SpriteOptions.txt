@@ -2,3 +2,23 @@
 # A '#' at the start of a line indicates a comment
 # Correct syntax is '[SpriteName] [MarginLeft] [MarginRight] [MarginBottom] [MarginTop] [Transparent] [Smooth] [Preload] [SepMasks] [OriginX] [OriginY]'
 # e.g sTestSprite 0 31 35 0 false false false AxisAlignedRect 0 0
+
+# Core-X Offsets
+sCoreXBomb 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXCBeam 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXEnergy 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXGravity 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXHJump 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXIBeam 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXMissile 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXPBeam 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXPBomb 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSBeam 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSBoost 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXScrewAttack 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSMissile 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSpace 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSpider 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSpring 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXVaria 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXWBeam 9 42 47 10 false false false AxisAlignedRect 27 27
