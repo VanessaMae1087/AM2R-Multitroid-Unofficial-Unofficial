@@ -54,6 +54,7 @@ elm = oControl.mod_monstersextremecheck
 ini_open(working_directory + "/multitroid/mod_settings.ini")
 ipaddress = ini_read_string("ModSettings", "ipaddress", "127.0.0.1")
 name = ini_read_string("ModSettings", "displayname", "name")
+name = string_replace_all(name, "#", "")
 port = ini_read_real("ModSettings", "port", 64198)
 reactorsequence = string_lower(ini_read_string("ModSettings", "reactorsequence", "synced"))
 preferredcolor = string_lower(ini_read_string("ModSettings", "preferredcolor", "random"))
