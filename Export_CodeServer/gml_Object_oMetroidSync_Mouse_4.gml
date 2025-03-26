@@ -1,1 +1,0 @@
-global.metroidSync = (!global.metroidSync)
