@@ -32,7 +32,7 @@
             "is_question": false,
             "use_apply_to": true,
             "exe_type": 2,
-            "action_name": "",
+            "action_name": null,
             "code_id": "gml_Object_oHealthSync_Create_0",
             "argument_count": 1,
             "who": -1,
@@ -45,26 +45,6 @@
     [],
     [],
     [
-      {
-        "event_subtype": 0,
-        "actions": [
-          {
-            "lib_id": 1,
-            "id": 603,
-            "kind": 7,
-            "use_relative": false,
-            "is_question": false,
-            "use_apply_to": true,
-            "exe_type": 2,
-            "action_name": "",
-            "code_id": "gml_Object_oHealthSync_Step_0",
-            "argument_count": 1,
-            "who": -1,
-            "relative": false,
-            "is_not": false
-          }
-        ]
-      },
       {
         "event_subtype": 0,
         "actions": [
@@ -120,7 +100,7 @@
             "is_question": false,
             "use_apply_to": true,
             "exe_type": 2,
-            "action_name": "",
+            "action_name": null,
             "code_id": "gml_Object_oHealthSync_Mouse_4",
             "argument_count": 1,
             "who": -1,
@@ -143,7 +123,7 @@
             "is_question": false,
             "use_apply_to": true,
             "exe_type": 2,
-            "action_name": "",
+            "action_name": null,
             "code_id": "gml_Object_oHealthSync_Draw_0",
             "argument_count": 1,
             "who": -1,
