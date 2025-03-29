@@ -18,7 +18,7 @@ sCoreXPBomb 9 42 47 10 false false false AxisAlignedRect 27 27
 sCoreXSAttack 9 42 47 10 false false false AxisAlignedRect 27 27
 sCoreXSBall 9 42 47 10 false false false AxisAlignedRect 27 27
 sCoreXSBeam 9 42 47 10 false false false AxisAlignedRect 27 27
-sCoreXSBoost 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSBooster 9 42 47 10 false false false AxisAlignedRect 27 27
 sCoreXSJump 9 42 47 10 false false false AxisAlignedRect 27 27
 sCoreXSMissile 9 42 47 10 false false false AxisAlignedRect 27 27
 sCoreXVSuit 9 42 47 10 false false false AxisAlignedRect 27 27
@@ -38,7 +38,7 @@ sCoreXPBombSens 9 42 47 10 false false false AxisAlignedRect 27 27
 sCoreXSAttackSens 9 42 47 10 false false false AxisAlignedRect 27 27
 sCoreXSBallSens 9 42 47 10 false false false AxisAlignedRect 27 27
 sCoreXSBeamSens 9 42 47 10 false false false AxisAlignedRect 27 27
-sCoreXSBoostSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSBoosterSens 9 42 47 10 false false false AxisAlignedRect 27 27
 sCoreXSJumpSens 9 42 47 10 false false false AxisAlignedRect 27 27
 sCoreXSMissileSens 9 42 47 10 false false false AxisAlignedRect 27 27
 sCoreXVSuitSens 9 42 47 10 false false false AxisAlignedRect 27 27
