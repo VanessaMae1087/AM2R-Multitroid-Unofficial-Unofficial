@@ -3,6 +3,7 @@ if (global.Page || global.syncpage)
 global.lobbyLocked = (!global.lobbyLocked)
 if global.lobbyLocked
 {
+    global.timeSincePaused = 0
     if (global.doomtime >= 0)
     {
         if (!global.doomstarted)

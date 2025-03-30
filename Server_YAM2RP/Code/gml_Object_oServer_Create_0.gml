@@ -119,3 +119,4 @@ global.itemsyncs[13] = 2
 global.itemsyncs[14] = 2
 global.itemsyncs[15] = 2
 global.itemsyncs[16] = 2
+global.timeSincePaused = 0
