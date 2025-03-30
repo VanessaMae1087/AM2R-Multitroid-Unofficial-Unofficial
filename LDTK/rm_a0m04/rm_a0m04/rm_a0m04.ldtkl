@@ -1,0 +1,952 @@
+{
+	"__header__": {
+		"fileType": "LDtk Project JSON",
+		"app": "LDtk",
+		"doc": "https://ldtk.io/json",
+		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
+		"appAuthor": "Sebastien 'deepnight' Benard",
+		"appVersion": "1.2.6",
+		"url": "https://ldtk.io"
+	},
+	"identifier": "rm_a0m04",
+	"iid": "aaf9fd7c-1812-4b0a-be8e-e464ba349883",
+	"uid": 0,
+	"worldX": -1,
+	"worldY": -1,
+	"worldDepth": 0,
+	"pxWid": 448,
+	"pxHei": 240,
+	"__bgColor": "#696A79",
+	"bgColor": null,
+	"useAutoIdentifier": false,
+	"bgRelPath": null,
+	"bgPos": null,
+	"bgPivotX": 0,
+	"bgPivotY": 0,
+	"__smartColor": "#ADADB5",
+	"__bgPos": null,
+	"externalRelPath": null,
+	"fieldInstances": [],
+	"layerInstances": [
+		{
+			"__identifier": "Collision",
+			"__type": "Entities",
+			"__cWid": 28,
+			"__cHei": 15,
+			"__gridSize": 16,
+			"__opacity": 1,
+			"__pxTotalOffsetX": 0,
+			"__pxTotalOffsetY": 0,
+			"__tilesetDefUid": null,
+			"__tilesetRelPath": null,
+			"iid": "915467a0-e920-11ef-8719-9dc3bf95c830",
+			"levelId": 0,
+			"layerDefUid": 3805,
+			"pxOffsetX": 0,
+			"pxOffsetY": 0,
+			"visible": true,
+			"optionalRules": [],
+			"intGridCsv": [],
+			"autoLayerTiles": [],
+			"seed": 5031770,
+			"overrideTilesetUid": null,
+			"gridTiles": [],
+			"entityInstances": [
+				{
+					"__identifier": "oSolid1",
+					"__grid": [1,1],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "9d6034c0-e920-11ef-8719-e3603cf47671",
+					"width": 16,
+					"height": 80,
+					"defUid": 192,
+					"px": [16,16],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [4,1],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "9fa60610-e920-11ef-8719-1f43860214d0",
+					"width": 16,
+					"height": 80,
+					"defUid": 192,
+					"px": [64,16],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [2,1],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "a16ac080-e920-11ef-8719-c3cafe3637ea",
+					"width": 32,
+					"height": 16,
+					"defUid": 192,
+					"px": [32,16],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [2,5],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "a1fe9c10-e920-11ef-8719-0142a5c8b47e",
+					"width": 32,
+					"height": 16,
+					"defUid": 192,
+					"px": [32,80],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [6,1],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "a501c9f0-e920-11ef-8719-19e2debd30ef",
+					"width": 16,
+					"height": 80,
+					"defUid": 192,
+					"px": [96,16],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [7,2],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "a60fb780-e920-11ef-8719-f7ce2ce5fc4b",
+					"width": 32,
+					"height": 16,
+					"defUid": 192,
+					"px": [112,32],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [9,1],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "a9133380-e920-11ef-8719-ed8610d0c322",
+					"width": 16,
+					"height": 80,
+					"defUid": 192,
+					"px": [144,16],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [11,1],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "c2589f60-e920-11ef-8719-295356ccc693",
+					"width": 64,
+					"height": 16,
+					"defUid": 192,
+					"px": [176,16],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [11,2],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "c3c15720-e920-11ef-8719-c1abbf6aeb01",
+					"width": 16,
+					"height": 64,
+					"defUid": 192,
+					"px": [176,32],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [12,5],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "c59071d0-e920-11ef-8719-a5152b4f9692",
+					"width": 48,
+					"height": 16,
+					"defUid": 192,
+					"px": [192,80],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [14,4],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "c6f224b0-e920-11ef-8719-d7e6058758b8",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [224,64],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [13,3],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "c7901260-e920-11ef-8719-ef63eed870a7",
+					"width": 32,
+					"height": 16,
+					"defUid": 192,
+					"px": [208,48],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [1,10],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "c9edff90-e920-11ef-8719-f1f1388a69ca",
+					"width": 16,
+					"height": 64,
+					"defUid": 192,
+					"px": [16,160],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [2,9],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "cb96f4a0-e920-11ef-8719-5f3d1993757d",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [32,144],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [3,10],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "ccbe5da0-e920-11ef-8719-fbcc26b51eed",
+					"width": 16,
+					"height": 64,
+					"defUid": 192,
+					"px": [48,160],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [6,9],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "d03e5ca0-e920-11ef-8719-a357eab1fc6c",
+					"width": 16,
+					"height": 80,
+					"defUid": 192,
+					"px": [96,144],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [7,9],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "d2485d70-e920-11ef-8719-8b4e09160f4b",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [112,144],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [8,10],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "d2c4e070-e920-11ef-8719-7152d6a2dff0",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [128,160],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [7,11],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "d5b41120-e920-11ef-8719-45e51703e5c4",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [112,176],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [8,12],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "d6d0f2d0-e920-11ef-8719-e1521ba1b283",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [128,192],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [7,13],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "d7558c20-e920-11ef-8719-17a676bd4536",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [112,208],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [10,9],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "e6ddaec0-e920-11ef-8719-cdb7f618e177",
+					"width": 16,
+					"height": 32,
+					"defUid": 192,
+					"px": [160,144],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [11,11],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "e7fd9db0-e920-11ef-8719-b174a48d0615",
+					"width": 16,
+					"height": 48,
+					"defUid": 192,
+					"px": [176,176],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [12,9],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "e91aa670-e920-11ef-8719-bdad6f71a754",
+					"width": 16,
+					"height": 32,
+					"defUid": 192,
+					"px": [192,144],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [15,9],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "eacdfbc0-e920-11ef-8719-236354ef3e12",
+					"width": 32,
+					"height": 16,
+					"defUid": 192,
+					"px": [240,144],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [14,10],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "ebd6e040-e920-11ef-8719-61cfa8007d4e",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [224,160],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [15,11],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "ec720ed0-e920-11ef-8719-c344ebace70d",
+					"width": 32,
+					"height": 16,
+					"defUid": 192,
+					"px": [240,176],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [16,12],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "eeecabc0-e920-11ef-8719-7135e541bb7a",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [256,192],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [14,13],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "ef7a6cd0-e920-11ef-8719-6d19f532bbe5",
+					"width": 32,
+					"height": 16,
+					"defUid": 192,
+					"px": [224,208],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [19,9],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "f32d89c0-e920-11ef-8719-2b032f2a6bd8",
+					"width": 32,
+					"height": 16,
+					"defUid": 192,
+					"px": [304,144],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [18,10],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "f475e840-e920-11ef-8719-576c1e257330",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [288,160],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [19,11],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "f4effa40-e920-11ef-8719-4353f9a5a139",
+					"width": 32,
+					"height": 16,
+					"defUid": 192,
+					"px": [304,176],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [20,12],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "f684f220-e920-11ef-8719-39b5a9e77c62",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [320,192],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [18,13],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "f7093d50-e920-11ef-8719-e7307f0049b4",
+					"width": 32,
+					"height": 16,
+					"defUid": 192,
+					"px": [288,208],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [24,0],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "fde86ce0-e920-11ef-8719-c5616ffa0396",
+					"width": 16,
+					"height": 48,
+					"defUid": 192,
+					"px": [384,0],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [25,1],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "ffc1e7d0-e920-11ef-8719-2139660fa2a4",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [400,16],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [26,0],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "0029f870-e920-11ef-8719-4dd00b3a1071",
+					"width": 16,
+					"height": 48,
+					"defUid": 192,
+					"px": [416,0],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [24,4],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "23e52820-e920-11ef-8719-538769acee91",
+					"width": 48,
+					"height": 16,
+					"defUid": 192,
+					"px": [384,64],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [25,5],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "25602f60-e920-11ef-8719-49b0ecfba509",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [400,80],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [24,6],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "2630ece0-e920-11ef-8719-e5b99c41c3aa",
+					"width": 48,
+					"height": 16,
+					"defUid": 192,
+					"px": [384,96],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [24,8],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "33e9f4d0-e920-11ef-8719-79b22a4f105f",
+					"width": 48,
+					"height": 16,
+					"defUid": 192,
+					"px": [384,128],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [25,9],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "3501f480-e920-11ef-8719-391a62b5a7b0",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [400,144],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [24,10],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "3562b220-e920-11ef-8719-cfdfa773d616",
+					"width": 48,
+					"height": 16,
+					"defUid": 192,
+					"px": [384,160],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [24,12],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "39c7e100-e920-11ef-8719-ed1b1b58699f",
+					"width": 48,
+					"height": 16,
+					"defUid": 192,
+					"px": [384,192],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [25,13],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "3b1a9fc0-e920-11ef-8719-bd2941a1615e",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [400,208],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [24,14],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "3b806670-e920-11ef-8719-5b0162f4b3a1",
+					"width": 48,
+					"height": 16,
+					"defUid": 192,
+					"px": [384,224],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				},
+				{
+					"__identifier": "oSolid1",
+					"__grid": [2,11],
+					"__pivot": [0,0],
+					"__tags": ["Collision"],
+					"__tile": { "h": 16, "tilesetUid": 167, "w": 16, "x": 0, "y": 0 },
+					"__smartColor": "#FFE000",
+					"iid": "40bb34d0-e920-11ef-8719-cd2fa6dbd0e5",
+					"width": 16,
+					"height": 16,
+					"defUid": 192,
+					"px": [32,176],
+					"f": 0,
+					"fieldInstances": [
+						{ "__identifier": "Creation_Code", "__value": "", "__type": "String", "__tile": null, "defUid": 193, "realEditorValues": [] },
+						{ "__identifier": "InstanceID", "__value": -1, "__type": "Int", "__tile": null, "defUid": 194, "realEditorValues": [] },
+						{ "__identifier": "Rotation", "__value": 0, "__type": "Int", "__tile": null, "defUid": 195, "realEditorValues": [] }
+					]
+				}
+			]
+		}
+	],
+	"__neighbours": []
+}
