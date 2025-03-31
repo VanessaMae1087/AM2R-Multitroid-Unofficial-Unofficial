@@ -97,6 +97,7 @@ global.doomstarted = 0
 global.juggActive = 0
 global.Page = 0
 global.syncpage = 0
+// major item syncs, in order listed in the AM2R inventory screen
 global.itemsyncs = 0
 // suit
 global.itemsyncs[0] = 1
@@ -119,4 +120,14 @@ global.itemsyncs[13] = 2
 global.itemsyncs[14] = 2
 global.itemsyncs[15] = 2
 global.itemsyncs[16] = 2
+// minor items
+global.startingminors = 0
+global.startingminors[0] = 0 // fusion: energy tanks
+global.startingminors[1] = 10 // sa-x: energy tanks
+global.startingminors[2] = 0 // missiles
+global.startingminors[3] = 44
+global.startingminors[4] = 0 // super missiles
+global.startingminors[5] = 10
+global.startingminors[6] = 0 // power bombs
+global.startingminors[7] = 10
 global.timeSincePaused = 0
