@@ -131,3 +131,7 @@ global.startingminors[5] = 10
 global.startingminors[6] = 0 // power bombs
 global.startingminors[7] = 10
 global.timeSincePaused = 0
+if file_exists("lang\fonts\Acknowledge_TT_BRK.ttf")
+    global.syncnumsfont = font_add("lang\fonts\Acknowledge_TT_BRK.ttf", 64, 0, 0, 0, 0)
+else
+    global.syncnumsfont = font0
