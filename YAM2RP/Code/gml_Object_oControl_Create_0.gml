@@ -504,8 +504,16 @@ global.itemsyncs[13] = 2
 global.itemsyncs[14] = 2
 global.itemsyncs[15] = 2
 global.itemsyncs[16] = 2
+global.startingminors = 0
+global.startingminors[0] = 0
+global.startingminors[1] = 0
+global.startingminors[2] = 0
+global.startingminors[3] = 0
+global.startingminors[4] = 0
+global.startingminors[5] = 0
+global.startingminors[6] = 0
+global.startingminors[7] = 0
 load_character_vars()
 global.pingRange = 0
 global.grayMap = 0
 global.canScrewMulti = 0
-

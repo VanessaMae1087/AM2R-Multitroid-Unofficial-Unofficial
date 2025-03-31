@@ -510,20 +510,17 @@ switch type_event
                 }
                 global.lobbyLocked = lobbyLocked
                 break
-                
             case 115:
                 global.freezeDisabled = buffer_read(_buffer, buffer_u8)
-                
-                for(i = 0; i < 15; i += 1)
+                for (i = 0; i < 15; i += 1)
                 {
-                    if ((buffer_read(_buffer, buffer_u8) == 1) && global.saxmode && global.sax && (!global.item[i]) && instance_number(oCoreXSyncedItem) == 0 && string_count("rm_a", room_get_name(room)))
+                    if (buffer_read(_buffer, buffer_u8) == 1 && global.saxmode && global.sax && (!global.item[i]) && instance_number(oCoreXSyncedItem) == 0 && string_count("rm_a", room_get_name(room)))
                     {
                         core = instance_create(irandom_range(0, room_width), -100, oCoreXSyncedItem)
                         core.itemtype = i
                     }
                 }
                 break
-                
             case 116:
                 receivedPasswordHash = buffer_read(_buffer, buffer_string)
                 if (sha1_string_unicode(oControl.password) == receivedPasswordHash)
@@ -2145,6 +2142,14 @@ switch type_event
                 global.itemsyncs[14] = buffer_read(_buffer, buffer_u8)
                 global.itemsyncs[15] = buffer_read(_buffer, buffer_u8)
                 global.itemsyncs[16] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[0] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[1] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[2] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[3] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[4] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[5] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[6] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[7] = buffer_read(_buffer, buffer_u8)
                 break
         }
 }
