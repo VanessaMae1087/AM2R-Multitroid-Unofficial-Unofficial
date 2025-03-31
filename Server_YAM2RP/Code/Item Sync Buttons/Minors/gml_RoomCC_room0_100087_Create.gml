@@ -1,1 +1,1 @@
-type = 0
+minortype = 0

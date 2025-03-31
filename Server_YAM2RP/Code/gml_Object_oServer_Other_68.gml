@@ -303,6 +303,15 @@ switch type_event
         buffer_write(bfr, buffer_u8, global.itemsyncs[14]) // boots
         buffer_write(bfr, buffer_u8, global.itemsyncs[15])
         buffer_write(bfr, buffer_u8, global.itemsyncs[16])
+        buffer_write(bfr, buffer_u8, global.startingminors[0]) // fusion: energy tanks
+        buffer_write(bfr, buffer_u8, global.startingminors[1]) // sa-x: energy tanks
+        buffer_write(bfr, buffer_u8, global.startingminors[2]) // missiles
+        buffer_write(bfr, buffer_u8, global.startingminors[3])
+        buffer_write(bfr, buffer_u8, global.startingminors[4]) // super missiles
+        buffer_write(bfr, buffer_u8, global.startingminors[5])
+        buffer_write(bfr, buffer_u8, global.startingminors[6]) // power bombs
+        buffer_write(bfr, buffer_u8, global.startingminors[7])
+        buffer_poke(bfr, 0, buffer_s32, (buffer_tell(bfr) - 4))
         network_send_packet(socket, bfr, buffer_tell(bfr))
         buffer_delete(bfr)
         alarm[0] = 5

@@ -3,4 +3,4 @@
 // 2 = missile tanks
 // 4 = super missile tanks
 // 6 = power bomb tanks
-type = -1
+minortype = -1
