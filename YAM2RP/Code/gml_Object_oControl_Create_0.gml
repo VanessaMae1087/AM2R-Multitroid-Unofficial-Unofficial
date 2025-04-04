@@ -517,3 +517,4 @@ load_character_vars()
 global.pingRange = 0
 global.grayMap = 0
 global.canScrewMulti = 0
+global.awaitsyncs = 0

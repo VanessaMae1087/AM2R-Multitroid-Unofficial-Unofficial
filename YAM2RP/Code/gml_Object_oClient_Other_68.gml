@@ -2158,6 +2158,7 @@ switch type_event
                 global.startingminors[5] = buffer_read(_buffer, buffer_u8)
                 global.startingminors[6] = buffer_read(_buffer, buffer_u8)
                 global.startingminors[7] = buffer_read(_buffer, buffer_u8)
+                global.awaitsyncs = 0
                 break
         }
 }
