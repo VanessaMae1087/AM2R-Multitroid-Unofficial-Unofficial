@@ -7,4 +7,4 @@ screwattackpickupfx = 0
 relativeX = x - oCharacter.x
 relativeY = y - (oCharacter.y - oCharacter.sprite_height / 2)
 itemtype = -1
-alarm[0] = 1
+alarm[0] = 0
