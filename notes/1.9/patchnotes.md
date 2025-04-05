@@ -22,7 +22,7 @@
   - TODO: make the door sound play at the right time
    
 **SA-X map starts out gray**
-  - The SA-X map always being filled made it ard to tell where you and your teammates had been, and especially affected non-experimental games.
+  - The SA-X map always being filled made it hard to tell where you and your teammates had been, and especially affected non-experimental games.
   - TODO: make metroids properly display on the SA-X map
    
 ## Map changes
