@@ -1513,6 +1513,21 @@ if (state == IDLE)
         idle = 0
         canbehit = 1
     }
+    if (statetime == 7)
+    {
+        if (instance_exists(oClient) && global.sax)
+        {
+            global.saveEndChecker = 1
+            global.saveCheckBuffer = buffer_create(1024, buffer_grow, 1)
+            buffer_seek(global.saveCheckBuffer, buffer_seek_start, 0)
+            buffer_write(global.saveCheckBuffer, buffer_s32, 18)
+            buffer_write(global.saveCheckBuffer, buffer_u8, 71)
+            buffer_write(global.saveCheckBuffer, buffer_u8, global.saveEndChecker)
+            buffer_poke(global.saveCheckBuffer, 0, buffer_s32, (buffer_tell(global.saveCheckBuffer) - 4))
+            network_send_packet(oClient.socket, global.saveCheckBuffer, buffer_tell(global.saveCheckBuffer))
+            buffer_delete(global.saveCheckBuffer)
+        }
+    }
 }
 if (state == SAVING)
 {
