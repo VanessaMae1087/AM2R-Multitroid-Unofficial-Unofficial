@@ -38,56 +38,10 @@ if absorb
         with (oCharacter)
             speedmultiresettimer = 0
         global.enablecontrol = 1
-        if (global.item[itemtype] == 0)
+        if (global.item[9] == 0)
         {
-            global.item[itemtype] = 1
-            switch itemtype
-            {
-                case 0:
-                    global.bomb = 1
-                    break
-                case 2:
-                    global.spiderball = 1
-                    break
-                case 3:
-                    global.jumpball = 1
-                    break
-                case 4:
-                    global.hijump = 1
-                    break
-                case 5:
-                    if (global.currentsuit == 0)
-                        global.currentsuit = 1
-                    break
-                case 6:
-                    global.spacejump = 1
-                    break
-                case 7:
-                    global.speedbooster = 1
-                    break
-                case 8:
-                    global.screwattack = 1
-                    break
-                case 9:
-                    global.currentsuit = 2
-                    break
-                case 10:
-                    global.cbeam = 1
-                    break
-                case 11:
-                    global.ibeam = 1
-                    break
-                case 12:
-                    global.wbeam = 1
-                    break
-                case 13:
-                    global.sbeam = 1
-                    break
-                case 14:
-                    global.pbeam = 1
-                    break
-            }
-
+            global.item[9] = 1
+            global.currentsuit = 2
         }
         with (instance_find(oFXTrail, (instance_number(oFXTrail) - 1)))
         {
