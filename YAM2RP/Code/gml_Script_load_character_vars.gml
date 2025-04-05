@@ -157,38 +157,40 @@ if (global.sax && global.saxmode)
 }
 global.dmapPrev = array_clone(global.dmap)
 visible = true
-global.item[0] = (global.itemsyncs[11] == 1 || (global.sax && global.itemsyncs[11] == 2))
-global.item[2] = (global.itemsyncs[9] == 1 || (global.sax && global.itemsyncs[9] == 2))
-global.item[3] = (global.itemsyncs[10] == 1 || (global.sax && global.itemsyncs[10] == 2))
-global.item[4] = (global.itemsyncs[14] == 1 || (global.sax && global.itemsyncs[14] == 2))
-global.item[5] = (global.itemsyncs[1] == 1 || (global.sax && global.itemsyncs[1] == 2))
-global.item[6] = (global.itemsyncs[15] == 1 || (global.sax && global.itemsyncs[15] == 2))
-global.item[7] = (global.itemsyncs[16] == 1 || (global.sax && global.itemsyncs[16] == 2))
-global.item[8] = (global.itemsyncs[13] == 1 || (global.sax && global.itemsyncs[13] == 2))
-global.item[9] = (global.itemsyncs[2] == 1 || (global.sax && global.itemsyncs[2] == 2))
-global.item[10] = (global.itemsyncs[3] == 1 || (global.sax && global.itemsyncs[3] == 2))
-global.item[11] = (global.itemsyncs[7] == 1 || (global.sax && global.itemsyncs[7] == 2))
-global.item[12] = (global.itemsyncs[4] == 1 || (global.sax && global.itemsyncs[4] == 2))
-global.item[13] = (global.itemsyncs[5] == 1 || (global.sax && global.itemsyncs[5] == 2))
-global.item[14] = (global.itemsyncs[6] == 1 || (global.sax && global.itemsyncs[6] == 2))
-global.bomb = (global.itemsyncs[11] == 1 || (global.sax && global.itemsyncs[11] == 2))
-global.spiderball = (global.itemsyncs[9] == 1 || (global.sax && global.itemsyncs[9] == 2))
-global.jumpball = (global.itemsyncs[10] == 1 || (global.sax && global.itemsyncs[10] == 2))
-global.hijump = (global.itemsyncs[14] == 1 || (global.sax && global.itemsyncs[14] == 2))
-// varia would be here but we do suit math
-global.spacejump = (global.itemsyncs[15] == 1 || (global.sax && global.itemsyncs[15] == 2))
-global.speedbooster = (global.itemsyncs[16] == 1 || (global.sax && global.itemsyncs[16] == 2))
-global.screwattack = (global.itemsyncs[13] == 1 || (global.sax && global.itemsyncs[13] == 2))
-// gravity would be here but we do suit math
-global.cbeam = (global.itemsyncs[3] == 1 || (global.sax && global.itemsyncs[3] == 2))
-global.ibeam = (global.itemsyncs[7] == 1 || (global.sax && global.itemsyncs[7] == 2))
-global.wbeam = (global.itemsyncs[4] == 1 || (global.sax && global.itemsyncs[4] == 2))
-global.sbeam = (global.itemsyncs[5] == 1 || (global.sax && global.itemsyncs[5] == 2))
-global.pbeam = (global.itemsyncs[6] == 1 || (global.sax && global.itemsyncs[6] == 2))
-
-if (global.item[9] == 1)
-    global.currentsuit = 2
-else if (global.item[5] == 1)
-    global.currentsuit = 1
-else
-    global.currentsuit = 0
+if (!global.sax)
+{
+    global.item[0] = (global.itemsyncs[11] == 1 || (global.sax && global.itemsyncs[11] == 2))
+    global.item[2] = (global.itemsyncs[9] == 1 || (global.sax && global.itemsyncs[9] == 2))
+    global.item[3] = (global.itemsyncs[10] == 1 || (global.sax && global.itemsyncs[10] == 2))
+    global.item[4] = (global.itemsyncs[14] == 1 || (global.sax && global.itemsyncs[14] == 2))
+    global.item[5] = (global.itemsyncs[1] == 1 || (global.sax && global.itemsyncs[1] == 2))
+    global.item[6] = (global.itemsyncs[15] == 1 || (global.sax && global.itemsyncs[15] == 2))
+    global.item[7] = (global.itemsyncs[16] == 1 || (global.sax && global.itemsyncs[16] == 2))
+    global.item[8] = (global.itemsyncs[13] == 1 || (global.sax && global.itemsyncs[13] == 2))
+    global.item[9] = (global.itemsyncs[2] == 1 || (global.sax && global.itemsyncs[2] == 2))
+    global.item[10] = (global.itemsyncs[3] == 1 || (global.sax && global.itemsyncs[3] == 2))
+    global.item[11] = (global.itemsyncs[7] == 1 || (global.sax && global.itemsyncs[7] == 2))
+    global.item[12] = (global.itemsyncs[4] == 1 || (global.sax && global.itemsyncs[4] == 2))
+    global.item[13] = (global.itemsyncs[5] == 1 || (global.sax && global.itemsyncs[5] == 2))
+    global.item[14] = (global.itemsyncs[6] == 1 || (global.sax && global.itemsyncs[6] == 2))
+    global.bomb = (global.itemsyncs[11] == 1 || (global.sax && global.itemsyncs[11] == 2))
+    global.spiderball = (global.itemsyncs[9] == 1 || (global.sax && global.itemsyncs[9] == 2))
+    global.jumpball = (global.itemsyncs[10] == 1 || (global.sax && global.itemsyncs[10] == 2))
+    global.hijump = (global.itemsyncs[14] == 1 || (global.sax && global.itemsyncs[14] == 2))
+    // varia would be here but we do suit math
+    global.spacejump = (global.itemsyncs[15] == 1 || (global.sax && global.itemsyncs[15] == 2))
+    global.speedbooster = (global.itemsyncs[16] == 1 || (global.sax && global.itemsyncs[16] == 2))
+    global.screwattack = (global.itemsyncs[13] == 1 || (global.sax && global.itemsyncs[13] == 2))
+    // gravity would be here but we do suit math
+    global.cbeam = (global.itemsyncs[3] == 1 || (global.sax && global.itemsyncs[3] == 2))
+    global.ibeam = (global.itemsyncs[7] == 1 || (global.sax && global.itemsyncs[7] == 2))
+    global.wbeam = (global.itemsyncs[4] == 1 || (global.sax && global.itemsyncs[4] == 2))
+    global.sbeam = (global.itemsyncs[5] == 1 || (global.sax && global.itemsyncs[5] == 2))
+    global.pbeam = (global.itemsyncs[6] == 1 || (global.sax && global.itemsyncs[6] == 2))
+    
+    if (global.item[9] == 1)
+        global.currentsuit = 2
+    else if (global.item[5] == 1)
+        global.currentsuit = 1
+    else
+        global.currentsuit = 0
