@@ -46,6 +46,7 @@ if (findIP >= 0 || findKickIP >= 0)
         ds_list_delete(kickList, findKickIP)
     exit
 }
+global.bufferOverflow = 0
 switch type_event
 {
     case 1:
