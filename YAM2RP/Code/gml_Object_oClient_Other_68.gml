@@ -2124,6 +2124,7 @@ switch type_event
                 global.saveEndChecker = buffer_read(_buffer, buffer_u8)
                 if (global.saveEndChecker == 2)
                 {
+                    popup_text("debug")
                     global.saveEndChecker = 0
                 }
                 break
