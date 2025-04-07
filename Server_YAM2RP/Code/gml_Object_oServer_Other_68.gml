@@ -2588,9 +2588,6 @@ switch type_event
                 }
                 alarm[5] = 30
                 break
-        }
-
-        break
             case 71:
                 sockets = ds_list_size(playerList)
                 global.saveEndChecker = safe_buffer_read(_buffer, buffer_u8)
@@ -2621,6 +2618,9 @@ switch type_event
                     buffer_delete(savBfr)
                 }
                 break
+        }
+
+        break
 }
 
 if (ds_map_exists(posMap, banSocket) && (!posMapModified))
