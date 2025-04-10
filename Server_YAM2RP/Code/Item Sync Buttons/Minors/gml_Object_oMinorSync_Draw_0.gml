@@ -47,4 +47,7 @@ if global.syncpage
     draw_set_font(font0)
     draw_set_valign(fa_top)
     draw_set_halign(fa_left)
+    
+    if (minortype == 0)
+        draw_text(150, 525, "  Use Shift, Alt, and Ctrl#to increase minors in bulk")
 }

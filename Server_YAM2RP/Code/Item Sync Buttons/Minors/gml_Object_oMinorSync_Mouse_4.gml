@@ -1,4 +1,4 @@
-var maximum, sockets, bfr, bfrSize, i;
+var maximum, sockets, change, bfr, bfrSize, i;
 // if we don't have the sync page open, ignore mouse clicks
 if (!global.syncpage)
     exit
@@ -7,31 +7,38 @@ if (minortype == 2)
     maximum = 44
 else
     maximum = 10
+change = 1
+if (keyboard_check(vk_shift))
+    change = 5
+if (keyboard_check(vk_alt))
+    change = 10
+if (keyboard_check(vk_control))
+    change = 44
 // if mouse is in the top left button region
 if ((mouse_x - x) >= 0 && (mouse_x - x) <= 40 && (mouse_y - y) >= 0 && (mouse_y - y) <= 40)
 {
-    global.startingminors[minortype]++
+    global.startingminors[minortype] += change
     if (global.startingminors[minortype] > maximum)
         global.startingminors[minortype] = maximum
 }
 // top right
 if ((mouse_x - x) >= 104 && (mouse_x - x) <= 144 && (mouse_y - y) >= 0 && (mouse_y - y) <= 40)
 {
-    global.startingminors[minortype]--
+    global.startingminors[minortype] -= change
     if (global.startingminors[minortype] < 0)
         global.startingminors[minortype] = 0
 }
 // bottom left
 if ((mouse_x - x) >= 0 && (mouse_x - x) <= 40 && (mouse_y - y) >= 40 && (mouse_y - y) <= 80)
 {
-    global.startingminors[(minortype + 1)]++
+    global.startingminors[(minortype + 1)] += change
     if (global.startingminors[(minortype + 1)] > maximum)
         global.startingminors[(minortype + 1)] = maximum
 }
 // bottom right
 if ((mouse_x - x) >= 104 && (mouse_x - x) <= 144 && (mouse_y - y) >= 40 && (mouse_y - y) <= 80)
 {
-    global.startingminors[(minortype + 1)]--
+    global.startingminors[(minortype + 1)] -= change
     if (global.startingminors[(minortype + 1)] < 0)
         global.startingminors[(minortype + 1)] = 0
 }
