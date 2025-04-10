@@ -1,5 +1,5 @@
 var mslblock, height;
-if (global.sax && global.saxmode && global.itemsyncs[7] == 0 && global.item[11] == 0 && (room == rm_a5h02 || room == rm_a5b22))
+if (global.sax && global.saxmode && global.itemsyncs[7] == 0 && global.item[11] == 0)
 {
     height = 0
     repeat (4)
