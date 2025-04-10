@@ -190,3 +190,4 @@ else if (global.item[5] == 1)
     global.currentsuit = 1
 else
     global.currentsuit = 0
+global.itemPrev = array_clone(global.item)
