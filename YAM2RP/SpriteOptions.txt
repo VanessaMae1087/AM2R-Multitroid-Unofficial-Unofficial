@@ -46,3 +46,6 @@ sCoreXWBeamSens 9 42 47 10 false false false AxisAlignedRect 27 27
 
 # Unknown Items
 sItemUnknownChargeBeam 0 15 15 0 false false false AxisAlignedRect 0 16
+
+# oBlockSpectator
+sBlockSpectator 0 15 15 0 false false false AxisAlignedRect 0 0
