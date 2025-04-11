@@ -1748,7 +1748,15 @@ switch type_event
                         }
                     }
                     else if (receivedItem == 0 && global.item[i] == 1)
-                        resend = 1
+                        {
+                        if (((!global.spectator) || global.sax) && (string_count("rm_a", room_get_name(room)) > 0 || room == rm_transition || room == rm_subscreen))
+                            resend = 1
+                        else
+                        {
+                            global.item[i] = receivedItem
+                            global.itemPrev[i] = global.item[i]
+                        }
+                    }
                 }
                 etankCount = 0
                 for (i = 0; i < array_length_1d(global.item); i++)
