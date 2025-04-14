@@ -2,3 +2,44 @@
 # A '#' at the start of a line indicates a comment
 # Correct syntax is '[SpriteName] [MarginLeft] [MarginRight] [MarginBottom] [MarginTop] [Transparent] [Smooth] [Preload] [SepMasks] [OriginX] [OriginY]'
 # e.g sTestSprite 0 31 35 0 false false false AxisAlignedRect 0 0
+
+# Core-X Offsets
+# Base Core-X
+sCoreXBomb 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXCBeam 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXEnergy 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXGSuit 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXHJBoots 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXIBeam 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXJBall 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXMissile 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXPBeam 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXPBomb 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSAttack 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSBall 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSBeam 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSBoost 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSJump 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSMissile 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXVSuit 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXWBeam 9 42 47 10 false false false AxisAlignedRect 27 27
+
+# Sens Core-X
+sCoreXBombSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXCBeamSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXEnergySens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXGSuitSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXHJBootsSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXIBeamSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXJBallSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXMissileSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXPBeamSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXPBombSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSAttackSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSBallSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSBeamSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSBoostSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSJumpSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXSMissileSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXVSuitSens 9 42 47 10 false false false AxisAlignedRect 27 27
+sCoreXWBeamSens 9 42 47 10 false false false AxisAlignedRect 27 27
