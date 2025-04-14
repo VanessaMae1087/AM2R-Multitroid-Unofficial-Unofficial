@@ -628,8 +628,9 @@ if (global.classicmode == 0 && global.opshowhud)
                     if (!sax)
                     {
                         if (spectator && global.sax)
-                            exit
-                        if (spectator && (!global.sax))
+                        {
+                        }
+                        else if (spectator && (!global.sax))
                         {
                             if (abs(xDiff) <= 2 && abs(yDiff) <= 1)
                                 draw_sprite_ext(sSpectatorIcon, 0, (276 + widescreen_space + 16 - xDiff * 8), (12 - yDiff * 8), 1, 1, direction, c_white, oControl.malpha)
