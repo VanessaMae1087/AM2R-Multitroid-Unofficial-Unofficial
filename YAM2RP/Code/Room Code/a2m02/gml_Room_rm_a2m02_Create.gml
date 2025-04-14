@@ -6,5 +6,3 @@ global.floormaterial = 1
 global.objdeactivate = 0
 global.darkness = 0
 mus_change(mus_get_main_song())
-with (oSolid)
-    visible = true
