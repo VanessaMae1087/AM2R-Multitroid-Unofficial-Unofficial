@@ -130,7 +130,7 @@ switch argument0
         break
 }
 
-if global.sensitivitymode
+if global.opcorexsensitivity
     sensstr = "Sens"
 else
     sensstr = ""

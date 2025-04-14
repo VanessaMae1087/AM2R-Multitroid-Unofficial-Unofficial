@@ -25,6 +25,7 @@ global.opwritelog = 0
 global.compatibilitymode = 0
 global.sensitivitymode = 1
 global.widescreen_enabled = 1
+global.opcorexsensitivity = 1
 oControl.mod_insanitymode = 0
 oControl.touch_scale = 4
 oControl.mod_collecteditemsmap = 0
@@ -134,6 +135,7 @@ if file_exists(working_directory + "/multitroid/" + "config.ini")
     oControl.widescreen = global.widescreen_enabled
     oControl.mod_insanitymode = ini_read_real("GameplayMenu", "InsanityMode", 0)
     oControl.mod_collecteditemsmap = ini_read_real("Extras", "MapItemsCollected", 0)
+    global.opcorexsensitivity = ini_read_real("Screen", "CoreXItemDisplay", 1)
     if (oControl.mod_insanitymode == 1)
     {
         oControl.mod_septoggs_bombjumps_easy = 0
