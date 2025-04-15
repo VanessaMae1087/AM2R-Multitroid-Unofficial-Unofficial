@@ -64,36 +64,36 @@ if (ds_list_size(roomListData) > 0)
             if (arrSprite == sSpiderMorphBall || arrSprite == sGSpiderMorphBall || arrSprite == sVSpiderMorphBall || arrSprite == sSpiderMorphBall_fusion || arrSprite == sSpiderMorphBall_fusion_gravity || arrSprite == sSpiderMorphBall_fusion_varia)
             {
                 draw_set_blend_mode(bm_add)
-                draw_set_alpha((arrFXTimer * 0.1))
+                draw_set_alpha(arrFXTimer * 0.1)
                 if (global.shaders_compiled && os_type != os_android)
                 {
                     pal_swap_set(oControl.SpiderballPalette, arrID, 0)
-                    draw_sprite_ext(sSpiderballFX, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + (arrFXTimer * 0.1)))
+                    draw_sprite_ext(sSpiderballFX, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + arrFXTimer * 0.1))
                 }
                 else if (global.shaders_compiled && os_type == os_android)
                 {
                     switch arrSprite
                     {
                         case sSpiderMorphBall:
-                            draw_sprite_ext(sSpiderballFX, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + (arrFXTimer * 0.1)))
+                            draw_sprite_ext(sSpiderballFX, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + arrFXTimer * 0.1))
                             break
                         case 1080:
-                            draw_sprite_ext(sSpiderballFXVaria, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + (arrFXTimer * 0.1)))
+                            draw_sprite_ext(sSpiderballFXVaria, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + arrFXTimer * 0.1))
                             break
                         case 912:
-                            draw_sprite_ext(sSpiderballFXGravity, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + (arrFXTimer * 0.1)))
+                            draw_sprite_ext(sSpiderballFXGravity, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + arrFXTimer * 0.1))
                             break
                         case 1208:
-                            draw_sprite_ext(sSpiderballFX_fusion, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + (arrFXTimer * 0.1)))
+                            draw_sprite_ext(sSpiderballFX_fusion, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + arrFXTimer * 0.1))
                             break
                         case 1638:
-                            draw_sprite_ext(sSpiderballFXVaria_fusion, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + (arrFXTimer * 0.1)))
+                            draw_sprite_ext(sSpiderballFXVaria_fusion, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + arrFXTimer * 0.1))
                             break
                         case 1639:
-                            draw_sprite_ext(sSpiderballFXGravity_fusion, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + (arrFXTimer * 0.1)))
+                            draw_sprite_ext(sSpiderballFXGravity_fusion, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + arrFXTimer * 0.1))
                             break
                         case 1850:
-                            draw_sprite_ext(sSpiderballFX_fusion, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + (arrFXTimer * 0.1)))
+                            draw_sprite_ext(sSpiderballFX_fusion, -1, arrX, arrY, 1, 1, 0, -1, (0.2 + arrFXTimer * 0.1))
                             break
                     }
 
@@ -116,7 +116,7 @@ if (ds_list_size(roomListData) > 0)
                         if (arrFXTimer == 0 || arrFXTimer == 1)
                         {
                             draw_set_blend_mode(bm_add)
-                            draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, arrBlend, (1.1 + (arrFXTimer * 0.2)), arrArmmsl, arrImage, arrID)
+                            draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, arrBlend, (1.1 + arrFXTimer * 0.2), arrArmmsl, arrImage, arrID)
                             draw_set_blend_mode(bm_normal)
                         }
                         if (arrFXTimer == 2 || arrFXTimer == 3)
@@ -137,7 +137,7 @@ if (ds_list_size(roomListData) > 0)
                     {
                         draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, c_blue, (arrFXTimer * 0.2), arrArmmsl, arrImage, arrID)
                         draw_set_blend_mode(bm_add)
-                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, c_white, (0.8 - (arrFXTimer * 0.2)), arrArmmsl, arrImage, arrID)
+                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, c_white, (0.8 - arrFXTimer * 0.2), arrArmmsl, arrImage, arrID)
                         draw_set_blend_mode(bm_normal)
                     }
                     sprHeight = sprite_get_height(sIdleRight)
@@ -161,7 +161,7 @@ if (ds_list_size(roomListData) > 0)
                     if (arrFXTimer == 0 || arrFXTimer == 1)
                     {
                         draw_set_blend_mode(bm_add)
-                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, arrBlend, (1.1 + (arrFXTimer * 0.2)), arrArmmsl, arrImage, arrID)
+                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, arrBlend, (1.1 + arrFXTimer * 0.2), arrArmmsl, arrImage, arrID)
                         draw_set_blend_mode(bm_normal)
                     }
                     if (arrFXTimer == 2 || arrFXTimer == 3)
@@ -182,7 +182,7 @@ if (ds_list_size(roomListData) > 0)
                 {
                     draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, c_blue, (arrFXTimer * 0.2), arrArmmsl, arrImage, arrID)
                     draw_set_blend_mode(bm_add)
-                    draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, c_white, (0.8 - (arrFXTimer * 0.2)), arrArmmsl, arrImage, arrID)
+                    draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, c_white, (0.8 - arrFXTimer * 0.2), arrArmmsl, arrImage, arrID)
                     draw_set_blend_mode(bm_normal)
                 }
                 sprHeight = sprite_get_height(sIdleRight)
@@ -300,40 +300,41 @@ if instance_exists(oMapCursor)
                 if (!sax)
                 {
                     if (spectator && global.sax)
-                        exit
-                    if (spectator && (!global.sax))
+                    {
+                    }
+                    else if (spectator && (!global.sax))
                     {
                         if (arrX != 3 && arrY != 3)
-                            draw_sprite_ext(sSpectatorIcon, 0, (arrX * 8), ((arrY * 8) + 32), 1, 1, direction, c_white, oMapCursor.image_alpha)
+                            draw_sprite_ext(sSpectatorIcon, 0, (arrX * 8), (arrY * 8 + 32), 1, 1, direction, c_white, oMapCursor.image_alpha)
                     }
                     else if (arrX != 3 && arrY != 3)
-                        draw_sprite_ext(sFusionIcon, 0, (arrX * 8), ((arrY * 8) + 32), 1, 1, direction, c_white, oMapCursor.image_alpha)
+                        draw_sprite_ext(sFusionIcon, 0, (arrX * 8), (arrY * 8 + 32), 1, 1, direction, c_white, oMapCursor.image_alpha)
                 }
                 else if (arrX != 3 && arrY != 3)
-                    draw_sprite_ext(sMultitroidMapIconMiepee, 0, (arrX * 8), ((arrY * 8) + 32), 1, 1, direction, c_white, oMapCursor.image_alpha)
+                    draw_sprite_ext(sMultitroidMapIconMiepee, 0, (arrX * 8), (arrY * 8 + 32), 1, 1, direction, c_white, oMapCursor.image_alpha)
             }
             else if (arrX != 3 && arrY != 3 && sax == global.sax && (!spectator))
-                draw_sprite_ext(oControl.MultitroidMapIcon, (arrID - 1), (arrX * 8), ((arrY * 8) + 32), 1, 1, direction, c_white, oMapCursor.image_alpha)
+                draw_sprite_ext(oControl.MultitroidMapIcon, (arrID - 1), (arrX * 8), (arrY * 8 + 32), 1, 1, direction, c_white, oMapCursor.image_alpha)
         }
     }
     rectoffset = 0
     if instance_exists(oMapScrBG2)
         rectoffset = oMapScrBG2.rectoffset
-    draw_sprite_ext(sMultitroidMapPlayerCountBox, 1, (view_xview[0] - (oControl.widescreen_space / 2)), ((view_yview[0] + 44) - rectoffset), 1, 1, direction, c_white, 1)
+    draw_sprite_ext(sMultitroidMapPlayerCountBox, 1, (view_xview[0] - oControl.widescreen_space / 2), (view_yview[0] + 44 - rectoffset), 1, 1, direction, c_white, 1)
     if (ds_list_size(global.idList) > 1)
     {
         for (f = 0; f < ds_list_size(global.idList); f++)
         {
             arrList = ds_list_find_value(global.idList, f)
             ID = arrList[0, 0]
-            _x = (10 * floor((f / 2)))
-            _y = (10 * (f % 2))
+            _x = 10 * (floor(f / 2))
+            _y = 10 * (f % 2)
             if (ID == global.clientID)
-                draw_sprite_ext(oControl.MultitroidIcon, (ID - 1), (((view_xview[0] - (oControl.widescreen_space / 2)) + 2) + _x), (((view_yview[0] + 44) + 13) + _y), 1, 1, direction, c_white, 1)
+                draw_sprite_ext(oControl.MultitroidIcon, (ID - 1), (view_xview[0] - oControl.widescreen_space / 2 + 2 + _x), (view_yview[0] + 44 + 13 + _y), 1, 1, direction, c_white, 1)
             else
-                draw_sprite_ext(oControl.MultitroidIconDark, (ID - 1), (((view_xview[0] - (oControl.widescreen_space / 2)) + 2) + _x), (((view_yview[0] + 44) + 13) + _y), 1, 1, direction, c_white, 1)
+                draw_sprite_ext(oControl.MultitroidIconDark, (ID - 1), (view_xview[0] - oControl.widescreen_space / 2 + 2 + _x), (view_yview[0] + 44 + 13 + _y), 1, 1, direction, c_white, 1)
         }
     }
     else if (ds_list_size(global.idList) == 1 || ds_list_size(global.idList) == 0)
-        draw_sprite_ext(oControl.MultitroidIcon, clamp((global.clientID - 1), 0, 16), ((view_xview[0] - (oControl.widescreen_space / 2)) + 2), ((view_yview[0] + 44) + 13), 1, 1, direction, c_white, 1)
+        draw_sprite_ext(oControl.MultitroidIcon, clamp((global.clientID - 1), 0, 16), (view_xview[0] - oControl.widescreen_space / 2 + 2), (view_yview[0] + 44 + 13), 1, 1, direction, c_white, 1)
 }
