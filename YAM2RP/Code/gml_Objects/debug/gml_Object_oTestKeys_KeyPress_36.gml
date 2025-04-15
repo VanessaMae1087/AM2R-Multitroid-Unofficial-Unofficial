@@ -1,7 +1,7 @@
 var targetwidth;
 if instance_exists(oCharacter)
 {
-    targetroom = 401
+    targetroom = rm_a2m01
     targetx = 112
     targety = 176
     direction = 0
