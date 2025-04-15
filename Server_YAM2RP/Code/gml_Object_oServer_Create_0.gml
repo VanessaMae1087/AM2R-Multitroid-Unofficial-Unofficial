@@ -17,7 +17,9 @@ ini_open(working_directory + "\settings.ini")
 port = ini_read_real("Settings", "port", 64198)
 maxClients = ini_read_real("Settings", "maxplayers", 16)
 password = ini_read_string("Settings", "moderatorpass", string(random_get_seed()))
+global.saxmode = ini_read_real("Settings", "StartingMode", 0)
 ini_close()
+load_config()
 if (!(file_exists(working_directory + "\blacklist.txt")))
 {
     blacklist = file_text_open_write(working_directory + "\blacklist.txt")
@@ -72,17 +74,14 @@ reset_globals()
 global.slot = 1
 slotStr = string(global.slot)
 global.saveString = "\save" + slotStr + ".txt"
-syncedDifficulty = 1
 syncedELM = 0
 posMapModified = 0
 global.lobbyLocked = 0
 global.damageMult = 0
 global.clientVersion = "V1.8.1"
-global.experimental = 0
 global.prevMonstersLeft = 0
 global.gametime = 0
 global.gametDec = 0
-global.doomtime = 0
 global.doomenabled = 0
 global.doomstarted = 0
 global.juggActive = 0
