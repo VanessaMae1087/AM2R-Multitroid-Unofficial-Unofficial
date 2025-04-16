@@ -55,6 +55,7 @@ deadList = ds_list_create()
 vars = ds_grid_create(3, 20)
 map = ds_map_create()
 posMap = ds_map_create()
+teamAffiliation = ds_map_create()
 import = json_import("item_dict.json")
 dict = json_decode(import)
 queenHealth = 600

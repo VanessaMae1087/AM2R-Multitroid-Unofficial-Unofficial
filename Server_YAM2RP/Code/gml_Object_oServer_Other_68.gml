@@ -1,4 +1,4 @@
-var type_event, ip, findIP, findKickIP, ban, size, type, alignment, bufferSize, findsocket, i, arrList, socket, socketID, ID, arr, seed, findID, _buffer, bufferSizePacket, clientID, sax, sockets, preferredID, f, arrID, arrSocket, clientX, clientY, clientSprite, clientImage, clientA1, clientA1X, clientA1Y, clientA2, clientA2X, clientA2Y, clientA2A, clientMirror, clientArmmsl, clientRoom, clientName, clientBlend, clientFXTimer, clientRoomPrev, clientState, clientSAX, clientSpeedboost, clientSJBall, clientSJDir, clientSpeedCharge, clientPlayerHealth, clientSpectator, clientInvincible, clientMosaic, clientReform, clientVisible, list, clientMapX, clientMapY, spectator, findSamus, event, findDead, playerHealth, missiles, smissiles, pbombs, ping, realPing, spacejump, screwattack, spiderball, speedbooster, bomb, ibeam, wbeam, pbeam, sbeam, cbeam, tempSocket, checkID, checkX, checkY, checkBeam, checkMissile, checkDamage, checkFreeze, lag, lagPositions, timeToCheck, g, lagPosArr, lagPosTime, lagPosID, lagPosX, lagPosY, packetID, name, lobbyLocked, _queenHealth, phase, state, monstersLeft, monstersArea, item, itemArr, v, metdead, metdeadArr, eventArr, tileCount, tileX, tileY, tileData, itemstaken, maxmissiles, maxsmissiles, maxpbombs, maxhealth, etanks, mtanks, stanks, ptanks, gametime, findTime, findReset, dir, sprX, sprY, charge, bombX, bombY, currentWeapon, missileX, missileY, velX, velY, icemissiles, pbombX, pbombY, playerhealth, syncDiff, syncELM, otherAbsorbRelativeX, otherAbsorbRelativeY, otherAbsorbSpriteHeight, saxmode, findIDSamus, findIDSAX, mapposx, mapposy, mirror, sentRoom, playerX, playerY, receivedItem, receivedEvent, receivedMetdead, j, receiveddmap, msg, splitBy, slot, splits, str2, currStr, wrongVersion, playerState, combatState, checkDir, clientSBall, canScrew, compressedList;
+var type_event, ip, findIP, findKickIP, ban, size, type, alignment, bufferSize, findsocket, i, arrList, socket, socketID, ID, arr, seed, findID, _buffer, bufferSizePacket, clientID, sax, sockets, preferredID, f, arrID, arrSocket, clientX, clientY, clientSprite, clientImage, clientA1, clientA1X, clientA1Y, clientA2, clientA2X, clientA2Y, clientA2A, clientMirror, clientArmmsl, clientRoom, clientName, clientBlend, clientFXTimer, clientRoomPrev, clientState, clientSAX, clientSpeedboost, clientSJBall, clientSJDir, clientSpeedCharge, clientPlayerHealth, clientSpectator, clientInvincible, clientMosaic, clientReform, clientVisible, list, clientMapX, clientMapY, spectator, findSamus, event, findDead, playerHealth, missiles, smissiles, pbombs, ping, realPing, spacejump, screwattack, spiderball, speedbooster, bomb, ibeam, wbeam, pbeam, sbeam, cbeam, tempSocket, checkID, checkX, checkY, checkBeam, checkMissile, checkDamage, checkFreeze, lag, lagPositions, timeToCheck, g, lagPosArr, lagPosTime, lagPosID, lagPosX, lagPosY, packetID, name, lobbyLocked, _queenHealth, phase, state, monstersLeft, monstersArea, item, itemArr, v, metdead, metdeadArr, eventArr, tileCount, tileX, tileY, tileData, itemstaken, maxmissiles, maxsmissiles, maxpbombs, maxhealth, etanks, mtanks, stanks, ptanks, gametime, findTime, findReset, dir, sprX, sprY, charge, bombX, bombY, currentWeapon, missileX, missileY, velX, velY, icemissiles, pbombX, pbombY, playerhealth, syncDiff, syncELM, otherAbsorbRelativeX, otherAbsorbRelativeY, otherAbsorbSpriteHeight, saxmode, findIDSamus, findIDSAX, mapposx, mapposy, mirror, sentRoom, playerX, playerY, receivedItem, receivedEvent, receivedMetdead, j, receiveddmap, msg, splitBy, slot, splits, str2, currStr, wrongVersion, playerState, combatState, checkDir, clientSBall, canScrew, compressedList, compressedMap, changedTeam;
 type_event = ds_map_find_value(async_load, "type")
 ip = ds_map_find_value(async_load, "ip")
 findIP = ds_list_find_index(banList, ip)
@@ -391,6 +391,8 @@ switch type_event
                 sax = safe_buffer_read(_buffer, buffer_u8)
                 if global.bufferOverflow
                     exit
+                if (!(is_undefined(ds_map_find_value(teamAffiliation, ip))))
+                    sax = ds_map_find_value(teamAffiliation, ip)
                 tempList = ds_list_create()
                 if (ds_list_size(idList) > 0)
                 {
@@ -867,7 +869,7 @@ switch type_event
                 }
                 break
             case 0:
-                var compressedMap = safe_buffer_read(_buffer, buffer_string)
+                compressedMap = safe_buffer_read(_buffer, buffer_string)
                 clientID = safe_buffer_read(_buffer, buffer_u8)
                 packetID = safe_buffer_read(_buffer, buffer_u32)
                 if global.bufferOverflow
@@ -971,7 +973,24 @@ switch type_event
                         wrongVersion = 0
                 }
                 if wrongVersion
+                {
                     ds_list_add(kickList, ip)
+                    exit
+                }
+                changedTeam = 0
+                if (!(is_undefined(ds_map_find_value(teamAffiliation, ip))))
+                {
+                    sax = ds_map_find_value(teamAffiliation, ip)
+                    changedTeam = 1
+                }
+                else
+                    ds_map_add(teamAffiliation, ip, sax)
+                if (changedTeam == 1)
+                {
+                    global.newTeamSoket = socket
+                    global.newTeam = sax + 1
+                    event_user(3)
+                }
                 findsocket = ds_list_find_index(playerList, socket)
                 if (findsocket < 0)
                 {

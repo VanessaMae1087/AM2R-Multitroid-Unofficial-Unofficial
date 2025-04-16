@@ -30,6 +30,7 @@ ds_list_destroy(deadList)
 ds_grid_destroy(vars)
 ds_map_destroy(map)
 ds_map_destroy(posMap)
+ds_map_destroy(teamAffiliation)
 if global.saxmode
     ini_open(working_directory + "\settings_sax.ini")
 else
