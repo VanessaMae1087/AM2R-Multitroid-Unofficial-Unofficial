@@ -59,7 +59,7 @@ sSolid2x1 0 31 15 0 false false false AxisAlignedRect 0 0
 sSolid1x2 0 15 31 0 false false false AxisAlignedRect 0 0
 sSolid4x1 0 63 15 0 false false false AxisAlignedRect 0 0
 sSolid1x4 0 15 63 0 false false false AxisAlignedRect 0 0
-sSolid8x1 0 127 63 0 false false false AxisAlignedRect 0 0
+sSolid8x1 0 127 15 0 false false false AxisAlignedRect 0 0
 sSolid1x8 0 15 127 0 false false false AxisAlignedRect 0 0
 sSolid2x2 0 31 31 0 false false false AxisAlignedRect 0 0
 sSlope1 1 15 15 1 false false false Precise 0 0
