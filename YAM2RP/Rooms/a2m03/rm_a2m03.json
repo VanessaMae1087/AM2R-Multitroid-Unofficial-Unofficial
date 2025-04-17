@@ -1603,6 +1603,34 @@
       "pre_create_code": null,
       "image_speed": 0,
       "image_index": 0
+    },
+    {
+      "x": 192,
+      "y": 160,
+      "object_definition": "oGlowFly",
+      "instance_id": 157985,
+      "creation_code": null,
+      "scale_x": 1,
+      "scale_y": 1,
+      "color": 4294967295,
+      "rotation": 180,
+      "pre_create_code": null,
+      "image_speed": 0,
+      "image_index": 0
+    },
+    {
+      "x": 544,
+      "y": 192,
+      "object_definition": "oOctroll",
+      "instance_id": 157986,
+      "creation_code": null,
+      "scale_x": 1,
+      "scale_y": 1,
+      "color": 4294967295,
+      "rotation": 0,
+      "pre_create_code": null,
+      "image_speed": 0,
+      "image_index": 0
     }
   ],
   "tiles": [],
