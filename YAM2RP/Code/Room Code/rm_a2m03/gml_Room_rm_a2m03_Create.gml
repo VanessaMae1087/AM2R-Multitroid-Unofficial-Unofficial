@@ -9,3 +9,5 @@ if (global.lavastate <= 9)
     make_liquid(1, 184, 0, 0, 0, 0, 1)
 if (global.lavastate > 9)
     mus_change(musArea6A)
+with (oSolid)
+    visible = true
