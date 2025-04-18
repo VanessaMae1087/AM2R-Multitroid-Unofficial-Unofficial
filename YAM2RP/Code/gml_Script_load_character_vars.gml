@@ -63,6 +63,7 @@ repeat (350)
 global.item[1] = 1
 reset_logs_list()
 reset_hints()
+reset_dmap()
 if (global.sax && global.saxmode)
 {
     global.item[0] = 1
