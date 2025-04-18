@@ -63,6 +63,7 @@ repeat (350)
 global.item[1] = 1
 reset_logs_list()
 reset_hints()
+reset_dmap()
 
 times = 0
 if (global.startingminors[global.sax] > 0)
