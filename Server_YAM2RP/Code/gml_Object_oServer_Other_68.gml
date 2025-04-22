@@ -987,7 +987,7 @@ switch type_event
                     ds_map_add(teamAffiliation, ip, sax)
                 if (changedTeam == 1)
                 {
-                    global.newTeamSoket = socket
+                    global.newTeamSocket = socket
                     global.newTeam = sax + 1
                     event_user(3)
                 }
