@@ -9,4 +9,3 @@ camstartx = 160
 camstarty = 608
 transitionx = (4 - (oControl.widescreen_space / 2))
 transitiony = 144
-visible = true
