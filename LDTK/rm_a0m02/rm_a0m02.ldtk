@@ -120613,13 +120613,13 @@
 		},
 		{
 			"__cWid": 2,
-			"__cHei": 1,
+			"__cHei": 2,
 			"identifier": "sprite_sSlope1B",
 			"uid": 156,
 			"relPath": "../sprites/sSlope1B.png",
 			"embedAtlas": null,
 			"pxWid": 32,
-			"pxHei": 16,
+			"pxHei": 17,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
@@ -120628,7 +120628,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "00", "averageColors": "2aa46883" }
+			"cachedPixelData": { "opaqueTiles": "0011", "averageColors": "4760c76000000000" }
 		},
 		{
 			"__cWid": 1,
@@ -120651,13 +120651,13 @@
 		},
 		{
 			"__cWid": 2,
-			"__cHei": 1,
+			"__cHei": 2,
 			"identifier": "sprite_sSlope2B",
 			"uid": 158,
 			"relPath": "../sprites/sSlope2B.png",
 			"embedAtlas": null,
 			"pxWid": 32,
-			"pxHei": 16,
+			"pxHei": 17,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
@@ -120666,7 +120666,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "00", "averageColors": "68832aa4" }
+			"cachedPixelData": { "opaqueTiles": "0011", "averageColors": "c660476000000000" }
 		},
 		{
 			"__cWid": 1,
@@ -120689,13 +120689,13 @@
 		},
 		{
 			"__cWid": 2,
-			"__cHei": 1,
+			"__cHei": 2,
 			"identifier": "sprite_sSlope3B",
 			"uid": 160,
 			"relPath": "../sprites/sSlope3B.png",
 			"embedAtlas": null,
 			"pxWid": 32,
-			"pxHei": 16,
+			"pxHei": 17,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
@@ -120704,7 +120704,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "00", "averageColors": "68832aa4" }
+			"cachedPixelData": { "opaqueTiles": "0011", "averageColors": "c760476000000000" }
 		},
 		{
 			"__cWid": 1,
@@ -120727,13 +120727,13 @@
 		},
 		{
 			"__cWid": 2,
-			"__cHei": 1,
+			"__cHei": 2,
 			"identifier": "sprite_sSlope4B",
 			"uid": 162,
 			"relPath": "../sprites/sSlope4B.png",
 			"embedAtlas": null,
 			"pxWid": 32,
-			"pxHei": 16,
+			"pxHei": 17,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
@@ -120742,7 +120742,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "00", "averageColors": "2aa46883" }
+			"cachedPixelData": { "opaqueTiles": "0011", "averageColors": "4760c76000000000" }
 		},
 		{
 			"__cWid": 1,
@@ -120994,7 +120994,7 @@
 	], "enums": [], "externalEnums": [], "levelFields": [] },
 	"levels": [
 		{
-			"identifier": "rm_a0m04",
+			"identifier": "rm_a0m02",
 			"iid": "aaf9fd7c-1812-4b0a-be8e-e464ba349883",
 			"uid": 0,
 			"worldX": -1,
@@ -121011,7 +121011,7 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": null,
-			"externalRelPath": "rm_a0m04/rm_a0m04.ldtkl",
+			"externalRelPath": "rm_a0m02/rm_a0m02.ldtkl",
 			"fieldInstances": [],
 			"layerInstances": null,
 			"__neighbours": []
