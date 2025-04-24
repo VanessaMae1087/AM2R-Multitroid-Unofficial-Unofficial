@@ -120149,7 +120149,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "1", "averageColors": "f888" }
+			"cachedPixelData": null
 		},
 		{
 			"__cWid": 1,
@@ -120662,7 +120662,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "0", "averageColors": "7556" }
+			"cachedPixelData": null
 		},
 		{
 			"__cWid": 1,
@@ -120738,7 +120738,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "0", "averageColors": "c445" }
+			"cachedPixelData": null
 		},
 		{
 			"__cWid": 1,
@@ -120757,7 +120757,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "0", "averageColors": "c556" }
+			"cachedPixelData": null
 		},
 		{
 			"__cWid": 1,
@@ -120776,7 +120776,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "0", "averageColors": "c666" }
+			"cachedPixelData": null
 		},
 		{
 			"__cWid": 1,
@@ -120795,7 +120795,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "0", "averageColors": "c455" }
+			"cachedPixelData": null
 		},
 		{
 			"__cWid": 1,
@@ -120856,13 +120856,13 @@
 		},
 		{
 			"__cWid": 2,
-			"__cHei": 1,
+			"__cHei": 2,
 			"identifier": "sprite_sSlope1B",
 			"uid": 162,
 			"relPath": "../sprites/sSlope1B.png",
 			"embedAtlas": null,
 			"pxWid": 32,
-			"pxHei": 16,
+			"pxHei": 17,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
@@ -120871,7 +120871,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "00", "averageColors": "2aa46883" }
+			"cachedPixelData": { "opaqueTiles": "0011", "averageColors": "4760c76000000000" }
 		},
 		{
 			"__cWid": 1,
@@ -120894,13 +120894,13 @@
 		},
 		{
 			"__cWid": 2,
-			"__cHei": 1,
+			"__cHei": 2,
 			"identifier": "sprite_sSlope2B",
 			"uid": 164,
 			"relPath": "../sprites/sSlope2B.png",
 			"embedAtlas": null,
 			"pxWid": 32,
-			"pxHei": 16,
+			"pxHei": 17,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
@@ -120909,7 +120909,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "00", "averageColors": "68832aa4" }
+			"cachedPixelData": { "opaqueTiles": "0011", "averageColors": "c660476000000000" }
 		},
 		{
 			"__cWid": 1,
@@ -120932,13 +120932,13 @@
 		},
 		{
 			"__cWid": 2,
-			"__cHei": 1,
+			"__cHei": 2,
 			"identifier": "sprite_sSlope3B",
 			"uid": 166,
 			"relPath": "../sprites/sSlope3B.png",
 			"embedAtlas": null,
 			"pxWid": 32,
-			"pxHei": 16,
+			"pxHei": 17,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
@@ -120947,7 +120947,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "00", "averageColors": "68832aa4" }
+			"cachedPixelData": { "opaqueTiles": "0011", "averageColors": "c760476000000000" }
 		},
 		{
 			"__cWid": 1,
@@ -120970,13 +120970,13 @@
 		},
 		{
 			"__cWid": 2,
-			"__cHei": 1,
+			"__cHei": 2,
 			"identifier": "sprite_sSlope4B",
 			"uid": 168,
 			"relPath": "../sprites/sSlope4B.png",
 			"embedAtlas": null,
 			"pxWid": 32,
-			"pxHei": 16,
+			"pxHei": 17,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
@@ -120985,7 +120985,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "00", "averageColors": "2aa46883" }
+			"cachedPixelData": { "opaqueTiles": "0011", "averageColors": "4760c76000000000" }
 		},
 		{
 			"__cWid": 1,
