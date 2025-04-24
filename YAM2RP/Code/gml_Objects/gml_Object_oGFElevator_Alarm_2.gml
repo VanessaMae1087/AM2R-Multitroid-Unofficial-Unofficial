@@ -1,4 +1,4 @@
-if (room == rm_a8h01 && oControl.mod_previous_room != 374 && global.saxmode)
+if (room == rm_a8h01 && oControl.mod_previous_room != 374 && oControl.mod_previous_room != rm_a1m01 && global.saxmode)
 {
     instance_destroy()
     exit
