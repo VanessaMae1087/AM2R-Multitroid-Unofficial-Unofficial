@@ -2127,6 +2127,20 @@ switch type_event
                 if (instance_exists(oMapCursor) && surface_exists(oSS_Control.s_map))
                     surface_free(oSS_Control.s_map)
                 break
+            case 62:
+                if (global.ingame == 1)
+                {
+                    room_persistent = false
+                    oControl.quitgame = 0
+                    remove_persistent_objects()
+                    sfx_stop_all()
+                    global.ingame = 0
+                    global.darkness = 0
+                    global.newgame = 0
+                    global.revived = 1
+                    room_goto(rm_loading)
+                }
+                break
         }
 }
 
