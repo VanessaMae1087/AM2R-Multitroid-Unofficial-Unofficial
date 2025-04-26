@@ -16,7 +16,7 @@ if instance_exists(oServer)
                     show_debug_message(string(arr[0, 0]))
                     arrID = arr[0, 0]
                     arrSocket = arr[0, 1]
-                    button = instance_create(290, (207 + (i + 1) * 30), oSAXModeButton)
+                    button = instance_create(360, (207 + (i + 1) * 30), oSAXModeButton)
                     button.ID = arrID
                     button.socket = arrSocket
                 }
@@ -39,7 +39,7 @@ if instance_exists(oServer)
                     }
                     if (!found)
                     {
-                        button = instance_create(290, (207 + (i + 1) * 30), oSAXModeButton)
+                        button = instance_create(360, (207 + (i + 1) * 30), oSAXModeButton)
                         button.ID = arrID
                         button.socket = arrSocket
                     }
