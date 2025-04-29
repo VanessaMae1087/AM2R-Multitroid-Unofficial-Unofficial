@@ -74,3 +74,4 @@ sSlope3 0 15 16 0 false false false Precise 0 0
 sSlope3B 0 31 15 0 false false false Precise 0 0
 sSlope4 0 15 16 0 false false false Precise 0 0
 sSlope4B 0 31 15 0 false false false Precise 0 0
+sEDShortcutControl 0 31 31 0 false false false AxisAlignedRect 16 16
