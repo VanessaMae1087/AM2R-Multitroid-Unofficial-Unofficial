@@ -1,7 +1,11 @@
-var mtid;
+var mtid, blk;
 
 if global.experimental
 {
+    with (oBlockScrew)
+            shortcutcontrol_ignore = 1
+        with (oBlockSpeed)
+            shortcutcontrol_ignore = 1
     switch room
     {
         case rm_a0h04d:
@@ -94,9 +98,299 @@ if global.experimental
                     tile_delete(mtid)
             }
             break
+
+        case rm_a0h24:
+            with (oSolid)
+            {
+                if (x == 192 && (176 <= y && y <= 208))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a0m03 && global.item[8] == 0))
+            {
+                instance_create(192, 176, oBlockScrew)
+                instance_create(192, 192, oBlockScrew)
+                instance_create(192, 208, oBlockScrew)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 192, 176)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 192, 192)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 192, 208)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            break
+
+        case rm_a4h09:
+            with (oSolid)
+            {
+                if (x == 576 && (112 <= y && y <= 144))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a0m03 && global.item[8] == 0))
+            {
+                instance_create(576, 112, oBlockScrew)
+                instance_create(576, 128, oBlockScrew)
+                instance_create(576, 144, oBlockScrew)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 576, 112)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 576, 128)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 576, 144)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            break
+
+        case rm_a1a06:
+            with (oSolid)
+            {
+                if (x == 272 && (592 <= y && y <= 624))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a1m02 && global.item[8] == 0))
+            {
+                instance_create(272, 592, oBlockScrew)
+                instance_create(272, 608, oBlockScrew)
+                instance_create(272, 624, oBlockScrew)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 272, 592)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 272, 608)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 272, 624)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            break
+
+        case rm_a3a20:
+            with (oSolid)
+            {
+                if (x == 368 && (128 <= y && y <= 176))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+                if (x == 80 && (416 <= y && y <= 448))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a3m02 && global.item[7] == 0))
+            {
+                instance_create(368, 128, oBlockSpeed)
+                instance_create(368, 144, oBlockSpeed)
+                instance_create(368, 160, oBlockSpeed)
+                instance_create(368, 176, oBlockSpeed)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 368, 128)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 368, 144)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 368, 160)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 368, 176)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+
+            if (!(oControl.mod_previous_room == rm_a3m03 && global.item[8] == 0))
+            {
+                instance_create(80, 416, oBlockScrew)
+                instance_create(80, 432, oBlockScrew)
+                instance_create(80, 448, oBlockScrew)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 80, 416)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 80, 432)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 80, 448)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            break
+
+        case rm_a2h02:
+            with (oSolid)
+            {
+                if ((2048 <= x && x <= 2080) && (64 <= y && y <= 96))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a2m02))
+            {
+                instance_create(2048, 64, oBlockSpeed)
+                instance_create(2064, 64, oBlockSpeed)
+                instance_create(2064, 80, oBlockSpeed)
+                instance_create(2064, 96, oBlockSpeed)
+                instance_create(2080, 64, oBlockSpeed)
+                instance_create(2080, 80, oBlockSpeed)
+                instance_create(2080, 96, oBlockSpeed)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 2048, 64)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 2064, 64)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 2064, 80)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 2064, 96)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 2080, 64)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 2080, 80)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 2080, 96)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            break
+
+        case rm_a0h03:
+            with (oSolid)
+            {
+                if ((448 <= x && x <= 480) && y == 432)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            
+            blk = instance_create(448, 432, oBlockSpeed)
+            blk.regentime = 1
+            blk.shortcutcontrol_ignore = 1
+            blk = instance_create(464, 432, oBlockSpeed)
+            blk.regentime = 1
+            blk.shortcutcontrol_ignore = 1
+            blk = instance_create(480, 432, oBlockSpeed)
+            blk.regentime = 1
+            blk.shortcutcontrol_ignore = 1
+            break
+
+        case rm_a2c08:
+            with (oSolid)
+            {
+                if (x == 848 && (576 <= y && y <= 608))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a2m01 && global.item[8] == 0))
+            {
+                instance_create(848, 576, oBlockScrew)
+                instance_create(848, 592, oBlockScrew)
+                instance_create(848, 608, oBlockScrew)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 848, 576)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 848, 592)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 848, 608)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            break
+
+        case rm_a4h03:
+            with (oSolid)
+            {
+                if (x == 48 && (336 <= y && y <= 368))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a2m01 && global.item[8] == 0))
+            {
+                instance_create(48, 336, oBlockScrew)
+                instance_create(48, 352, oBlockScrew)
+                instance_create(48, 368, oBlockScrew)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 48, 336)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 48, 352)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 48, 368)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            break
+
         default:
             break
     }
+
+    with (oBlockScrew)
+    {
+        if (shortcutcontrol_ignore == 0)
+            regentime = -1
+    }
+    with (oBlockSpeed)
+    {
+        if (shortcutcontrol_ignore == 0)
+            regentime = -1
+    }
+
 }
 
 instance_destroy()
