@@ -1,5 +1,5 @@
 var findIDSamus, findIDSAX, arr, ip, i;
-if global.Page
+if (global.Page || global.syncpage)
     exit
 if instance_exists(oServer)
 {
@@ -48,4 +48,4 @@ if instance_exists(oServer)
             event_user(3)
     }
     ds_map_replace(oServer.teamAffiliation, ip, (team - 1))
-}
+  }

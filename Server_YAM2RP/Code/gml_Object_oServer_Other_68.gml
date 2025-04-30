@@ -1,4 +1,4 @@
-var type_event, ip, findIP, ban, size, type, alignment, bufferSize, findsocket, i, arrList, socket, socketID, ID, arr, seed, findID, _buffer, bufferSizePacket, clientID, sax, sockets, preferredID, f, arrID, arrSocket, clientX, clientY, clientSprite, clientImage, clientA1, clientA1X, clientA1Y, clientA2, clientA2X, clientA2Y, clientA2A, clientMirror, clientArmmsl, clientRoom, clientName, clientBlend, clientFXTimer, clientRoomPrev, clientState, clientSAX, clientSpeedboost, clientSJBall, clientSJDir, clientSpeedCharge, clientPlayerHealth, clientSpectator, clientInvincible, clientMosaic, clientReform, clientVisible, list, clientMapX, clientMapY, spectator, findSamus, event, findDead, playerHealth, missiles, smissiles, pbombs, ping, realPing, spacejump, screwattack, spiderball, speedbooster, bomb, ibeam, wbeam, pbeam, sbeam, cbeam, tempSocket, checkID, checkX, checkY, checkBeam, checkMissile, checkDamage, checkFreeze, lag, lagPositions, timeToCheck, g, lagPosArr, lagPosTime, lagPosID, lagPosX, lagPosY, packetID, name, lobbyLocked, _queenHealth, phase, state, monstersLeft, monstersArea, item, itemArr, v, metdead, metdeadArr, eventArr, tileCount, tileX, tileY, tileData, itemstaken, maxmissiles, maxsmissiles, maxpbombs, maxhealth, etanks, mtanks, stanks, ptanks, gametime, findTime, findReset, dir, sprX, sprY, charge, bombX, bombY, currentWeapon, missileX, missileY, velX, velY, icemissiles, pbombX, pbombY, playerhealth, syncDiff, syncELM, otherAbsorbRelativeX, otherAbsorbRelativeY, otherAbsorbSpriteHeight, saxmode, findIDSamus, findIDSAX, mapposx, mapposy, mirror, sentRoom, playerX, playerY, receivedItem, receivedEvent, receivedMetdead, j, receiveddmap, msg, splitBy, slot, splits, str2, currStr, wrongVersion, playerState, combatState, checkDir, clientSBall, canScrew, compressedList, compressedMap, changedTeam, findKickID;
+var type_event, ip, findIP, ban, size, type, alignment, bufferSize, findsocket, i, arrList, socket, socketID, ID, arr, seed, findID, _buffer, bufferSizePacket, clientID, sax, sockets, preferredID, f, arrID, arrSocket, clientX, clientY, clientSprite, clientImage, clientA1, clientA1X, clientA1Y, clientA2, clientA2X, clientA2Y, clientA2A, clientMirror, clientArmmsl, clientRoom, clientName, clientBlend, clientFXTimer, clientRoomPrev, clientState, clientSAX, clientSpeedboost, clientSJBall, clientSJDir, clientSpeedCharge, clientPlayerHealth, clientSpectator, clientInvincible, clientMosaic, clientReform, clientVisible, list, clientMapX, clientMapY, spectator, findSamus, event, findDead, playerHealth, missiles, smissiles, pbombs, ping, realPing, spacejump, screwattack, spiderball, speedbooster, bomb, ibeam, wbeam, pbeam, sbeam, cbeam, tempSocket, checkID, checkX, checkY, checkBeam, checkMissile, checkDamage, checkFreeze, lag, lagPositions, timeToCheck, g, lagPosArr, lagPosTime, lagPosID, lagPosX, lagPosY, packetID, name, lobbyLocked, _queenHealth, phase, state, monstersLeft, monstersArea, item, itemArr, v, metdead, metdeadArr, eventArr, tileCount, tileX, tileY, tileData, itemstaken, maxmissiles, maxsmissiles, maxpbombs, maxhealth, etanks, mtanks, stanks, ptanks, gametime, findTime, findReset, dir, sprX, sprY, charge, bombX, bombY, currentWeapon, missileX, missileY, velX, velY, icemissiles, pbombX, pbombY, playerhealth, syncDiff, syncELM, otherAbsorbRelativeX, otherAbsorbRelativeY, otherAbsorbSpriteHeight, saxmode, findIDSamus, findIDSAX, mapposx, mapposy, mirror, sentRoom, playerX, playerY, receivedItem, receivedEvent, receivedMetdead, j, receiveddmap, msg, splitBy, slot, splits, str2, currStr, wrongVersion, playerState, combatState, checkDir, clientSBall, canScrew, compressedList, compressedMap, changedTeam, findKickID, bfr;
 type_event = ds_map_find_value(async_load, "type")
 ip = ds_map_find_value(async_load, "ip")
 findIP = ds_list_find_index(banList, ip)
@@ -54,6 +54,8 @@ if (findIP >= 0 || findKickID >= 0)
                 alarm[10] = 1800
         }
     }
+    if (findKickIP >= 0)
+        ds_list_delete(kickList, findKickIP)
     if (findKickID >= 0)
         ds_list_delete(kickList, findKickID)
     exit
@@ -294,6 +296,38 @@ switch type_event
             buffer_write(buffer, buffer_s16, oControl.mod_302)
             network_send_packet(socket, buffer, buffer_tell(buffer))
         }
+        bfr = buffer_create(1024, buffer_grow, 1)
+        buffer_seek(bfr, buffer_seek_start, 0)
+        buffer_write(bfr, buffer_s32, 18) // placeholder for buffer size
+        buffer_write(bfr, buffer_u8, 61) // packet ID
+        buffer_write(bfr, buffer_u8, global.itemsyncs[0]) // suits
+        buffer_write(bfr, buffer_u8, global.itemsyncs[1])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[2])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[3]) // beams
+        buffer_write(bfr, buffer_u8, global.itemsyncs[4])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[5])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[6])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[7])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[8]) // misc
+        buffer_write(bfr, buffer_u8, global.itemsyncs[9])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[10])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[11])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[12])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[13])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[14]) // boots
+        buffer_write(bfr, buffer_u8, global.itemsyncs[15])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[16])
+        buffer_write(bfr, buffer_u8, global.startingminors[0]) // fusion: energy tanks
+        buffer_write(bfr, buffer_u8, global.startingminors[1]) // sa-x: energy tanks
+        buffer_write(bfr, buffer_u8, global.startingminors[2]) // missiles
+        buffer_write(bfr, buffer_u8, global.startingminors[3])
+        buffer_write(bfr, buffer_u8, global.startingminors[4]) // super missiles
+        buffer_write(bfr, buffer_u8, global.startingminors[5])
+        buffer_write(bfr, buffer_u8, global.startingminors[6]) // power bombs
+        buffer_write(bfr, buffer_u8, global.startingminors[7])
+        buffer_poke(bfr, 0, buffer_s32, (buffer_tell(bfr) - 4))
+        network_send_packet(socket, bfr, buffer_tell(bfr))
+        buffer_delete(bfr)
         alarm[0] = 5
         alarm[2] = 30
         alarm[5] = 30
@@ -2733,6 +2767,40 @@ switch type_event
                     }
                 }
                 alarm[5] = 30
+                break
+            case 61:
+                bfr = buffer_create(1024, buffer_grow, 1)
+                buffer_seek(bfr, buffer_seek_start, 0)
+                buffer_write(bfr, buffer_s32, 18)
+                buffer_write(bfr, buffer_u8, 61)
+                buffer_write(bfr, buffer_u8, global.itemsyncs[0])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[1])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[2])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[3])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[4])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[5])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[6])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[7])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[8])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[9])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[10])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[11])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[12])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[13])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[14])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[15])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[16])
+                buffer_write(bfr, buffer_u8, global.startingminors[0])
+                buffer_write(bfr, buffer_u8, global.startingminors[1])
+                buffer_write(bfr, buffer_u8, global.startingminors[2])
+                buffer_write(bfr, buffer_u8, global.startingminors[3])
+                buffer_write(bfr, buffer_u8, global.startingminors[4])
+                buffer_write(bfr, buffer_u8, global.startingminors[5])
+                buffer_write(bfr, buffer_u8, global.startingminors[6])
+                buffer_write(bfr, buffer_u8, global.startingminors[7])
+                buffer_poke(bfr, 0, buffer_s32, (buffer_tell(bfr) - 4))
+                network_send_packet(socket, bfr, buffer_tell(bfr))
+                buffer_delete(bfr)
                 break
         }
 
