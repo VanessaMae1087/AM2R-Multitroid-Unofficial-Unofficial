@@ -1,4 +1,4 @@
-var type_event, _buffer, bufferSize, bufferSizePacket, clientID, findsocket, i, arrList, f, v, ban, clientX, clientY, clientSprite, clientImage, clientA1, clientA1X, clientA1Y, clientA2, clientA2X, clientA2Y, clientA2A, clientMirror, clientArmmsl, clientRoom, clientName, clientBlend, clientFXTimer, clientRoomPrev, clientState, clientSAX, clientSpeedboost, clientSJBall, clientSJDir, clientSpeedCharge, clientPlayerHealth, clientSpectator, clientInvincible, clientMosaic, clientReform, clientVisible, arr, indexValue, clientMapX, clientMapY, sax, spectator, arrPosData, find, event, playerHealth, missiles, smissiles, pbombs, playerhealth, ping, metdead, team, spacejump, screwattack, spiderball, speedbooster, bomb, ibeam, wbeam, pbeam, sbeam, cbeam, otherItemArr, IDCheck, tempArr, ID, checkBeam, checkMissile, checkDamage, checkFreeze, newTeam, saxmode, lobbyLocked, samCount, getGravity, receivedPasswordHash, size, type, alignment, result, _seed, monstersLeft, monstersArea, itemArr, metdeadArr, eventArr, tileCount, tileX, tileY, tileData, itemstaken, maxmissiles, maxsmissiles, maxpbombs, maxhealth, etanks, mtanks, stanks, ptanks, time, dir, sprX, sprY, charge, arrDraw, arrID, bombX, bombY, currentWeapon, missileX, missileY, velX, velY, icemissiles, pbombX, pbombY, syncDiff, str, syncELM, otherAbsorbRelativeX, otherAbsorbRelativeY, otherAbsorbSpriteHeight, mapposx, mapposy, mirror, sentRoom, playerX, playerY, resend, receivedItem, etankCount, stankCount, ptankCount, mtankCount, receivedEvent, receivedMetdead, countArea, countLeft, part, j, receiveddmap, damageMultStr, damageMult, experimental, playerState, combatState, freezeOff, checkDir, clientSBall, ITEMM, canscrew;
+var type_event, _buffer, bufferSize, bufferSizePacket, clientID, findsocket, i, arrList, f, v, ban, clientX, clientY, clientSprite, clientImage, clientA1, clientA1X, clientA1Y, clientA2, clientA2X, clientA2Y, clientA2A, clientMirror, clientArmmsl, clientRoom, clientName, clientBlend, clientFXTimer, clientRoomPrev, clientState, clientSAX, clientSpeedboost, clientSJBall, clientSJDir, clientSpeedCharge, clientPlayerHealth, clientSpectator, clientInvincible, clientMosaic, clientReform, clientVisible, arr, indexValue, clientMapX, clientMapY, sax, spectator, arrPosData, find, event, playerHealth, missiles, smissiles, pbombs, playerhealth, ping, metdead, team, spacejump, screwattack, spiderball, speedbooster, bomb, ibeam, wbeam, pbeam, sbeam, cbeam, otherItemArr, IDCheck, tempArr, ID, checkBeam, checkMissile, checkDamage, checkFreeze, newTeam, saxmode, lobbyLocked, samCount, getGravity, receivedPasswordHash, size, type, alignment, result, _seed, monstersLeft, monstersArea, itemArr, metdeadArr, eventArr, tileCount, tileX, tileY, tileData, itemstaken, maxmissiles, maxsmissiles, maxpbombs, maxhealth, etanks, mtanks, stanks, ptanks, time, dir, sprX, sprY, charge, arrDraw, arrID, bombX, bombY, currentWeapon, missileX, missileY, velX, velY, icemissiles, pbombX, pbombY, syncDiff, str, syncELM, otherAbsorbRelativeX, otherAbsorbRelativeY, otherAbsorbSpriteHeight, mapposx, mapposy, mirror, sentRoom, playerX, playerY, resend, receivedItem, etankCount, stankCount, ptankCount, mtankCount, receivedEvent, receivedMetdead, countArea, countLeft, part, j, receiveddmap, damageMultStr, damageMult, experimental, playerState, combatState, freezeOff, checkDir, clientSBall, ITEMM, canscrew, core;
 disconnectTimer = 900
 if (!global.acceptPacket)
     exit
@@ -518,11 +518,15 @@ switch type_event
                 global.lobbyLocked = lobbyLocked
                 break
             case 115:
-                getGravity = buffer_read(_buffer, buffer_u8)
-                freezeOff = buffer_read(_buffer, buffer_u8)
-                if (getGravity && global.saxmode && global.sax && (!global.item[9]) && instance_number(oCoreXGravity) == 0 && string_count("rm_a", room_get_name(room)))
-                    instance_create(irandom_range(0, room_width), -100, oCoreXGravity)
-                global.freezeDisabled = freezeOff
+                global.freezeDisabled = buffer_read(_buffer, buffer_u8)
+                for (i = 0; i < 15; i += 1)
+                {
+                    if (buffer_read(_buffer, buffer_u8) == 1 && global.saxmode && global.sax && (!global.item[i]) && instance_number(oCoreXSyncedItem) == 0 && string_count("rm_a", room_get_name(room)))
+                    {
+                        core = instance_create(irandom_range(0, room_width), -100, oCoreXSyncedItem)
+                        core.itemtype = i
+                    }
+                }
                 break
             case 116:
                 receivedPasswordHash = buffer_read(_buffer, buffer_string)
@@ -1751,7 +1755,15 @@ switch type_event
                         }
                     }
                     else if (receivedItem == 0 && global.item[i] == 1)
-                        resend = 1
+                        {
+                        if (((!global.spectator) || global.sax) && (string_count("rm_a", room_get_name(room)) > 0 || room == rm_transition || room == rm_subscreen))
+                            resend = 1
+                        else
+                        {
+                            global.item[i] = receivedItem
+                            global.itemPrev[i] = global.item[i]
+                        }
+                    }
                 }
                 etankCount = 0
                 for (i = 0; i < array_length_1d(global.item); i++)
@@ -2126,6 +2138,34 @@ switch type_event
                 }
                 if (instance_exists(oMapCursor) && surface_exists(oSS_Control.s_map))
                     surface_free(oSS_Control.s_map)
+                break
+            case 61:
+                global.itemsyncs[0] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[1] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[2] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[3] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[4] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[5] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[6] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[7] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[8] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[9] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[10] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[11] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[12] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[13] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[14] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[15] = buffer_read(_buffer, buffer_u8)
+                global.itemsyncs[16] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[0] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[1] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[2] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[3] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[4] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[5] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[6] = buffer_read(_buffer, buffer_u8)
+                global.startingminors[7] = buffer_read(_buffer, buffer_u8)
+                global.awaitsyncs = 0
                 break
         }
 }
