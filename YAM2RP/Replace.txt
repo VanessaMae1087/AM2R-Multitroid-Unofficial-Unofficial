@@ -3,3 +3,12 @@
 # Correct syntax is '[OriginalAssetName] -> [ReplacementAssetName]'
 # e.g oVanillaObject -> oModdedObject
 oCoreXGravity -> oCoreXSyncedItem
+sCoreXGravity -> sCoreXGSuit
+sCoreXAracIBeam -> sCoreXIBeam
+sCoreXVaria -> sCoreXVSuit
+sCoreXHJump -> sCoreXHJBoots
+sCoreXSBoost -> sCoreXSBooster
+sCoreXSpace -> sCoreXSJump
+sCoreXArachnus -> sCoreXJBall
+sCoreXScrewAttack -> sCoreXSAttack
+sCoreXSpider ->sCoreXSBall
