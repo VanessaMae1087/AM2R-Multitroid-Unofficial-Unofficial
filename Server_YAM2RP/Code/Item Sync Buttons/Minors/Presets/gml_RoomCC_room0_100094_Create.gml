@@ -1,0 +1,9 @@
+text = "Fusion: Nothing"
+values[0] = 0
+values[1] = -1
+values[2] = 0
+values[3] = -1
+values[4] = 0
+values[5] = -1
+values[6] = 0
+values[7] = -1
