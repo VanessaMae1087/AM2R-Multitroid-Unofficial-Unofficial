@@ -9,7 +9,7 @@ if (newPos > bufferSize)
     for (i = 0; i < ds_list_size(idList); i++)
     {
         arrList = ds_list_find_value(idList, i)
-        if (ds_map_find_value(async_load, "ip") == arrList[0, 3])
+        if (ds_map_find_value(async_load, "id") == arrList[0, 1])
             client_id = arrList[0, 0]
     }
     if (ds_list_find_index(kickList, client_id) == -1)
