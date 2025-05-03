@@ -1,9 +1,10 @@
-var findKickID;
-if global.Page
-    exit
-if instance_exists(oServer)
+if (global.Page || global.syncpage)
+    exit;
+
+if (instance_exists(oServer))
 {
-    findKickID = ds_list_find_index(oServer.kickList, ID)
+    var findKickID = ds_list_find_index(oServer.kickList, ID);
+    
     if (findKickID < 0)
-        ds_list_add(oServer.kickList, ID)
+        ds_list_add(oServer.kickList, ID);
 }

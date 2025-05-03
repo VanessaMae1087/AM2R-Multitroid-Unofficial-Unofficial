@@ -1,4 +1,4 @@
-if (global.Page)
+if (global.Page || global.syncpage)
     exit;
 
 if (instance_exists(oServer))
@@ -33,5 +33,6 @@ if (instance_exists(oServer))
         event_user(4);
 }
 else
+{
     global.saxmode = 0;
-
+}
