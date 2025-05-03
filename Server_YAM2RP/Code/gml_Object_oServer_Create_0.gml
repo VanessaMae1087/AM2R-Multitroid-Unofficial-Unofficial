@@ -84,7 +84,6 @@ reset_globals()
 global.slot = 1
 slotStr = string(global.slot)
 global.saveString = "\save" + slotStr + ".txt"
-syncedELM = 0
 posMapModified = 0
 global.lobbyLocked = 0
 global.damageMult = 0
