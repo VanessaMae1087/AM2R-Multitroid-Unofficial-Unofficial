@@ -355,6 +355,12 @@ if global.experimental
                     tl2_delete_layer = -500
                     instance_destroy()
                 }
+                if (x == 1552 && y == 560)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
             }
             if (!(oControl.mod_previous_room == rm_a2m01 && global.item[8] == 0))
             {
@@ -371,6 +377,28 @@ if global.experimental
                 if tile_exists(mtid)
                     tile_delete(mtid)
                 mtid = tile_layer_find(-111, 48, 368)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            if (!(oControl.mod_previous_room == rm_a4m01 && global.item[8] == 0))
+            {
+                instance_create(1552, 560, oBlockScrew)
+                instance_create(1552, 576, oBlockScrew)
+                instance_create(1552, 592, oBlockScrew)
+                instance_create(1552, 608, oBlockScrew)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 1552, 560)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 1552, 576)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 1552, 592)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 1552, 608)
                 if tile_exists(mtid)
                     tile_delete(mtid)
             }
