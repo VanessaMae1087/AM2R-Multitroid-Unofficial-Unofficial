@@ -11,7 +11,7 @@
 	"iid": "fed8da39-4304-4018-a7c9-002b33342082",
 	"jsonVersion": "1.2.6",
 	"appBuildId": 466197,
-	"nextUid": 3823,
+	"nextUid": 3824,
 	"identifierStyle": "Free",
 	"toc": [],
 	"worldLayout": "LinearVertical",
@@ -40,7 +40,35 @@
 	"defs": { "layers": [
 		{
 			"__type": "Tiles",
-			"identifier": "tlBubbles_M101",
+			"identifier": "tlBubbles_M120",
+			"type": "Tiles",
+			"uid": 3823,
+			"doc": null,
+			"gridSize": 16,
+			"guideGridWid": 0,
+			"guideGridHei": 0,
+			"displayOpacity": 1,
+			"inactiveOpacity": 1,
+			"hideInList": false,
+			"hideFieldsWhenInactive": false,
+			"canSelectWhenInactive": true,
+			"pxOffsetX": 0,
+			"pxOffsetY": 0,
+			"parallaxFactorX": 0,
+			"parallaxFactorY": 0,
+			"parallaxScaling": true,
+			"requiredTags": [],
+			"excludedTags": [],
+			"intGridValues": [],
+			"autoRuleGroups": [],
+			"autoSourceLayerDefUid": null,
+			"tilesetDefUid": 51,
+			"tilePivotX": 0,
+			"tilePivotY": 0
+		},
+		{
+			"__type": "Tiles",
+			"identifier": "tlBubbles_M111",
 			"type": "Tiles",
 			"uid": 3821,
 			"doc": null,
@@ -120789,13 +120817,13 @@
 		},
 		{
 			"__cWid": 2,
-			"__cHei": 2,
+			"__cHei": 1,
 			"identifier": "sprite_sSlope1B",
 			"uid": 162,
 			"relPath": "../sprites/sSlope1B.png",
 			"embedAtlas": null,
 			"pxWid": 32,
-			"pxHei": 17,
+			"pxHei": 16,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
@@ -120804,7 +120832,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "0011", "averageColors": "4760c76000000000" }
+			"cachedPixelData": { "opaqueTiles": "00", "averageColors": "2aa46883" }
 		},
 		{
 			"__cWid": 1,
@@ -120827,13 +120855,13 @@
 		},
 		{
 			"__cWid": 2,
-			"__cHei": 2,
+			"__cHei": 1,
 			"identifier": "sprite_sSlope2B",
 			"uid": 164,
 			"relPath": "../sprites/sSlope2B.png",
 			"embedAtlas": null,
 			"pxWid": 32,
-			"pxHei": 17,
+			"pxHei": 16,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
@@ -120842,7 +120870,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "0011", "averageColors": "c660476000000000" }
+			"cachedPixelData": { "opaqueTiles": "00", "averageColors": "68832aa4" }
 		},
 		{
 			"__cWid": 1,
@@ -120865,13 +120893,13 @@
 		},
 		{
 			"__cWid": 2,
-			"__cHei": 2,
+			"__cHei": 1,
 			"identifier": "sprite_sSlope3B",
 			"uid": 166,
 			"relPath": "../sprites/sSlope3B.png",
 			"embedAtlas": null,
 			"pxWid": 32,
-			"pxHei": 17,
+			"pxHei": 16,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
@@ -120880,7 +120908,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "0011", "averageColors": "c760476000000000" }
+			"cachedPixelData": { "opaqueTiles": "00", "averageColors": "68832aa4" }
 		},
 		{
 			"__cWid": 1,
@@ -120903,13 +120931,13 @@
 		},
 		{
 			"__cWid": 2,
-			"__cHei": 2,
+			"__cHei": 1,
 			"identifier": "sprite_sSlope4B",
 			"uid": 168,
 			"relPath": "../sprites/sSlope4B.png",
 			"embedAtlas": null,
 			"pxWid": 32,
-			"pxHei": 17,
+			"pxHei": 16,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
@@ -120918,7 +120946,7 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "0011", "averageColors": "4760c76000000000" }
+			"cachedPixelData": { "opaqueTiles": "00", "averageColors": "2aa46883" }
 		},
 		{
 			"__cWid": 1,
