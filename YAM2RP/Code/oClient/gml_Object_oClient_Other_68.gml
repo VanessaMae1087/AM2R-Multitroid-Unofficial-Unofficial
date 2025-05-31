@@ -504,6 +504,14 @@ switch type_event
                         global.spectatorIndex = -1
                     }
                 }
+                else if is_on_menu()
+                {
+                    if (!global.spectator)
+                    {
+                        global.spectator = 1
+                        global.spectatorIndex = -1
+                    }
+                }
                 global.lobbyLocked = lobbyLocked
                 global.samCount = samCount
                 break
@@ -2169,4 +2177,3 @@ switch type_event
                 break
         }
 }
-
