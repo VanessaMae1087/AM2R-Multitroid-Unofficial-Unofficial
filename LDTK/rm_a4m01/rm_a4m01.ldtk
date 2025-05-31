@@ -124,7 +124,7 @@
 		},
 		{
 			"__type": "Tiles",
-			"identifier": "tlRockA4BG_100",
+			"identifier": "tlRock4BG_100",
 			"type": "Tiles",
 			"uid": 3819,
 			"doc": null,
@@ -152,7 +152,7 @@
 		},
 		{
 			"__type": "Tiles",
-			"identifier": "tl_WarpPipes_100",
+			"identifier": "tlWarpPipes_100",
 			"type": "Tiles",
 			"uid": 3820,
 			"doc": null,

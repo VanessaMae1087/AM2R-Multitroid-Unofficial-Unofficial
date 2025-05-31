@@ -437,7 +437,7 @@
 			"entityInstances": []
 		},
 		{
-			"__identifier": "tlRockA4BG_100",
+			"__identifier": "tlRock4BG_100",
 			"__type": "Tiles",
 			"__cWid": 28,
 			"__cHei": 15,
@@ -495,7 +495,7 @@
 			"entityInstances": []
 		},
 		{
-			"__identifier": "tl_WarpPipes_100",
+			"__identifier": "tlWarpPipes_100",
 			"__type": "Tiles",
 			"__cWid": 56,
 			"__cHei": 30,
