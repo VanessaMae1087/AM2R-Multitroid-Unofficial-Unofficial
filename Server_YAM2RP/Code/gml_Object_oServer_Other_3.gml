@@ -35,6 +35,10 @@ ds_map_destroy(map);
 ds_map_destroy(posMap);
 ds_map_destroy(teamAffiliation);
 
+ini_open(working_directory + "\settings.ini")
+ini_write_real("Settings", "StartingMode", global.saxmode)
+ini_close()
+
 if (global.saxmode)
     ini_open(working_directory + "\settings_sax.ini");
 else
