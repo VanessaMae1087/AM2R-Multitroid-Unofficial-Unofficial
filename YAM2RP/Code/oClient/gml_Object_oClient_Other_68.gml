@@ -54,6 +54,7 @@ switch type_event
                 break
             case 250:
                 ban = buffer_read(_buffer, buffer_u8)
+                kickReason = buffer_read(_buffer, buffer_u8)
                 if ban
                     banned = 1
                 else
