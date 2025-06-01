@@ -30,18 +30,13 @@ if (findIP >= 0 || findKickID >= 0)
     if (findIP >= 0)
         ban = 1
     buffer_delete(buffer)
-    size = 1024
-    type = buffer_grow
-    alignment = 1
-    buffer = buffer_create(size, type, alignment)
+    buffer = buffer_create(1024, buffer_grow, 1)
     buffer_seek(buffer, buffer_seek_start, 0)
+    buffer_write(buffer, buffer_s32, 0)
     buffer_write(buffer, buffer_u8, 250)
     buffer_write(buffer, buffer_u8, ban)
-    bufferSize = buffer_tell(buffer)
-    buffer_seek(buffer, buffer_seek_start, 0)
-    buffer_write(buffer, buffer_s32, bufferSize)
-    buffer_write(buffer, buffer_u8, 250)
-    buffer_write(buffer, buffer_u8, ban)
+    buffer_write(buffer, buffer_u8, global.kickReason)
+    buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer))
     network_send_packet(banSocket, buffer, buffer_tell(buffer))
     findsocket = ds_list_find_index(socketList, banSocket)
     if (findsocket >= 0)
@@ -1027,6 +1022,7 @@ switch type_event
                 if wrongVersion
                 {
                     ds_list_add(kickList, client_id)
+                    global.kickReason = 1
                     exit
                 }
                 changedTeam = 0

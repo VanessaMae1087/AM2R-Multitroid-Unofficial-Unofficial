@@ -13,7 +13,10 @@ if (newPos > bufferSize)
             client_id = arrList[0, 0]
     }
     if (ds_list_find_index(kickList, client_id) == -1)
+    {
         ds_list_add(kickList, client_id)
+        global.kickReason = 2
+    }
     global.bufferOverflow = 1
     return 0;
 }
