@@ -21,7 +21,7 @@ while (f < array_length_1d(global.event))
         continue
     }
 }
-if (eventChanged && is_on_menu() && ((!global.spectator) || global.sax))
+if (eventChanged && !is_on_menu() && ((!global.spectator) || global.sax))
 {
     buffer_delete(buffer)
     size = 1024

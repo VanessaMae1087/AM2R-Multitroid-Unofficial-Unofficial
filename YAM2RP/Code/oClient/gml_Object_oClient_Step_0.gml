@@ -173,7 +173,7 @@ if (time == 0 && connected && instance_exists(id))
     }
     time = 60
 }
-if (maxpbombsTimer == 0 && connected && is_on_menu() && ((!global.spectator) || global.sax))
+if (maxpbombsTimer == 0 && connected && !is_on_menu() && ((!global.spectator) || global.sax))
 {
     if (global.maxpbombsPrev != global.maxpbombs)
     {
@@ -203,7 +203,7 @@ if (maxpbombsTimer == 0 && connected && is_on_menu() && ((!global.spectator) || 
         maxpbombsTimer = 75
     }
 }
-if (maxhealthTimer == 0 && connected && is_on_menu() && ((!global.spectator) || global.sax))
+if (maxhealthTimer == 0 && connected && !is_on_menu() && ((!global.spectator) || global.sax))
 {
     if (global.maxhealthPrev != global.maxhealth)
     {
@@ -233,7 +233,7 @@ if (maxhealthTimer == 0 && connected && is_on_menu() && ((!global.spectator) || 
         maxhealthTimer = 75
     }
 }
-if (etanksTimer == 0 && connected && is_on_menu() && ((!global.spectator) || global.sax))
+if (etanksTimer == 0 && connected && !is_on_menu() && ((!global.spectator) || global.sax))
 {
     if (global.etanksPrev != global.etanks)
     {
@@ -263,7 +263,7 @@ if (etanksTimer == 0 && connected && is_on_menu() && ((!global.spectator) || glo
         etanksTimer = 75
     }
 }
-if (mtanksTimer == 0 && connected && is_on_menu() && ((!global.spectator) || global.sax))
+if (mtanksTimer == 0 && connected && !is_on_menu() && ((!global.spectator) || global.sax))
 {
     if (global.mtanksPrev != global.mtanks)
     {
@@ -293,7 +293,7 @@ if (mtanksTimer == 0 && connected && is_on_menu() && ((!global.spectator) || glo
         mtanksTimer = 75
     }
 }
-if (stanksTimer == 0 && connected && is_on_menu() && ((!global.spectator) || global.sax))
+if (stanksTimer == 0 && connected && !is_on_menu() && ((!global.spectator) || global.sax))
 {
     if (global.stanksPrev != global.stanks)
     {
@@ -323,7 +323,7 @@ if (stanksTimer == 0 && connected && is_on_menu() && ((!global.spectator) || glo
         stanksTimer = 75
     }
 }
-if (ptanksTimer == 0 && connected && is_on_menu() && ((!global.spectator) || global.sax))
+if (ptanksTimer == 0 && connected && !is_on_menu() && ((!global.spectator) || global.sax))
 {
     if (global.ptanksPrev != global.ptanks)
     {
@@ -353,7 +353,7 @@ if (ptanksTimer == 0 && connected && is_on_menu() && ((!global.spectator) || glo
         ptanksTimer = 75
     }
 }
-if (healthTimer == 0 && connected && is_on_menu() && ((!global.spectator) || global.sax))
+if (healthTimer == 0 && connected && !is_on_menu() && ((!global.spectator) || global.sax))
 {
     if (global.playerhealthPrev != global.playerhealth)
     {
@@ -383,7 +383,7 @@ if (healthTimer == 0 && connected && is_on_menu() && ((!global.spectator) || glo
         healthTimer = 75
     }
 }
-if (missilesTimer == 0 && connected && is_on_menu() && ((!global.spectator) || global.sax))
+if (missilesTimer == 0 && connected && !is_on_menu() && ((!global.spectator) || global.sax))
 {
     if (global.missilesPrev != global.missiles)
     {
@@ -415,7 +415,7 @@ if (missilesTimer == 0 && connected && is_on_menu() && ((!global.spectator) || g
 }
 if (smissilesTimer == 0 && connected)
 {
-    if (global.smissilesPrev != global.smissiles && is_on_menu() && ((!global.spectator) || global.sax))
+    if (global.smissilesPrev != global.smissiles && !is_on_menu() && ((!global.spectator) || global.sax))
     {
         buffer_delete(buffer)
         size = 1024
@@ -445,7 +445,7 @@ if (smissilesTimer == 0 && connected)
 }
 if (pbombsTimer == 0 && connected)
 {
-    if (global.pbombsPrev != global.pbombs && is_on_menu() && ((!global.spectator) || global.sax))
+    if (global.pbombsPrev != global.pbombs && !is_on_menu() && ((!global.spectator) || global.sax))
     {
         buffer_delete(buffer)
         size = 1024

@@ -20,7 +20,7 @@ if global.ingame
         }
     }
 }
-if (mapChanged && is_on_menu() && ((!global.spectator) || global.sax))
+if (mapChanged && !is_on_menu() && ((!global.spectator) || global.sax))
 {
     buffer_delete(buffer)
     size = 1024

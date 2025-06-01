@@ -1,5 +1,5 @@
 var size, type, alignment, bufferSize, result;
-if (global.maxsmissilesPrev != global.maxsmissiles && is_on_menu() && ((!global.spectator) || global.sax))
+if (global.maxsmissilesPrev != global.maxsmissiles && !is_on_menu() && ((!global.spectator) || global.sax))
 {
     buffer_delete(buffer)
     size = 1024
