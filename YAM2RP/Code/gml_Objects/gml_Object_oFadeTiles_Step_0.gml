@@ -18,7 +18,9 @@ else
 // Sync other oFadeTiles of the same layer.    
 with (oFadeTiles)
 {
-    if (layer == other.layer)
+    // only sync with fadetiles if the calling instance has a higher timer,
+    // because otherwise there's problems with many fadetiles in one room
+    if (layer == other.layer && other.timer > timer)
     {
         falpha = other.falpha
         timer = other.timer
