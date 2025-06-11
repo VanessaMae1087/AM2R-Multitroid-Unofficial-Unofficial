@@ -468,6 +468,32 @@ if global.experimental
             }
             break
 
+        case rm_a6b11:
+            with (oSolid)
+            {
+                if (x == 48 && y == 48)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            instance_create(48, 48, oBlockBomb)
+            break
+
+        case rm_a6b07:
+            with (oSolid)
+            {
+                if (x == 0 && y == 336)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            instance_create(0, 336, oBlockBomb)
+            break
+
         default:
             break
     }
