@@ -1,4 +1,4 @@
-if (global.saxmode && global.enemyNearby && global.lobbylocked)
+if (global.saxmode && global.enemyNearby && global.lobbyLocked)
     exit
 if (global.ingame == 1 && global.enablecontrol == 1 && room != rm_transition)
 {

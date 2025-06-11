@@ -176,7 +176,7 @@ if (global.curropt < 14)
     oSubScrPlayer.targety = 52
 else
     oSubScrPlayer.targety = -13
-if (global.saxmode && global.enemyNearby && global.lobbylocked)
+if (global.saxmode && global.enemyNearby && global.lobbyLocked)
 {
     if (global.sax || (!global.spectator))
     {

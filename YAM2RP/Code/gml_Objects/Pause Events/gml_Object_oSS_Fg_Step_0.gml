@@ -44,7 +44,7 @@ if (oControl.kMissile && oControl.kSelectPushedSteps == 0 && (!missilepressed))
 }
 if (missilepressed && (!oControl.kMissile))
     missilepressed = 0
-if (global.saxmode && global.enemyNearby && global.lobbylocked)
+if (global.saxmode && global.enemyNearby && global.lobbyLocked)
 {
     if (global.sax || (!global.spectator))
     {
