@@ -8,6 +8,7 @@ itemid = 0
 text1 = ""
 text2 = ""
 collected = 0
+serris = 0
 if ((object_index == oItemBomb || object_index == oItemSpiderBall || object_index == oItemJumpBall || object_index == oItemHijump || object_index == oItemVaria || object_index == oItemSpaceJump || object_index == oItemSpeedBooster || object_index == oItemScrewAttack || object_index == oItemGravity || object_index == oItemIBeam || object_index == oItemWBeam || object_index == oItemSBeam || object_index == oItemPBeam) && global.sax && global.saxmode)
 {
     alarm[0] = -1

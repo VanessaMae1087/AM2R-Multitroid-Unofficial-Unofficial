@@ -54,6 +54,7 @@ switch type_event
                 break
             case 250:
                 ban = buffer_read(_buffer, buffer_u8)
+                kickReason = buffer_read(_buffer, buffer_u8)
                 if ban
                     banned = 1
                 else
@@ -501,6 +502,14 @@ switch type_event
                     if global.spectator
                     {
                         global.spectator = 0
+                        global.spectatorIndex = -1
+                    }
+                }
+                else if is_on_menu()
+                {
+                    if (!global.spectator)
+                    {
+                        global.spectator = 1
                         global.spectatorIndex = -1
                     }
                 }
@@ -2183,4 +2192,3 @@ switch type_event
                 break
         }
 }
-

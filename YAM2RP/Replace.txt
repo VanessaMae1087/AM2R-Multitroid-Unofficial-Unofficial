@@ -12,3 +12,4 @@ sCoreXSpace -> sCoreXSJump
 sCoreXArachnus -> sCoreXJBall
 sCoreXScrewAttack -> sCoreXSAttack
 sCoreXSpider ->sCoreXSBall
+item -> my_sprite_named_item_reaction

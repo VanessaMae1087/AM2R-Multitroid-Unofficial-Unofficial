@@ -1,8 +1,3 @@
-if (room == rm_a8h01 && oControl.mod_previous_room != 374 && global.saxmode)
-{
-    instance_destroy()
-    exit
-}
 if (oCharacter.y <= y)
 {
     mysolid = instance_create((x - 16), y, oSolid1)

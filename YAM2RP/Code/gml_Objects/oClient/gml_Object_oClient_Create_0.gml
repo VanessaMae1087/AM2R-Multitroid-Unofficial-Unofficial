@@ -177,6 +177,7 @@ posY = 3
 time = 60
 trail = 0
 kicked = 0
+kickReason = 255
 banned = 0
 SJSTART = 29
 SUPERJUMP = 30
