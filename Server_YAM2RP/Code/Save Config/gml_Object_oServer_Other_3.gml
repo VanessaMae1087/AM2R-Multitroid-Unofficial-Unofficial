@@ -33,7 +33,8 @@ ds_list_destroy(deadList);
 ds_grid_destroy(vars);
 ds_map_destroy(map);
 ds_map_destroy(posMap);
-ds_map_destroy(teamAffiliation);
+// TODO: name-team affiliation (post 1.9.0)
+// ds_map_destroy(teamAffiliation);
 
 ini_open(working_directory + "\settings.ini")
 ini_write_real("Settings", "StartingMode", global.saxmode)
