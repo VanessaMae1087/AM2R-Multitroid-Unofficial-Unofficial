@@ -54,8 +54,6 @@ if (findIP >= 0 || findKickID >= 0)
                 alarm[10] = 1800
         }
     }
-    if (findKickIP >= 0)
-        ds_list_delete(kickList, findKickIP)
     if (findKickID >= 0)
         ds_list_delete(kickList, findKickID)
     exit
