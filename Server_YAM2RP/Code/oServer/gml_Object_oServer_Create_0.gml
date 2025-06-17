@@ -64,7 +64,8 @@ deadList = ds_list_create()
 vars = ds_grid_create(3, 20)
 map = ds_map_create()
 posMap = ds_map_create()
-teamAffiliation = ds_map_create()
+// TODO: name-team affiliation (post 1.9.0)
+// teamAffiliation = ds_map_create()
 import = json_import("item_dict.json")
 dict = json_decode(import)
 queenHealth = 600
@@ -84,7 +85,6 @@ reset_globals()
 global.slot = 1
 slotStr = string(global.slot)
 global.saveString = "\save" + slotStr + ".txt"
-syncedELM = 0
 posMapModified = 0
 global.lobbyLocked = 0
 global.damageMult = 0
@@ -135,3 +135,4 @@ if file_exists("lang\fonts\Acknowledge_TT_BRK.ttf")
     global.syncnumsfont = font_add("lang\fonts\Acknowledge_TT_BRK.ttf", 64, 0, 0, 0, 0)
 else
     global.syncnumsfont = font0
+global.kickReason = 255

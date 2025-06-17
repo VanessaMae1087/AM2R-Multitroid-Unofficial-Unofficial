@@ -47,5 +47,6 @@ if instance_exists(oServer)
         with (oServer)
             event_user(3)
     }
-    ds_map_replace(oServer.teamAffiliation, ip, (team - 1))
+//     TODO: name-team affiliation (post 1.9.0)
+//     ds_map_replace(oServer.teamAffiliation, ip, (team - 1))
   }

@@ -10,7 +10,7 @@ else
 change = 1
 if (keyboard_check(vk_shift))
     change = 5
-if (keyboard_check(vk_alt))
+if (keyboard_check(vk_alt) && (os_type != os_windows || keyboard_check_direct(vk_alt)))
     change = 10
 if (keyboard_check(vk_control))
     change = 44
