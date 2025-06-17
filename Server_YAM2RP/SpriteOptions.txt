@@ -4,4 +4,6 @@
 # e.g sTestSprite 0 31 35 0 false false false AxisAlignedRect 0 0
 
 # Revive Button
-sRevive 0 63 31 0 false false false AxisAlignedRect 0 0
+sRevive 0 77 31 0 false false false AxisAlignedRect 0 0
+sReviveDark 0 77 31 0 false false false AxisAlignedRect 0 0
+sReviveLight 0 77 31 0 false false false AxisAlignedRect 0 0

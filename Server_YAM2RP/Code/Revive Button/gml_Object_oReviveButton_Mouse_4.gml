@@ -1,5 +1,5 @@
 var findIDDead;
-if global.Page
+if (global.Page || global.syncpage)
     exit
 if instance_exists(oServer)
 {
