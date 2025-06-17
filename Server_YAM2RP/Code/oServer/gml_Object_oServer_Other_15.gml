@@ -1,13 +1,7 @@
-var size, type, alignment, bufferSize;
 buffer_delete(buffer)
-size = 1024
-type = buffer_grow
-alignment = 1
-buffer = buffer_create(size, type, alignment)
+buffer = buffer_create(1024, buffer_grow, 1)
 buffer_seek(buffer, buffer_seek_start, 0)
+buffer_write(buffer, buffer_s32, 1)
 buffer_write(buffer, buffer_u8, 62)
-bufferSize = buffer_tell(buffer)
-buffer_seek(buffer, buffer_seek_start, 0)
-buffer_write(buffer, buffer_s32, bufferSize)
-buffer_write(buffer, buffer_u8, 62)
+buffer_poke(buffer, 0, buffer_s32, (buffer_tell(buffer) - 4))
 network_send_packet(global.reviveSocket, buffer, buffer_tell(buffer))
