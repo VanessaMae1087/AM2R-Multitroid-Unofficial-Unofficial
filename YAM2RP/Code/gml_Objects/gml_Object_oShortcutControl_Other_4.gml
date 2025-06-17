@@ -494,6 +494,70 @@ if global.experimental
             instance_create(0, 336, oBlockBomb)
             break
 
+        case rm_a6a10:
+            with (oSolid)
+            {
+                if (x == 608 && (576 <= y && y <= 608))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a6m01 && global.item[8] == 0))
+            {
+                instance_create(608, 576, oBlockScrew)
+                instance_create(608, 592, oBlockScrew)
+                instance_create(608, 608, oBlockScrew)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 608, 576)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 608, 592)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 608, 608)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            break
+
+        case rm_a6b03:
+            with (oSolid)
+            {
+                if (x == 240 && (352 <= y && y <= 400))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a6m02 && global.item[8] == 0))
+            {
+                instance_create(240, 352, oBlockScrew)
+                instance_create(240, 368, oBlockScrew)
+                instance_create(240, 384, oBlockScrew)
+                instance_create(240, 400, oBlockScrew)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 240, 352)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 240, 368)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 240, 384)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 240, 400)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            break
+
         default:
             break
     }
