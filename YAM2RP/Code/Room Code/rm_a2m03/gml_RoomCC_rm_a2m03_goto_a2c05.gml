@@ -6,4 +6,4 @@ direction = 0
 camstartx = 160
 camstarty = 640
 transitionx = 4
-transitiony = 184
+transitiony = 180
