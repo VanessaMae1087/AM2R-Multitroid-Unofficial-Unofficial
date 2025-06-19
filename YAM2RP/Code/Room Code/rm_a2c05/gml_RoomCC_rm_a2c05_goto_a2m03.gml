@@ -1,5 +1,3 @@
-if (!global.experimental)
-    instance_destroy()
 targetroom = rm_a2m03
 targetx = 624
 targety = 176

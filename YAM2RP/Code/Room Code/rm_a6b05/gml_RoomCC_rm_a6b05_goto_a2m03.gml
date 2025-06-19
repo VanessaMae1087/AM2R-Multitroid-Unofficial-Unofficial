@@ -1,5 +1,3 @@
-if (!global.saxmode)
-    instance_destroy()
 targetroom = rm_a2m03
 targetx = 16
 targety = 624

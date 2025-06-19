@@ -3,9 +3,11 @@ var mtid, blk;
 if global.experimental
 {
     with (oBlockScrew)
-            shortcutcontrol_ignore = 1
-        with (oBlockSpeed)
-            shortcutcontrol_ignore = 1
+        shortcutcontrol_ignore = 1
+    with (oBlockSpeed)
+        shortcutcontrol_ignore = 1
+    with (oBlockSMissile)
+        shortcutcontrol_ignore = 1
     switch room
     {
         case rm_a0h04d:
@@ -558,6 +560,66 @@ if global.experimental
             }
             break
 
+        case rm_a2c05:
+            with (oSolid)
+            {
+                if (x == 48 && y == 608)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a2m03 && global.stanks == 0))
+            {
+                instance_create(48, 608, oBlockSMissile)
+                instance_create(48, 624, oBlockSMissile)
+                instance_create(48, 640, oBlockSMissile)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 48, 608)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 48, 624)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 48, 640)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            break
+
+        case rm_a6b05:
+            with (oSolid)
+            {
+                if (x == 256 && y == 96)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a2m03 && global.stanks == 0))
+            {
+                instance_create(256, 96, oBlockSMissile)
+                instance_create(256, 112, oBlockSMissile)
+                instance_create(256, 128, oBlockSMissile)
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 256, 96)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 256, 112)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+                mtid = tile_layer_find(-111, 256, 128)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            break
+
         default:
             break
     }
@@ -568,6 +630,11 @@ if global.experimental
             regentime = -1
     }
     with (oBlockSpeed)
+    {
+        if (shortcutcontrol_ignore == 0)
+            regentime = -1
+    }
+    with (oBlockSMissile)
     {
         if (shortcutcontrol_ignore == 0)
             regentime = -1
