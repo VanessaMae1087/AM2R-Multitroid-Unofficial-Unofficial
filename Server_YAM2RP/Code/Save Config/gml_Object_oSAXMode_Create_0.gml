@@ -1,0 +1,1 @@
+saxmodePrev = global.saxmode

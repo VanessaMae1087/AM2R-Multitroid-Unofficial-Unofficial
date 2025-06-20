@@ -1,27 +1,42 @@
-var type_event, ip, findIP, findKickIP, ban, size, type, alignment, bufferSize, findsocket, i, arrList, socket, socketID, ID, arr, seed, findID, _buffer, bufferSizePacket, clientID, sax, sockets, preferredID, f, arrID, arrSocket, clientX, clientY, clientSprite, clientImage, clientA1, clientA1X, clientA1Y, clientA2, clientA2X, clientA2Y, clientA2A, clientMirror, clientArmmsl, clientRoom, clientName, clientBlend, clientFXTimer, clientRoomPrev, clientState, clientSAX, clientSpeedboost, clientSJBall, clientSJDir, clientSpeedCharge, clientPlayerHealth, clientSpectator, clientInvincible, clientMosaic, clientReform, clientVisible, list, clientMapX, clientMapY, spectator, findSamus, event, findDead, playerHealth, missiles, smissiles, pbombs, ping, realPing, spacejump, screwattack, spiderball, speedbooster, bomb, ibeam, wbeam, pbeam, sbeam, cbeam, tempSocket, checkID, checkX, checkY, checkBeam, checkMissile, checkDamage, checkFreeze, lag, lagPositions, timeToCheck, g, lagPosArr, lagPosTime, lagPosID, lagPosX, lagPosY, packetID, name, lobbyLocked, _queenHealth, phase, state, monstersLeft, monstersArea, item, itemArr, v, metdead, metdeadArr, eventArr, tileCount, tileX, tileY, tileData, itemstaken, maxmissiles, maxsmissiles, maxpbombs, maxhealth, etanks, mtanks, stanks, ptanks, gametime, findTime, findReset, dir, sprX, sprY, charge, bombX, bombY, currentWeapon, missileX, missileY, velX, velY, icemissiles, pbombX, pbombY, playerhealth, syncDiff, syncELM, otherAbsorbRelativeX, otherAbsorbRelativeY, otherAbsorbSpriteHeight, saxmode, findIDSamus, findIDSAX, mapposx, mapposy, mirror, sentRoom, playerX, playerY, receivedItem, receivedEvent, receivedMetdead, j, receiveddmap, msg, splitBy, slot, splits, str2, currStr, wrongVersion, playerState, combatState, checkDir, clientSBall, canScrew, evnt, savBfr;
+var type_event, ip, findIP, ban, size, type, alignment, bufferSize, findsocket, i, arrList, socket, socketID, ID, arr, seed, findID, _buffer, bufferSizePacket, clientID, sax, sockets, preferredID, f, arrID, arrSocket, clientX, clientY, clientSprite, clientImage, clientA1, clientA1X, clientA1Y, clientA2, clientA2X, clientA2Y, clientA2A, clientMirror, clientArmmsl, clientRoom, clientName, clientBlend, clientFXTimer, clientRoomPrev, clientState, clientSAX, clientSpeedboost, clientSJBall, clientSJDir, clientSpeedCharge, clientPlayerHealth, clientSpectator, clientInvincible, clientMosaic, clientReform, clientVisible, list, clientMapX, clientMapY, spectator, findSamus, event, findDead, playerHealth, missiles, smissiles, pbombs, ping, realPing, spacejump, screwattack, spiderball, speedbooster, bomb, ibeam, wbeam, pbeam, sbeam, cbeam, tempSocket, checkID, checkX, checkY, checkBeam, checkMissile, checkDamage, checkFreeze, lag, lagPositions, timeToCheck, g, lagPosArr, lagPosTime, lagPosID, lagPosX, lagPosY, packetID, name, lobbyLocked, _queenHealth, phase, state, monstersLeft, monstersArea, item, itemArr, v, metdead, metdeadArr, eventArr, tileCount, tileX, tileY, tileData, itemstaken, maxmissiles, maxsmissiles, maxpbombs, maxhealth, etanks, mtanks, stanks, ptanks, gametime, findTime, findReset, dir, sprX, sprY, charge, bombX, bombY, currentWeapon, missileX, missileY, velX, velY, icemissiles, pbombX, pbombY, playerhealth, syncDiff, syncELM, otherAbsorbRelativeX, otherAbsorbRelativeY, otherAbsorbSpriteHeight, saxmode, findIDSamus, findIDSAX, mapposx, mapposy, mirror, sentRoom, playerX, playerY, receivedItem, receivedEvent, receivedMetdead, j, receiveddmap, msg, splitBy, slot, splits, str2, currStr, wrongVersion, playerState, combatState, checkDir, clientSBall, canScrew, compressedList, compressedMap, findKickID, bfr, client_id, evnt, savBfr;
 type_event = ds_map_find_value(async_load, "type")
 ip = ds_map_find_value(async_load, "ip")
 findIP = ds_list_find_index(banList, ip)
-findKickIP = ds_list_find_index(kickList, ip)
 banSocket = ds_map_find_value(async_load, "id")
-if (findIP >= 0 || findKickIP >= 0)
+findID = -1
+findKickID = -1
+for (i = 0; i < ds_list_size(idList); i++)
+{
+    arrList = ds_list_find_value(idList, i)
+    if (arrList[0, 1] == banSocket)
+    {
+        findID = arrList[0, 0]
+        findKickID = ds_list_find_index(kickList, findID)        
+        break
+    }
+
+}
+
+for (i = 0; i < ds_list_size(idList); i++)
+{
+    arrList = ds_list_find_value(idList, i)
+    if (ds_map_find_value(async_load, "id") == arrList[0, 1])
+        client_id = arrList[0, 0]
+}
+
+if (findIP >= 0 || findKickID >= 0)
 {
     ban = 0
     if (findIP >= 0)
         ban = 1
     buffer_delete(buffer)
-    size = 1024
-    type = buffer_grow
-    alignment = 1
-    buffer = buffer_create(size, type, alignment)
+    buffer = buffer_create(1024, buffer_grow, 1)
     buffer_seek(buffer, buffer_seek_start, 0)
+    buffer_write(buffer, buffer_s32, 0)
     buffer_write(buffer, buffer_u8, 250)
     buffer_write(buffer, buffer_u8, ban)
-    bufferSize = buffer_tell(buffer)
-    buffer_seek(buffer, buffer_seek_start, 0)
-    buffer_write(buffer, buffer_s32, bufferSize)
-    buffer_write(buffer, buffer_u8, 250)
-    buffer_write(buffer, buffer_u8, ban)
+    buffer_write(buffer, buffer_u8, global.kickReason)
+    buffer_poke(buffer, 0, buffer_s32, (buffer_tell(buffer) - 4))
     network_send_packet(banSocket, buffer, buffer_tell(buffer))
     findsocket = ds_list_find_index(socketList, banSocket)
     if (findsocket >= 0)
@@ -42,8 +57,8 @@ if (findIP >= 0 || findKickIP >= 0)
                 alarm[10] = 1800
         }
     }
-    if (findKickIP >= 0)
-        ds_list_delete(kickList, findKickIP)
+    if (findKickID >= 0)
+        ds_list_delete(kickList, findKickID)
     exit
 }
 global.bufferOverflow = 0
@@ -282,6 +297,38 @@ switch type_event
             buffer_write(buffer, buffer_s16, oControl.mod_302)
             network_send_packet(socket, buffer, buffer_tell(buffer))
         }
+        bfr = buffer_create(1024, buffer_grow, 1)
+        buffer_seek(bfr, buffer_seek_start, 0)
+        buffer_write(bfr, buffer_s32, 18) // placeholder for buffer size
+        buffer_write(bfr, buffer_u8, 61) // packet ID
+        buffer_write(bfr, buffer_u8, global.itemsyncs[0]) // suits
+        buffer_write(bfr, buffer_u8, global.itemsyncs[1])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[2])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[3]) // beams
+        buffer_write(bfr, buffer_u8, global.itemsyncs[4])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[5])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[6])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[7])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[8]) // misc
+        buffer_write(bfr, buffer_u8, global.itemsyncs[9])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[10])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[11])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[12])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[13])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[14]) // boots
+        buffer_write(bfr, buffer_u8, global.itemsyncs[15])
+        buffer_write(bfr, buffer_u8, global.itemsyncs[16])
+        buffer_write(bfr, buffer_u8, global.startingminors[0]) // fusion: energy tanks
+        buffer_write(bfr, buffer_u8, global.startingminors[1]) // sa-x: energy tanks
+        buffer_write(bfr, buffer_u8, global.startingminors[2]) // missiles
+        buffer_write(bfr, buffer_u8, global.startingminors[3])
+        buffer_write(bfr, buffer_u8, global.startingminors[4]) // super missiles
+        buffer_write(bfr, buffer_u8, global.startingminors[5])
+        buffer_write(bfr, buffer_u8, global.startingminors[6]) // power bombs
+        buffer_write(bfr, buffer_u8, global.startingminors[7])
+        buffer_poke(bfr, 0, buffer_s32, (buffer_tell(bfr) - 4))
+        network_send_packet(socket, bfr, buffer_tell(bfr))
+        buffer_delete(bfr)
         alarm[0] = 5
         alarm[2] = 30
         alarm[5] = 30
@@ -321,8 +368,8 @@ switch type_event
         socket = ds_map_find_value(async_load, "id")
         bufferSize = buffer_get_size(_buffer)
         buffer_seek(_buffer, buffer_seek_start, 0)
-        bufferSizePacket = buffer_read(_buffer, buffer_s32)
-        if (!is_real(bufferSizePacket))
+        bufferSizePacket = safe_buffer_read(_buffer, buffer_s32)
+        if ((!is_real(bufferSizePacket)) || global.bufferOverflow)
             exit
         if ((bufferSizePacket + 4) != bufferSize)
             exit
@@ -340,12 +387,16 @@ switch type_event
                     team = 2
             }
         }
-        msgid = buffer_read(_buffer, buffer_u8)
+        msgid = safe_buffer_read(_buffer, buffer_u8)
+        if global.bufferOverflow
+            exit
         switch msgid
         {
             case 254:
-                clientID = buffer_read(_buffer, buffer_u8)
-                sax = buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                sax = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 for (i = 0; i < ds_list_size(idList); i++)
                 {
                     arrList = ds_list_find_value(idList, i)
@@ -382,9 +433,14 @@ switch type_event
                     network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer))
                 break
             case 200:
-                clientID = buffer_read(_buffer, buffer_u8)
-                preferredID = buffer_read(_buffer, buffer_u8)
-                sax = buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                preferredID = safe_buffer_read(_buffer, buffer_u8)
+                sax = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
+//                 TODO: name-team affiliation (post 1.9.0)
+//                 if (!(is_undefined(ds_map_find_value(teamAffiliation, ip))))
+//                     sax = ds_map_find_value(teamAffiliation, ip)
                 tempList = ds_list_create()
                 if (ds_list_size(idList) > 0)
                 {
@@ -480,38 +536,40 @@ switch type_event
                 ds_list_destroy(tempList)
                 break
             case 100:
-                clientID = buffer_read(_buffer, buffer_u8)
-                clientX = buffer_read(_buffer, buffer_s16)
-                clientY = buffer_read(_buffer, buffer_s16)
-                clientSprite = buffer_read(_buffer, buffer_s16)
-                clientImage = buffer_read(_buffer, buffer_s16)
-                clientA1 = buffer_read(_buffer, buffer_s16)
-                clientA1X = buffer_read(_buffer, buffer_s16)
-                clientA1Y = buffer_read(_buffer, buffer_s16)
-                clientA2 = buffer_read(_buffer, buffer_s16)
-                clientA2X = buffer_read(_buffer, buffer_s16)
-                clientA2Y = buffer_read(_buffer, buffer_s16)
-                clientA2A = buffer_read(_buffer, buffer_s16)
-                clientMirror = buffer_read(_buffer, buffer_s16)
-                clientArmmsl = buffer_read(_buffer, buffer_s16)
-                clientRoom = buffer_read(_buffer, buffer_s16)
-                clientName = buffer_read(_buffer, buffer_string)
-                clientBlend = buffer_read(_buffer, buffer_s16)
-                clientFXTimer = buffer_read(_buffer, buffer_s8)
-                clientRoomPrev = buffer_read(_buffer, buffer_s16)
-                clientState = buffer_read(_buffer, buffer_u8)
-                clientSAX = buffer_read(_buffer, buffer_u8)
-                clientSpeedboost = buffer_read(_buffer, buffer_u8)
-                clientSJBall = buffer_read(_buffer, buffer_u8)
-                clientSJDir = buffer_read(_buffer, buffer_u8)
-                clientSpeedCharge = buffer_read(_buffer, buffer_u8)
-                clientPlayerHealth = buffer_read(_buffer, buffer_s16)
-                clientSpectator = buffer_read(_buffer, buffer_u8)
-                clientInvincible = buffer_read(_buffer, buffer_u8)
-                clientMosaic = buffer_read(_buffer, buffer_u8)
-                clientReform = buffer_read(_buffer, buffer_u8)
-                clientVisible = buffer_read(_buffer, buffer_u8)
-                clientSBall = buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                clientX = safe_buffer_read(_buffer, buffer_s16)
+                clientY = safe_buffer_read(_buffer, buffer_s16)
+                clientSprite = safe_buffer_read(_buffer, buffer_s16)
+                clientImage = safe_buffer_read(_buffer, buffer_s16)
+                clientA1 = safe_buffer_read(_buffer, buffer_s16)
+                clientA1X = safe_buffer_read(_buffer, buffer_s16)
+                clientA1Y = safe_buffer_read(_buffer, buffer_s16)
+                clientA2 = safe_buffer_read(_buffer, buffer_s16)
+                clientA2X = safe_buffer_read(_buffer, buffer_s16)
+                clientA2Y = safe_buffer_read(_buffer, buffer_s16)
+                clientA2A = safe_buffer_read(_buffer, buffer_s16)
+                clientMirror = safe_buffer_read(_buffer, buffer_s16)
+                clientArmmsl = safe_buffer_read(_buffer, buffer_s16)
+                clientRoom = safe_buffer_read(_buffer, buffer_s16)
+                clientName = safe_buffer_read(_buffer, buffer_string)
+                clientBlend = safe_buffer_read(_buffer, buffer_s16)
+                clientFXTimer = safe_buffer_read(_buffer, buffer_s8)
+                clientRoomPrev = safe_buffer_read(_buffer, buffer_s16)
+                clientState = safe_buffer_read(_buffer, buffer_u8)
+                clientSAX = safe_buffer_read(_buffer, buffer_u8)
+                clientSpeedboost = safe_buffer_read(_buffer, buffer_u8)
+                clientSJBall = safe_buffer_read(_buffer, buffer_u8)
+                clientSJDir = safe_buffer_read(_buffer, buffer_u8)
+                clientSpeedCharge = safe_buffer_read(_buffer, buffer_u8)
+                clientPlayerHealth = safe_buffer_read(_buffer, buffer_s16)
+                clientSpectator = safe_buffer_read(_buffer, buffer_u8)
+                clientInvincible = safe_buffer_read(_buffer, buffer_u8)
+                clientMosaic = safe_buffer_read(_buffer, buffer_u8)
+                clientReform = safe_buffer_read(_buffer, buffer_u8)
+                clientVisible = safe_buffer_read(_buffer, buffer_u8)
+                clientSBall = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 arr[0] = current_time
                 arr[1] = clientID
                 arr[2] = clientX
@@ -607,14 +665,16 @@ switch type_event
                 }
                 break
             case 101:
-                clientID = buffer_read(_buffer, buffer_u8)
-                clientRoom = buffer_read(_buffer, buffer_s16)
-                clientMapX = buffer_read(_buffer, buffer_s16)
-                clientMapY = buffer_read(_buffer, buffer_s16)
-                sax = buffer_read(_buffer, buffer_u8)
-                spectator = buffer_read(_buffer, buffer_u8)
-                playerState = buffer_read(_buffer, buffer_u8)
-                combatState = buffer_read(_buffer, buffer_bool)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                clientRoom = safe_buffer_read(_buffer, buffer_s16)
+                clientMapX = safe_buffer_read(_buffer, buffer_s16)
+                clientMapY = safe_buffer_read(_buffer, buffer_s16)
+                sax = safe_buffer_read(_buffer, buffer_u8)
+                spectator = safe_buffer_read(_buffer, buffer_u8)
+                playerState = safe_buffer_read(_buffer, buffer_u8)
+                combatState = safe_buffer_read(_buffer, buffer_bool)
+                if global.bufferOverflow
+                    exit
                 findSamus = ds_list_find_index(samusList, clientID)
                 ds_map_replace(global.readyMap, clientID, clientRoom)
                 if (findSamus != -1 && spectator && (!sax) && global.event[308] < 4)
@@ -668,11 +728,13 @@ switch type_event
                 }
                 break
             case 102:
-                playerHealth = buffer_read(_buffer, buffer_s16)
-                missiles = buffer_read(_buffer, buffer_s16)
-                smissiles = buffer_read(_buffer, buffer_u8)
-                pbombs = buffer_read(_buffer, buffer_u8)
-                clientID = buffer_read(_buffer, buffer_u8)
+                playerHealth = safe_buffer_read(_buffer, buffer_s16)
+                missiles = safe_buffer_read(_buffer, buffer_s16)
+                smissiles = safe_buffer_read(_buffer, buffer_u8)
+                pbombs = safe_buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -702,8 +764,10 @@ switch type_event
                 }
                 break
             case 103:
-                ping = buffer_read(_buffer, buffer_u32)
-                realPing = buffer_read(_buffer, buffer_u16)
+                ping = safe_buffer_read(_buffer, buffer_u32)
+                realPing = safe_buffer_read(_buffer, buffer_u16)
+                if global.bufferOverflow
+                    exit
                 ds_map_replace(map, socket, realPing)
                 buffer_delete(buffer)
                 size = 1024
@@ -721,18 +785,20 @@ switch type_event
                 network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 104:
-                clientID = buffer_read(_buffer, buffer_u8)
-                spacejump = buffer_read(_buffer, buffer_u8)
-                screwattack = buffer_read(_buffer, buffer_u8)
-                spiderball = buffer_read(_buffer, buffer_u8)
-                speedbooster = buffer_read(_buffer, buffer_u8)
-                bomb = buffer_read(_buffer, buffer_u8)
-                ibeam = buffer_read(_buffer, buffer_u8)
-                wbeam = buffer_read(_buffer, buffer_u8)
-                pbeam = buffer_read(_buffer, buffer_u8)
-                sbeam = buffer_read(_buffer, buffer_u8)
-                cbeam = buffer_read(_buffer, buffer_u8)
-                canScrew = buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                spacejump = safe_buffer_read(_buffer, buffer_u8)
+                screwattack = safe_buffer_read(_buffer, buffer_u8)
+                spiderball = safe_buffer_read(_buffer, buffer_u8)
+                speedbooster = safe_buffer_read(_buffer, buffer_u8)
+                bomb = safe_buffer_read(_buffer, buffer_u8)
+                ibeam = safe_buffer_read(_buffer, buffer_u8)
+                wbeam = safe_buffer_read(_buffer, buffer_u8)
+                pbeam = safe_buffer_read(_buffer, buffer_u8)
+                sbeam = safe_buffer_read(_buffer, buffer_u8)
+                cbeam = safe_buffer_read(_buffer, buffer_u8)
+                canScrew = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 buffer_delete(buffer)
                 size = 1024
                 type = buffer_grow
@@ -778,7 +844,9 @@ switch type_event
                 }
                 break
             case 105:
-                clientID = buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 tempSocket = -100
                 buffer_delete(buffer)
                 size = 1024
@@ -801,14 +869,16 @@ switch type_event
                     network_send_packet(tempSocket, buffer, buffer_tell(buffer))
                 break
             case 106:
-                checkID = buffer_read(_buffer, buffer_u8)
-                checkX = buffer_read(_buffer, buffer_s16)
-                checkY = buffer_read(_buffer, buffer_s16)
-                checkBeam = buffer_read(_buffer, buffer_u8)
-                checkMissile = buffer_read(_buffer, buffer_u8)
-                checkDamage = buffer_read(_buffer, buffer_u8)
-                checkFreeze = buffer_read(_buffer, buffer_u8)
-                checkDir = buffer_read(_buffer, buffer_s16)
+                checkID = safe_buffer_read(_buffer, buffer_u8)
+                checkX = safe_buffer_read(_buffer, buffer_s16)
+                checkY = safe_buffer_read(_buffer, buffer_s16)
+                checkBeam = safe_buffer_read(_buffer, buffer_u8)
+                checkMissile = safe_buffer_read(_buffer, buffer_u8)
+                checkDamage = safe_buffer_read(_buffer, buffer_u8)
+                checkFreeze = safe_buffer_read(_buffer, buffer_u8)
+                checkDir = safe_buffer_read(_buffer, buffer_s16)
+                if global.bufferOverflow
+                    exit
                 tempSocket = -100
                 for (i = 0; i < ds_list_size(idList); i++)
                 {
@@ -847,9 +917,12 @@ switch type_event
                 }
                 break
             case 0:
-                ds_grid_read(vars, strict_decompress(buffer_read(_buffer, buffer_string)))
-                clientID = buffer_read(_buffer, buffer_u8)
-                packetID = buffer_read(_buffer, buffer_u32)
+                compressedMap = safe_buffer_read(_buffer, buffer_string)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                packetID = safe_buffer_read(_buffer, buffer_u32)
+                if global.bufferOverflow
+                    exit
+                ds_grid_read(vars, strict_decompress(compressedMap))
                 buffer_delete(buffer)
                 size = 1024
                 type = buffer_grow
@@ -916,8 +989,10 @@ switch type_event
                 }
                 break
             case 1:
-                name = buffer_read(_buffer, buffer_string)
-                sax = buffer_read(_buffer, buffer_u8)
+                name = safe_buffer_read(_buffer, buffer_string)
+                sax = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 msg = name
                 splitBy = ","
                 slot = 0
@@ -933,7 +1008,7 @@ switch type_event
                     }
                     else
                     {
-                        str2 = (str2 + currStr)
+                        str2 = str2 + currStr
                         splits[slot] = str2
                     }
                 }
@@ -946,7 +1021,28 @@ switch type_event
                         wrongVersion = 0
                 }
                 if wrongVersion
-                    ds_list_add(kickList, ip)
+                {
+                    ds_list_add(kickList, client_id)
+                    global.kickReason = 1
+                    exit
+                }
+/*
+                TODO: name-team affiliation (post 1.9.0)
+                changedTeam = 0
+                if (!(is_undefined(ds_map_find_value(teamAffiliation, ip))))
+                {
+                    sax = ds_map_find_value(teamAffiliation, ip)
+                    changedTeam = 1
+                }
+                else
+                    ds_map_add(teamAffiliation, ip, sax)
+                if (changedTeam == 1)
+                {
+                    global.newTeamSocket = socket
+                    global.newTeam = sax + 1
+                    event_user(3)
+                }
+*/
                 findsocket = ds_list_find_index(playerList, socket)
                 if (findsocket < 0)
                 {
@@ -1007,11 +1103,13 @@ switch type_event
                 network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 2:
-                _queenHealth = buffer_read(_buffer, buffer_s32)
+                _queenHealth = safe_buffer_read(_buffer, buffer_s32)
                 sockets = ds_list_size(playerList)
-                clientID = buffer_read(_buffer, buffer_u8)
-                phase = buffer_read(_buffer, buffer_s8)
-                state = buffer_read(_buffer, buffer_s8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                phase = safe_buffer_read(_buffer, buffer_s8)
+                state = safe_buffer_read(_buffer, buffer_s8)
+                if global.bufferOverflow
+                    exit
                 if (queenHealth != _queenHealth)
                     queenHealth = _queenHealth
                 if (queenPhase != phase)
@@ -1042,8 +1140,10 @@ switch type_event
                     network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer))
                 break
             case 3:
-                seed = buffer_read(_buffer, buffer_f64)
-                clientID = buffer_read(_buffer, buffer_u8)
+                seed = safe_buffer_read(_buffer, buffer_f64)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 global.seed = seed
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
@@ -1241,8 +1341,10 @@ switch type_event
                     network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer))
                 break
             case 4:
-                monstersLeft = buffer_read(_buffer, buffer_s8)
-                clientID = buffer_read(_buffer, buffer_u8)
+                monstersLeft = safe_buffer_read(_buffer, buffer_s8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 global.monstersleft = monstersLeft
                 buffer_delete(buffer)
@@ -1269,8 +1371,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 5:
-                monstersArea = buffer_read(_buffer, buffer_s8)
-                clientID = buffer_read(_buffer, buffer_u8)
+                monstersArea = safe_buffer_read(_buffer, buffer_s8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -1296,9 +1400,12 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 6:
+                compressedList = safe_buffer_read(_buffer, buffer_string)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 item = ds_list_create()
-                ds_list_read(item, strict_decompress(buffer_read(_buffer, buffer_string)))
-                clientID = buffer_read(_buffer, buffer_u8)
+                ds_list_read(item, strict_decompress(compressedList))
                 sockets = ds_list_size(playerList)
                 itemArr = ds_list_find_value(item, 0)
                 for (v = 0; v < sockets; v++)
@@ -1390,9 +1497,12 @@ switch type_event
                 ds_list_destroy(item)
                 break
             case 7:
+                compressedList = safe_buffer_read(_buffer, buffer_string)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 metdead = ds_list_create()
-                ds_list_read(metdead, strict_decompress(buffer_read(_buffer, buffer_string)))
-                clientID = buffer_read(_buffer, buffer_u8)
+                ds_list_read(metdead, strict_decompress(compressedList))
                 sockets = ds_list_size(playerList)
                 metdeadArr = ds_list_find_value(metdead, 0)
                 if is_array(metdeadArr)
@@ -1434,9 +1544,12 @@ switch type_event
                 ds_list_destroy(metdead)
                 break
             case 8:
+                compressedList = safe_buffer_read(_buffer, buffer_string)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 event = ds_list_create()
-                ds_list_read(event, strict_decompress(buffer_read(_buffer, buffer_string)))
-                clientID = buffer_read(_buffer, buffer_u8)
+                ds_list_read(event, strict_decompress(compressedList))
                 sockets = ds_list_size(playerList)
                 eventArr = ds_list_find_value(event, 0)
                 if is_array(eventArr)
@@ -1478,7 +1591,9 @@ switch type_event
                 ds_list_destroy(event)
                 break
             case 9:
-                tileCount = buffer_read(_buffer, buffer_u16)
+                tileCount = safe_buffer_read(_buffer, buffer_u16)
+                if global.bufferOverflow
+                    exit
                 if (tileCount > 0)
                 {
                     buffer_delete(buffer)
@@ -1505,9 +1620,11 @@ switch type_event
                                 {
                                     for (i = 0; i < tileCount; i++)
                                     {
-                                        tileX = buffer_read(_buffer, buffer_u8)
-                                        tileY = buffer_read(_buffer, buffer_u8)
-                                        tileData = buffer_read(_buffer, buffer_u8)
+                                        tileX = safe_buffer_read(_buffer, buffer_u8)
+                                        tileY = safe_buffer_read(_buffer, buffer_u8)
+                                        tileData = safe_buffer_read(_buffer, buffer_u8)
+                                        if global.bufferOverflow
+                                            exit
                                         buffer_write(buffer, buffer_u8, tileX)
                                         buffer_write(buffer, buffer_u8, tileY)
                                         buffer_write(buffer, buffer_u8, tileData)
@@ -1529,9 +1646,11 @@ switch type_event
                                 {
                                     for (i = 0; i < tileCount; i++)
                                     {
-                                        tileX = buffer_read(_buffer, buffer_u8)
-                                        tileY = buffer_read(_buffer, buffer_u8)
-                                        tileData = buffer_read(_buffer, buffer_u8)
+                                        tileX = safe_buffer_read(_buffer, buffer_u8)
+                                        tileY = safe_buffer_read(_buffer, buffer_u8)
+                                        tileData = safe_buffer_read(_buffer, buffer_u8)
+                                        if global.bufferOverflow
+                                            exit
                                         buffer_write(buffer, buffer_u8, tileX)
                                         buffer_write(buffer, buffer_u8, tileY)
                                         buffer_write(buffer, buffer_u8, tileData)
@@ -1551,7 +1670,9 @@ switch type_event
                             }
                         }
                     }
-                    clientID = buffer_read(_buffer, buffer_u8)
+                    clientID = safe_buffer_read(_buffer, buffer_u8)
+                    if global.bufferOverflow
+                        exit
                     buffer_write(buffer, buffer_u8, clientID)
                     if global.mapSync
                     {
@@ -1584,8 +1705,10 @@ switch type_event
                 }
                 break
             case 10:
-                itemstaken = buffer_read(_buffer, buffer_u8)
-                clientID = buffer_read(_buffer, buffer_u8)
+                itemstaken = safe_buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -1627,8 +1750,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 11:
-                maxmissiles = buffer_read(_buffer, buffer_u16)
-                clientID = buffer_read(_buffer, buffer_u8)
+                maxmissiles = safe_buffer_read(_buffer, buffer_u16)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -1670,8 +1795,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 12:
-                maxsmissiles = buffer_read(_buffer, buffer_u8)
-                clientID = buffer_read(_buffer, buffer_u8)
+                maxsmissiles = safe_buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -1713,8 +1840,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 13:
-                maxpbombs = buffer_read(_buffer, buffer_u8)
-                clientID = buffer_read(_buffer, buffer_u8)
+                maxpbombs = safe_buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -1756,8 +1885,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 14:
-                maxhealth = buffer_read(_buffer, buffer_u16)
-                clientID = buffer_read(_buffer, buffer_u8)
+                maxhealth = safe_buffer_read(_buffer, buffer_u16)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -1799,8 +1930,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 15:
-                etanks = buffer_read(_buffer, buffer_u8)
-                clientID = buffer_read(_buffer, buffer_u8)
+                etanks = safe_buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -1842,8 +1975,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 16:
-                mtanks = buffer_read(_buffer, buffer_u8)
-                clientID = buffer_read(_buffer, buffer_u8)
+                mtanks = safe_buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -1885,8 +2020,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 17:
-                stanks = buffer_read(_buffer, buffer_u8)
-                clientID = buffer_read(_buffer, buffer_u8)
+                stanks = safe_buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -1928,8 +2065,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 18:
-                ptanks = buffer_read(_buffer, buffer_u8)
-                clientID = buffer_read(_buffer, buffer_u8)
+                ptanks = safe_buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -1971,8 +2110,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 19:
-                gametime = buffer_read(_buffer, buffer_s32)
-                clientID = buffer_read(_buffer, buffer_u8)
+                gametime = safe_buffer_read(_buffer, buffer_s32)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 if (ds_list_size(timeList) > 0)
                 {
                     findTime = ds_list_find_index(timeList, gametime)
@@ -1983,7 +2124,9 @@ switch type_event
                     ds_list_add(timeList, gametime)
                 break
             case 20:
-                clientID = buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 if (ds_list_size(resetList) > 0)
                 {
                     findReset = ds_list_find_index(resetList, clientID)
@@ -1994,12 +2137,14 @@ switch type_event
                     ds_list_add(resetList, clientID)
                 break
             case 21:
-                clientID = buffer_read(_buffer, buffer_u8)
-                dir = buffer_read(_buffer, buffer_s16)
-                sprX = buffer_read(_buffer, buffer_s16)
-                sprY = buffer_read(_buffer, buffer_s16)
-                charge = buffer_read(_buffer, buffer_u8)
-                sax = buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                dir = safe_buffer_read(_buffer, buffer_s16)
+                sprX = safe_buffer_read(_buffer, buffer_s16)
+                sprY = safe_buffer_read(_buffer, buffer_s16)
+                charge = safe_buffer_read(_buffer, buffer_u8)
+                sax = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -2028,10 +2173,12 @@ switch type_event
                     network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer))
                 break
             case 22:
-                clientID = buffer_read(_buffer, buffer_u8)
-                bombX = buffer_read(_buffer, buffer_s16)
-                bombY = buffer_read(_buffer, buffer_s16)
-                sax = buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                bombX = safe_buffer_read(_buffer, buffer_s16)
+                bombY = safe_buffer_read(_buffer, buffer_s16)
+                sax = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -2056,15 +2203,17 @@ switch type_event
                     network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer))
                 break
             case 23:
-                clientID = buffer_read(_buffer, buffer_u8)
-                currentWeapon = buffer_read(_buffer, buffer_u8)
-                dir = buffer_read(_buffer, buffer_s16)
-                missileX = buffer_read(_buffer, buffer_s16)
-                missileY = buffer_read(_buffer, buffer_s16)
-                sax = buffer_read(_buffer, buffer_u8)
-                velX = buffer_read(_buffer, buffer_s8)
-                velY = buffer_read(_buffer, buffer_s8)
-                icemissiles = buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                currentWeapon = safe_buffer_read(_buffer, buffer_u8)
+                dir = safe_buffer_read(_buffer, buffer_s16)
+                missileX = safe_buffer_read(_buffer, buffer_s16)
+                missileY = safe_buffer_read(_buffer, buffer_s16)
+                sax = safe_buffer_read(_buffer, buffer_u8)
+                velX = safe_buffer_read(_buffer, buffer_s8)
+                velY = safe_buffer_read(_buffer, buffer_s8)
+                icemissiles = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -2099,10 +2248,12 @@ switch type_event
                     network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer))
                 break
             case 24:
-                clientID = buffer_read(_buffer, buffer_u8)
-                pbombX = buffer_read(_buffer, buffer_s16)
-                pbombY = buffer_read(_buffer, buffer_s16)
-                sax = buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                pbombX = safe_buffer_read(_buffer, buffer_s16)
+                pbombY = safe_buffer_read(_buffer, buffer_s16)
+                sax = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -2127,8 +2278,10 @@ switch type_event
                     network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer))
                 break
             case 25:
-                playerhealth = buffer_read(_buffer, buffer_s16)
-                clientID = buffer_read(_buffer, buffer_u8)
+                playerhealth = safe_buffer_read(_buffer, buffer_s16)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -2170,8 +2323,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 26:
-                missiles = buffer_read(_buffer, buffer_s16)
-                clientID = buffer_read(_buffer, buffer_u8)
+                missiles = safe_buffer_read(_buffer, buffer_s16)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -2213,8 +2368,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 27:
-                smissiles = buffer_read(_buffer, buffer_s16)
-                clientID = buffer_read(_buffer, buffer_u8)
+                smissiles = safe_buffer_read(_buffer, buffer_s16)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -2256,8 +2413,10 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 28:
-                pbombs = buffer_read(_buffer, buffer_s16)
-                clientID = buffer_read(_buffer, buffer_u8)
+                pbombs = safe_buffer_read(_buffer, buffer_s16)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 buffer_delete(buffer)
                 size = 1024
@@ -2299,7 +2458,9 @@ switch type_event
                     network_send_packet(socket, buffer, buffer_tell(buffer))
                 break
             case 29:
-                syncDiff = buffer_read(_buffer, buffer_u8)
+                syncDiff = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 if (syncedDifficulty != syncDiff)
                     syncedDifficulty = syncDiff
@@ -2320,7 +2481,9 @@ switch type_event
                     network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer))
                 break
             case 30:
-                syncELM = buffer_read(_buffer, buffer_u8)
+                syncELM = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 sockets = ds_list_size(playerList)
                 if (syncedELM != syncELM)
                     syncedELM = syncELM
@@ -2341,10 +2504,12 @@ switch type_event
                     network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer))
                 break
             case 31:
-                clientID = buffer_read(_buffer, buffer_u8)
-                otherAbsorbRelativeX = buffer_read(_buffer, buffer_s16)
-                otherAbsorbRelativeY = buffer_read(_buffer, buffer_s16)
-                otherAbsorbSpriteHeight = buffer_read(_buffer, buffer_u8)
+                clientID = safe_buffer_read(_buffer, buffer_u8)
+                otherAbsorbRelativeX = safe_buffer_read(_buffer, buffer_s16)
+                otherAbsorbRelativeY = safe_buffer_read(_buffer, buffer_s16)
+                otherAbsorbSpriteHeight = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 buffer_delete(buffer)
                 size = 1024
                 type = buffer_grow
@@ -2379,11 +2544,15 @@ switch type_event
                 event_user(0)
                 break
             case 33:
-                lobbyLocked = buffer_read(_buffer, buffer_u8)
+                lobbyLocked = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 global.lobbyLocked = lobbyLocked
                 break
             case 34:
-                saxmode = buffer_read(_buffer, buffer_u8)
+                saxmode = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
                 if saxmode
                 {
                     if instance_exists(oServer)
@@ -2419,8 +2588,10 @@ switch type_event
                 global.saxmode = saxmode
                 break
             case 35:
-                mapposx = buffer_read(_buffer, buffer_s16)
-                mapposy = buffer_read(_buffer, buffer_s16)
+                mapposx = safe_buffer_read(_buffer, buffer_s16)
+                mapposy = safe_buffer_read(_buffer, buffer_s16)
+                if global.bufferOverflow
+                    exit
                 buffer_delete(buffer)
                 size = 1024
                 type = buffer_grow
@@ -2441,11 +2612,13 @@ switch type_event
                     network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer))
                 break
             case 36:
-                mirror = buffer_read(_buffer, buffer_s8)
-                sentRoom = buffer_read(_buffer, buffer_s16)
-                playerX = buffer_read(_buffer, buffer_s16)
-                playerY = buffer_read(_buffer, buffer_s16)
-                sax = buffer_read(_buffer, buffer_s8)
+                mirror = safe_buffer_read(_buffer, buffer_s8)
+                sentRoom = safe_buffer_read(_buffer, buffer_s16)
+                playerX = safe_buffer_read(_buffer, buffer_s16)
+                playerY = safe_buffer_read(_buffer, buffer_s16)
+                sax = safe_buffer_read(_buffer, buffer_s8)
+                if global.bufferOverflow
+                    exit
                 buffer_delete(buffer)
                 size = 1024
                 type = buffer_grow
@@ -2493,7 +2666,9 @@ switch type_event
                             {
                                 for (i = 0; i < array_length_1d(global.itemSamus); i++)
                                 {
-                                    receivedItem = buffer_read(_buffer, buffer_u8)
+                                    receivedItem = safe_buffer_read(_buffer, buffer_u8)
+                                    if global.bufferOverflow
+                                        exit
                                     if (receivedItem == 1 && global.itemSamus[i] == 0)
                                         global.itemSamus[i] = receivedItem
                                 }
@@ -2503,7 +2678,9 @@ switch type_event
                             {
                                 for (i = 0; i < array_length_1d(global.itemSAX); i++)
                                 {
-                                    receivedItem = buffer_read(_buffer, buffer_u8)
+                                    receivedItem = safe_buffer_read(_buffer, buffer_u8)
+                                    if global.bufferOverflow
+                                        exit
                                     if (receivedItem == 1 && global.itemSAX[i] == 0)
                                         global.itemSAX[i] = receivedItem
                                 }
@@ -2521,7 +2698,9 @@ switch type_event
                 {
                     if (i < 350)
                     {
-                        receivedEvent = buffer_read(_buffer, buffer_u8)
+                        receivedEvent = safe_buffer_read(_buffer, buffer_u8)
+                        if global.bufferOverflow
+                            exit
                         if (floor(receivedEvent) > floor(global.event[i]))
                             global.event[i] = receivedEvent
                     }
@@ -2534,7 +2713,9 @@ switch type_event
                 show_debug_message("metdead")
                 for (i = 0; i < array_length_1d(global.metdead); i++)
                 {
-                    receivedMetdead = buffer_read(_buffer, buffer_u8)
+                    receivedMetdead = safe_buffer_read(_buffer, buffer_u8)
+                    if global.bufferOverflow
+                        exit
                     if (receivedMetdead > global.metdead[i])
                         global.metdead[i] = receivedMetdead
                 }
@@ -2561,7 +2742,9 @@ switch type_event
                                 {
                                     for (j = 0; j < array_length_2d(global.dmapSamus, i); j++)
                                     {
-                                        receiveddmap = buffer_read(_buffer, buffer_u8)
+                                        receiveddmap = safe_buffer_read(_buffer, buffer_u8)
+                                        if global.bufferOverflow
+                                            exit
                                         if (receiveddmap > global.dmapSamus[i, j])
                                             global.dmapSamus[i, j] = receiveddmap
                                         else if (receiveddmap == 1 && global.dmapSamus[i, j])
@@ -2576,7 +2759,9 @@ switch type_event
                                 {
                                     for (j = 0; j < array_length_2d(global.dmapSAX, i); j++)
                                     {
-                                        receiveddmap = buffer_read(_buffer, buffer_u8)
+                                        receiveddmap = safe_buffer_read(_buffer, buffer_u8)
+                                        if global.bufferOverflow
+                                            exit
                                         if (receiveddmap > global.dmapSAX[i, j])
                                             global.dmapSAX[i, j] = receiveddmap
                                         else if (receiveddmap == 1 && global.dmapSAX[i, j])
@@ -2589,6 +2774,41 @@ switch type_event
                 }
                 alarm[5] = 30
                 break
+            case 61:
+                bfr = buffer_create(1024, buffer_grow, 1)
+                buffer_seek(bfr, buffer_seek_start, 0)
+                buffer_write(bfr, buffer_s32, 18)
+                buffer_write(bfr, buffer_u8, 61)
+                buffer_write(bfr, buffer_u8, global.itemsyncs[0])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[1])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[2])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[3])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[4])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[5])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[6])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[7])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[8])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[9])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[10])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[11])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[12])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[13])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[14])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[15])
+                buffer_write(bfr, buffer_u8, global.itemsyncs[16])
+                buffer_write(bfr, buffer_u8, global.startingminors[0])
+                buffer_write(bfr, buffer_u8, global.startingminors[1])
+                buffer_write(bfr, buffer_u8, global.startingminors[2])
+                buffer_write(bfr, buffer_u8, global.startingminors[3])
+                buffer_write(bfr, buffer_u8, global.startingminors[4])
+                buffer_write(bfr, buffer_u8, global.startingminors[5])
+                buffer_write(bfr, buffer_u8, global.startingminors[6])
+                buffer_write(bfr, buffer_u8, global.startingminors[7])
+                buffer_poke(bfr, 0, buffer_s32, (buffer_tell(bfr) - 4))
+                network_send_packet(socket, bfr, buffer_tell(bfr))
+                buffer_delete(bfr)
+                break
+
             case 71:
                 sockets = ds_list_size(playerList)
                 global.saveEndChecker = safe_buffer_read(_buffer, buffer_u8)
@@ -2617,11 +2837,13 @@ switch type_event
                     for (i = 0; i < sockets; i++)
                         network_send_packet(ds_list_find_value(playerList, i), savBfr, buffer_tell(savBfr))
                     buffer_delete(savBfr)
+
                 }
                 break
         }
 
         break
+
 }
 
 if (ds_map_exists(posMap, banSocket) && (!posMapModified))

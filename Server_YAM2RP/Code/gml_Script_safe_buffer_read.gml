@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 var buffer, type, currentPos, bufferSize, newPos, ip;
+=======
+var buffer, type, currentPos, bufferSize, newPos, client_id, i, arrList;
+>>>>>>> server-staging
 buffer = argument0
 type = argument1
 currentPos = buffer_tell(buffer)
@@ -6,9 +10,17 @@ bufferSize = buffer_get_size(buffer)
 newPos = currentPos + buffer_sizeof(type)
 if (newPos > bufferSize)
 {
-    ip = ds_map_find_value(async_load, "ip")
-    if (ds_list_find_index(kickList, ip) == -1)
-        ds_list_add(kickList, ip)
+    for (i = 0; i < ds_list_size(idList); i++)
+    {
+        arrList = ds_list_find_value(idList, i)
+        if (ds_map_find_value(async_load, "id") == arrList[0, 1])
+            client_id = arrList[0, 0]
+    }
+    if (ds_list_find_index(kickList, client_id) == -1)
+    {
+        ds_list_add(kickList, client_id)
+        global.kickReason = 2
+    }
     global.bufferOverflow = 1
     return 0;
 }

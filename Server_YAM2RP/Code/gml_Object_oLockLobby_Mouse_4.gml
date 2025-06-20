@@ -1,4 +1,4 @@
-if global.Page
+if (global.Page || global.syncpage)
     exit
 global.lobbyLocked = (!global.lobbyLocked)
 if global.lobbyLocked

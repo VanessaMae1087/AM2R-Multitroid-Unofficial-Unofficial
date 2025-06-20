@@ -17,6 +17,17 @@ ini_open(working_directory + "\settings.ini")
 port = ini_read_real("Settings", "port", 64198)
 maxClients = ini_read_real("Settings", "maxplayers", 16)
 password = ini_read_string("Settings", "moderatorpass", string(random_get_seed()))
+global.saxmode = ini_read_real("Settings", "StartingMode", 0)
+ini_close()
+load_config()
+if (!(file_exists(working_directory + "\preferences.ini")))
+{
+    ini_open(working_directory + "\preferences.ini")
+    ini_write_real("Settings", "theme", 0)
+    ini_close()
+}
+ini_open(working_directory + "\preferences.ini")
+global.theme = ini_read_real("Settings", "theme", 0)
 ini_close()
 if (!(file_exists(working_directory + "\blacklist.txt")))
 {
@@ -53,6 +64,8 @@ deadList = ds_list_create()
 vars = ds_grid_create(3, 20)
 map = ds_map_create()
 posMap = ds_map_create()
+// TODO: name-team affiliation (post 1.9.0)
+// teamAffiliation = ds_map_create()
 import = json_import("item_dict.json")
 dict = json_decode(import)
 queenHealth = 600
@@ -72,19 +85,54 @@ reset_globals()
 global.slot = 1
 slotStr = string(global.slot)
 global.saveString = "\save" + slotStr + ".txt"
-syncedDifficulty = 1
-syncedELM = 0
 posMapModified = 0
 global.lobbyLocked = 0
 global.damageMult = 0
 global.clientVersion = "V1.8.1"
-global.experimental = 0
 global.prevMonstersLeft = 0
 global.gametime = 0
 global.gametDec = 0
-global.doomtime = 0
 global.doomenabled = 0
 global.doomstarted = 0
 global.juggActive = 0
 global.Page = 0
+global.syncpage = 0
+// major item syncs, in order listed in the AM2R inventory screen
+global.itemsyncs = 0
+// suit
+global.itemsyncs[0] = 1
+global.itemsyncs[1] = 2
+global.itemsyncs[2] = 0
+// beams
+global.itemsyncs[3] = 2
+global.itemsyncs[4] = 0
+global.itemsyncs[5] = 2
+global.itemsyncs[6] = 2
+global.itemsyncs[7] = 2
+//misc
+global.itemsyncs[8] = 1
+global.itemsyncs[9] = 2
+global.itemsyncs[10] = 2
+global.itemsyncs[11] = 2
+global.itemsyncs[12] = 1
+global.itemsyncs[13] = 2
+// boots
+global.itemsyncs[14] = 2
+global.itemsyncs[15] = 2
+global.itemsyncs[16] = 2
+// minor items
+global.startingminors = 0
+global.startingminors[0] = 0 // fusion: energy tanks
+global.startingminors[1] = 10 // sa-x: energy tanks
+global.startingminors[2] = 0 // missiles
+global.startingminors[3] = 44
+global.startingminors[4] = 0 // super missiles
+global.startingminors[5] = 10
+global.startingminors[6] = 0 // power bombs
+global.startingminors[7] = 10
 global.timeSincePaused = 0
+if file_exists("lang\fonts\Acknowledge_TT_BRK.ttf")
+    global.syncnumsfont = font_add("lang\fonts\Acknowledge_TT_BRK.ttf", 64, 0, 0, 0, 0)
+else
+    global.syncnumsfont = font0
+global.kickReason = 255
