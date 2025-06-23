@@ -5,5 +5,5 @@ height = 16
 direction = 90
 camstartx = 32
 camstarty = 224
-transitionx = 32
-transitiony = 4
+transitionx = 28
+transitiony = 232

@@ -620,6 +620,42 @@ if global.experimental
             }
             break
 
+        case rm_a4h11:
+            with (oSolid)
+            {
+                if (x == 128 && y == 16)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            instance_create(128, 16, oBlockStep)
+            break
+
+        case rm_a6b10:
+            with (oSolid)
+            {
+                if (x == 48 && y == 192)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a6m03 && global.ptanks == 0))
+            {
+                blk = instance_create(48, 192, oBlockPBomb)
+                blk.regentime = -1
+            }
+            else
+            {
+                mtid = tile_layer_find(-111, 48, 192)
+                if tile_exists(mtid)
+                    tile_delete(mtid)
+            }
+            break
+
         default:
             break
     }
