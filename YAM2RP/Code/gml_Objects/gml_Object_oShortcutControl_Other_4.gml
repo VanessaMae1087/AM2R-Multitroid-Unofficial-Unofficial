@@ -8,6 +8,8 @@ if global.experimental
         shortcutcontrol_ignore = 1
     with (oBlockSMissile)
         shortcutcontrol_ignore = 1
+    with (oBlockPBombChain)
+        shortcutcontrol_ignore = 1
     switch room
     {
         case rm_a0h04d:
@@ -656,6 +658,53 @@ if global.experimental
             }
             break
 
+
+        case rm_a1h04:
+            with (oSolid)
+            {
+                if (x == 832 && y == 16)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a1m01 || global.event[75] == 1))
+            {
+                instance_create(816,  0, oBlockPBombChain)
+                instance_create(832,  0, oBlockPBombChain)
+                instance_create(848,  0, oBlockPBombChain)
+                instance_create(864,  0, oBlockPBombChain)
+                instance_create(832, 16, oBlockPBombChain)
+                instance_create(848, 16, oBlockPBombChain)
+                instance_create(816, 0, oSolid1)
+                instance_create(864, 0, oSolid1)
+            }
+            else
+            {
+                tile_layer_delete(-111)
+                instance_create(816, 0, oSolid1)
+                instance_create(864, 0, oSolid1)
+            }
+            break
+
+        case rm_a8h01:
+            with (oSolid)
+            {
+                if (x == 6912 && y == 912)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            if (!(oControl.mod_previous_room == rm_a1m01 || global.event[75] == 1))
+            {
+                instance_create(6912, 912, oBlockPBombChain)
+                instance_create(6928, 912, oBlockPBombChain)
+            }
+            break
+
         default:
             break
     }
@@ -671,6 +720,11 @@ if global.experimental
             regentime = -1
     }
     with (oBlockSMissile)
+    {
+        if (shortcutcontrol_ignore == 0)
+            regentime = -1
+    }
+    with (oBlockPBombChain)
     {
         if (shortcutcontrol_ignore == 0)
             regentime = -1

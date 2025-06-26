@@ -1,4 +1,4 @@
-if (!global.saxmode)
+if (!global.experimental)
     instance_destroy()
 targetroom = rm_a1m01
 targetx = 192

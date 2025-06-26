@@ -1,5 +1,7 @@
-if (global.event[176] == 0 && (room == rm_a0h13 || room == rm_a1h04))
+if (global.event[176] == 0 && room == rm_a0h13)
     global.event[176] = 1
+if (global.event[75] == 0 && (room == rm_a1h04 || room == rm_a8h01))
+    global.event[75] = 1
 block = instance_create(x, y, oDestroyedBlock)
 block.type = 6
 block.regentime = -1
