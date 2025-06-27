@@ -2176,5 +2176,19 @@ switch type_event
                 global.startingminors[7] = buffer_read(_buffer, buffer_u8)
                 global.awaitsyncs = 0
                 break
+            case 62:
+                if (global.ingame == 1)
+                {
+                    room_persistent = false
+                    oControl.quitgame = 0
+                    remove_persistent_objects()
+                    sfx_stop_all()
+                    global.ingame = 0
+                    global.darkness = 0
+                    global.newgame = 0
+                    global.revived = 1
+                    room_goto(rm_loading)
+                }
+                break
         }
 }
