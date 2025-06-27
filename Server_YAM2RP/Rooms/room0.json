@@ -1113,6 +1113,20 @@
       "pre_create_code": null,
       "image_speed": 0,
       "image_index": 0
+    },
+    {
+      "x": 192,
+      "y": 0,
+      "object_definition": "oRevive",
+      "instance_id": 100096,
+      "creation_code": null,
+      "scale_x": 1,
+      "scale_y": 1,
+      "color": 4294967295,
+      "rotation": 0,
+      "pre_create_code": null,
+      "image_speed": 0,
+      "image_index": 0
     }
   ],
   "tiles": [],
