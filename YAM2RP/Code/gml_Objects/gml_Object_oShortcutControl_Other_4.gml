@@ -12,6 +12,9 @@ if global.experimental
         shortcutcontrol_ignore = 1
     switch room
     {
+        //
+        // UUM SOHRTCUTS
+        //
         case rm_a0h04d:
             with (oSolid)
             {
@@ -261,6 +264,12 @@ if global.experimental
                     tl2_delete_layer = -500
                     instance_destroy()
                 }
+                if (x == 3648 && y == 1328)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
             }
             if (!(oControl.mod_previous_room == rm_a2m02))
             {
@@ -296,6 +305,10 @@ if global.experimental
                 if tile_exists(mtid)
                     tile_delete(mtid)
             }
+            tile_layer_delete(-130)
+            instance_create(3664, 1312, oSlope1Rock)
+            instance_create(3648, 1328, oSlope1Rock)
+            tile_add(tlRock2NB, 64, 256, 16, 16, 3664, 1312, -100)
             break
 
         case rm_a0h03:
@@ -703,6 +716,183 @@ if global.experimental
                 instance_create(6912, 912, oBlockPBombChain)
                 instance_create(6928, 912, oBlockPBombChain)
             }
+            break
+
+
+        //
+        // DUELS SHORTCUTS
+        //
+        case rm_a0h09:
+            with (oSolid)
+            {
+                if ((x == 176 && y == 496) || (x == 320 && y == 576))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            tile_layer_delete(-130)
+            instance_create(320, 576, oBlockStep)
+            instance_create(320, 544, oBlockMissile)
+            break
+
+        case rm_a0h32:
+            with (oSolid)
+            {
+                if ((x == 96 && y == 832) || (x == 96 && y == 1072))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            tile_layer_delete(-130)
+            blk = instance_create(96, 832, oBlockBomb)
+            blk.regentime = -1
+            break
+
+        case rm_a1h08:
+            with (oSolid)
+            {
+                if (x == 80 && y == 384)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            tile_layer_delete(-130)
+            instance_create(80, 400, oBlockStep)
+            break
+
+        case rm_a2a05:
+            with (oSolid)
+            {
+                if (x == 832 && y == 64)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            instance_create(832, 64, oBlockMissile)
+            break
+
+        case rm_a2a17:
+            with (oSolid)
+            {
+                if ((x == 352 && y == 112) || (x == 320 && y == 160) || (x == 272 && y == 160))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            tile_layer_delete(-130)
+            instance_create(352, 112, oBlockBomb)
+            instance_create(320, 160, oBlockBomb)
+            instance_create(272, 160, oBlockBomb)
+            instance_create(272, 176, oBlockBomb)
+            instance_create(272, 192, oBlockBomb)
+            break
+
+        case rm_a3a11:
+            with (oSolid)
+            {
+                if ((x == 928 && y == 128) || (x == 960 && y == 112))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            tile_layer_delete(-130)
+            instance_create(960, 112, oBlockMissile)
+            instance_create(960, 128, oBlockStep)
+            break
+
+        case rm_a3a12:
+            with (oSolid)
+            {
+                if ((x == 432 && y == 176) || (x == 432 && y == 192))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            tile_layer_delete(-130)
+            instance_create(432, 176, oBlockMissile)
+            instance_create(432, 192, oBlockStep)
+            break
+
+        case rm_a3a13:
+            with (oSolid)
+            {
+                if (x == 240 && y == 400)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            tile_layer_delete(-130)
+            instance_create(240, 400, oBlockMissile)
+            break
+
+        case rm_a3a16:
+            with (oSolid)
+            {
+                if (x == 32 && y == 352)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            tile_layer_delete(105)
+            tile_layer_delete(-130)
+            break
+
+        case rm_a3a22:
+            with (oSolid)
+            {
+                if (x == 304 && y == 368)
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            instance_create(304, 368, oBlockPBomb)
+            instance_create(320, 368, oBlockPBomb)
+            instance_create(304, 384, oBlockPBomb)
+            instance_create(320, 384, oBlockPBomb)
+            instance_create(304, 400, oBlockPBomb)
+            instance_create(320, 400, oBlockPBomb)
+            break
+
+        case rm_a5b15:
+            with (oSolid)
+            {
+                if ((x == 704 && y == 144) || (x == 1008 && y == 192))
+                {
+                    tl1_delete_layer = -500
+                    tl2_delete_layer = -500
+                    instance_destroy()
+                }
+            }
+            tile_layer_delete(-129)
+            tile_layer_delete(-130)
+            instance_create(704, 144, oBlockBomb)
+            instance_create(720, 144, oBlockBomb)
+            instance_create(704, 160, oBlockBomb)
+            instance_create(720, 160, oBlockBomb)
+            instance_create(704, 176, oBlockBomb)
+            instance_create(720, 176, oBlockBomb)
+            instance_create(1008, 192, oBlockMissile)
+            instance_create(1008, 208, oBlockStep)
             break
 
         default:
