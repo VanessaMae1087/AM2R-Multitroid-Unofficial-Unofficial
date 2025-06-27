@@ -51,6 +51,12 @@ sItemUnknownSpazerBeam 0 15 15 0 false false false AxisAlignedRect 0 16
 sItemUnknownPlasmaBeam 0 15 15 0 false false false AxisAlignedRect 0 16
 sItemUnknownBomb 0 15 15 0 false false false AxisAlignedRect 0 16
 sItemUnknownSpiderBall 0 15 15 0 false false false AxisAlignedRect 0 16
+sItemUnknownJumpBall 0 15 15 0 false false false AxisAlignedRect 0 16
+sItemUnknownVariaSuit 0 15 15 0 false false false AxisAlignedRect 0 16
+sItemUnknownSpaceJump 0 15 15 0 false false false AxisAlignedRect 0 16
+sItemUnknownHijump 0 15 15 0 false false false AxisAlignedRect 0 16
+sItemUnknownSpeedBooster 0 15 15 0 false false false AxisAlignedRect 0 16
+sItemUnknownScrewAttack 0 15 15 0 false false false AxisAlignedRect 0 16
 
 # Level Editor
 sBlockSpectator 0 15 15 0 false false false AxisAlignedRect 0 0
