@@ -1,0 +1,9 @@
+targetroom = rm_a3b11
+targetx = 296
+targety = 176
+height = 64
+direction = 180
+camstartx = 224
+camstarty = 160
+transitionx = 308
+transitiony = 136

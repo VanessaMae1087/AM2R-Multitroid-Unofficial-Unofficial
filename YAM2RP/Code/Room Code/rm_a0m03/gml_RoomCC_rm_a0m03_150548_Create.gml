@@ -1,0 +1,9 @@
+targetroom = rm_a4h09
+targetx = 608
+targety = 160
+height = 48
+direction = 180
+camstartx = 480
+camstarty = 144
+transitionx = 300
+transitiony = 160
