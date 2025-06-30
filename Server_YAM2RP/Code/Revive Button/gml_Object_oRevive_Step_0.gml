@@ -3,7 +3,7 @@ if instance_exists(oServer)
 {
     if (ds_list_size(oServer.idList) > 0)
     {
-        if (!instance_exists(oSAXModeButton))
+        if (!instance_exists(oReviveButton))
         {
             for (i = 0; i < ds_list_size(oServer.idList); i++)
             {
@@ -16,7 +16,7 @@ if instance_exists(oServer)
                     show_debug_message(string(arr[0, 0]))
                     arrID = arr[0, 0]
                     arrSocket = arr[0, 1]
-                    button = instance_create(374, (207 + (i + 1) * 30), oSAXModeButton)
+                    button = instance_create(290, (207 + ((i + 1) * 30)), oReviveButton)
                     button.ID = arrID
                     button.socket = arrSocket
                 }
@@ -32,30 +32,19 @@ if instance_exists(oServer)
                     arrID = arr[0, 0]
                     arrSocket = arr[0, 1]
                     found = 0
-                    with (oSAXModeButton)
+                    with (oReviveButton)
                     {
                         if (arrID == ID)
                             found = 1
                     }
                     if (!found)
                     {
-                        button = instance_create(374, (207 + (i + 1) * 30), oSAXModeButton)
+                        button = instance_create(290, (207 + ((i + 1) * 30)), oReviveButton)
                         button.ID = arrID
                         button.socket = arrSocket
                     }
                 }
             }
         }
-    }
-}
-if (saxmodePrev != global.saxmode)
-{
-    if (saxmodePrev && (!global.saxmode))
-        load_config()
-    saxmodePrev = global.saxmode
-    if instance_exists(oServer)
-    {
-        with (oServer)
-            event_user(0)
     }
 }
