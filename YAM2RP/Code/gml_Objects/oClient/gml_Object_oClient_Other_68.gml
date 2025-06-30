@@ -1765,9 +1765,9 @@ switch type_event
                     }
                     else if (receivedItem == 0 && global.item[i] == 1)
                         {
-                        if (((!global.spectator) || global.sax) && (string_count("rm_a", room_get_name(room)) > 0 || room == rm_transition || room == rm_subscreen))
+                        if (((!global.spectator) || global.sax) && (!is_on_menu()))
                             resend = 1
-                        else
+                        else if (global.saxmode)
                         {
                             global.item[i] = receivedItem
                             global.itemPrev[i] = global.item[i]
