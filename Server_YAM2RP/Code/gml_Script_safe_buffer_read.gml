@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+var buffer, type, currentPos, bufferSize, newPos, ip;
+=======
 var buffer, type, currentPos, bufferSize, newPos, client_id, i, arrList;
+>>>>>>> server-staging
 buffer = argument0
 type = argument1
 currentPos = buffer_tell(buffer)

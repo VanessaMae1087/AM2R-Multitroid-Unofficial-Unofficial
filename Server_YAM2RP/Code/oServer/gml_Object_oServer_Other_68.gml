@@ -1,4 +1,4 @@
-var type_event, ip, findIP, ban, size, type, alignment, bufferSize, findsocket, i, arrList, socket, socketID, ID, arr, seed, findID, _buffer, bufferSizePacket, clientID, sax, sockets, preferredID, f, arrID, arrSocket, clientX, clientY, clientSprite, clientImage, clientA1, clientA1X, clientA1Y, clientA2, clientA2X, clientA2Y, clientA2A, clientMirror, clientArmmsl, clientRoom, clientName, clientBlend, clientFXTimer, clientRoomPrev, clientState, clientSAX, clientSpeedboost, clientSJBall, clientSJDir, clientSpeedCharge, clientPlayerHealth, clientSpectator, clientInvincible, clientMosaic, clientReform, clientVisible, list, clientMapX, clientMapY, spectator, findSamus, event, findDead, playerHealth, missiles, smissiles, pbombs, ping, realPing, spacejump, screwattack, spiderball, speedbooster, bomb, ibeam, wbeam, pbeam, sbeam, cbeam, tempSocket, checkID, checkX, checkY, checkBeam, checkMissile, checkDamage, checkFreeze, lag, lagPositions, timeToCheck, g, lagPosArr, lagPosTime, lagPosID, lagPosX, lagPosY, packetID, name, lobbyLocked, _queenHealth, phase, state, monstersLeft, monstersArea, item, itemArr, v, metdead, metdeadArr, eventArr, tileCount, tileX, tileY, tileData, itemstaken, maxmissiles, maxsmissiles, maxpbombs, maxhealth, etanks, mtanks, stanks, ptanks, gametime, findTime, findReset, dir, sprX, sprY, charge, bombX, bombY, currentWeapon, missileX, missileY, velX, velY, icemissiles, pbombX, pbombY, playerhealth, syncDiff, syncELM, otherAbsorbRelativeX, otherAbsorbRelativeY, otherAbsorbSpriteHeight, saxmode, findIDSamus, findIDSAX, mapposx, mapposy, mirror, sentRoom, playerX, playerY, receivedItem, receivedEvent, receivedMetdead, j, receiveddmap, msg, splitBy, slot, splits, str2, currStr, wrongVersion, playerState, combatState, checkDir, clientSBall, canScrew, compressedList, compressedMap, findKickID, bfr, client_id;
+var type_event, ip, findIP, ban, size, type, alignment, bufferSize, findsocket, i, arrList, socket, socketID, ID, arr, seed, findID, _buffer, bufferSizePacket, clientID, sax, sockets, preferredID, f, arrID, arrSocket, clientX, clientY, clientSprite, clientImage, clientA1, clientA1X, clientA1Y, clientA2, clientA2X, clientA2Y, clientA2A, clientMirror, clientArmmsl, clientRoom, clientName, clientBlend, clientFXTimer, clientRoomPrev, clientState, clientSAX, clientSpeedboost, clientSJBall, clientSJDir, clientSpeedCharge, clientPlayerHealth, clientSpectator, clientInvincible, clientMosaic, clientReform, clientVisible, list, clientMapX, clientMapY, spectator, findSamus, event, findDead, playerHealth, missiles, smissiles, pbombs, ping, realPing, spacejump, screwattack, spiderball, speedbooster, bomb, ibeam, wbeam, pbeam, sbeam, cbeam, tempSocket, checkID, checkX, checkY, checkBeam, checkMissile, checkDamage, checkFreeze, lag, lagPositions, timeToCheck, g, lagPosArr, lagPosTime, lagPosID, lagPosX, lagPosY, packetID, name, lobbyLocked, _queenHealth, phase, state, monstersLeft, monstersArea, item, itemArr, v, metdead, metdeadArr, eventArr, tileCount, tileX, tileY, tileData, itemstaken, maxmissiles, maxsmissiles, maxpbombs, maxhealth, etanks, mtanks, stanks, ptanks, gametime, findTime, findReset, dir, sprX, sprY, charge, bombX, bombY, currentWeapon, missileX, missileY, velX, velY, icemissiles, pbombX, pbombY, playerhealth, syncDiff, syncELM, otherAbsorbRelativeX, otherAbsorbRelativeY, otherAbsorbSpriteHeight, saxmode, findIDSamus, findIDSAX, mapposx, mapposy, mirror, sentRoom, playerX, playerY, receivedItem, receivedEvent, receivedMetdead, j, receiveddmap, msg, splitBy, slot, splits, str2, currStr, wrongVersion, playerState, combatState, checkDir, clientSBall, canScrew, compressedList, compressedMap, findKickID, bfr, client_id, evnt, savBfr;
 type_event = ds_map_find_value(async_load, "type")
 ip = ds_map_find_value(async_load, "ip")
 findIP = ds_list_find_index(banList, ip)
@@ -2808,9 +2808,42 @@ switch type_event
                 network_send_packet(socket, bfr, buffer_tell(bfr))
                 buffer_delete(bfr)
                 break
+
+            case 71:
+                sockets = ds_list_size(playerList)
+                global.saveEndChecker = safe_buffer_read(_buffer, buffer_u8)
+                if global.bufferOverflow
+                    exit
+                if (global.saveEndChecker == 1)
+                {
+                    if (ds_list_size(samusList) > 0 && ds_list_size(deadList) > 0)
+                    {
+                        if (ds_list_size(samusList) == ds_list_size(deadList) || ds_list_size(deadList) > ds_list_size(samusList))
+                        {
+                            evnt = global.event[308]
+                            evnt++
+                            if (global.event[308] < 4)
+                                global.event[308] = 4
+                            ds_list_clear(deadList)
+                        }
+                    }
+                    global.saveEndChecker = 2
+                    savBfr = buffer_create(1024, buffer_grow, 1)
+                    buffer_seek(savBfr, buffer_seek_start, 0)
+                    buffer_write(savBfr, buffer_s32, 18)
+                    buffer_write(savBfr, buffer_u8, 71)
+                    buffer_write(savBfr, buffer_u8, global.saveEndChecker)
+                    buffer_poke(savBfr, 0, buffer_s32, (buffer_tell(savBfr) - 4))
+                    for (i = 0; i < sockets; i++)
+                        network_send_packet(ds_list_find_value(playerList, i), savBfr, buffer_tell(savBfr))
+                    buffer_delete(savBfr)
+
+                }
+                break
         }
 
         break
+
 }
 
 if (ds_map_exists(posMap, banSocket) && (!posMapModified))

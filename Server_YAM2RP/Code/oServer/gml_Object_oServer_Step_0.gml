@@ -80,17 +80,6 @@ for (a = 0; a < ds_list_size(deadList); a++)
     if (!match)
         ds_list_delete(deadList, a)
 }
-if (ds_list_size(samusList) > 0 && ds_list_size(deadList) > 0)
-{
-    if (ds_list_size(samusList) == ds_list_size(deadList) || ds_list_size(deadList) > ds_list_size(samusList))
-    {
-        evnt = global.event[308]
-        evnt++
-        if (global.event[308] < 4)
-            global.event[308] = evnt
-        ds_list_clear(deadList)
-    }
-}
 if (ds_list_size(playerList) > 0 && ds_list_size(resetList) > 0)
 {
     if (ds_list_size(playerList) == ds_list_size(resetList) || ds_list_size(resetList) > ds_list_size(playerList))
