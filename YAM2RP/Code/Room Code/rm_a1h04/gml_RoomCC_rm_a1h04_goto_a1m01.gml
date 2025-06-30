@@ -1,4 +1,4 @@
-if (!global.experimental)
+if (!global.shortcuts)
     instance_destroy()
 targetroom = rm_a1m01
 targetx = 144

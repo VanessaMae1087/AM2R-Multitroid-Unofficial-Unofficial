@@ -1,6 +1,6 @@
 var mtid, blk;
 
-if global.experimental
+if global.shortcuts
 {
     with (oBlockScrew)
         shortcutcontrol_ignore = 1

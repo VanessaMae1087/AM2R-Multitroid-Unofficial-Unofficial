@@ -1,4 +1,4 @@
-if (instance_exists(oClient) && global.experimental)
+if (instance_exists(oClient) && global.shortcuts)
 {
     if (!((oControl.mod_previous_room == 403 && global.stanks == 0)))
     {
