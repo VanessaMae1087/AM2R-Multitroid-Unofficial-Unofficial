@@ -1,0 +1,14 @@
+# automatically determine if files are text or binary and normalize their line endings if text
+*       text=auto
+
+# explicitly declare file types as either text or binary for posterity
+*.gml   text
+*.txt   text
+*.md    text
+*.ini   text
+*.json  text
+
+*.gif   binary
+*.png   binary
+*.ldtk  binary
+*.ldtkl binary
