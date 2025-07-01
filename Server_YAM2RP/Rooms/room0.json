@@ -613,7 +613,7 @@
     {
       "x": 1248,
       "y": 496,
-      "object_definition": "oExperimentalToggle",
+      "object_definition": "oShortcutsToggle",
       "instance_id": 100060,
       "creation_code": null,
       "scale_x": 1,

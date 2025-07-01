@@ -1,20 +1,19 @@
-if (global.saxmode)
-    ini_open(working_directory + "\settings_sax.ini");
+if global.saxmode
+    ini_open(working_directory + "\settings_sax.ini")
 else
-    ini_open(working_directory + "\settings_coop.ini");
-
-global.healthSync = ini_read_real("Settings", "HealthSync", 0);
-global.ammoSync = ini_read_real("Settings", "AmmoSync", 0);
-global.itemSync = ini_read_real("Settings", "CollectedItemSync", 1);
-global.itemToggleSync = ini_read_real("Settings", "ItemToggleSync", 0);
-global.metroidSync = ini_read_real("Settings", "MetroidSync", 1);
-global.eventSync = ini_read_real("Settings", "EventSync", 1);
-global.mapSync = ini_read_real("Settings", "MapSync", 1);
-global.mapPlayerIconSync = ini_read_real("Settings", "PlayerMapLocationSync", 1);
-global.experimental = ini_read_real("Settings", "Experimental", 0);
-global.doomtime = ini_read_real("Settings", "StartingDoomsdayTime", 45);
-global.MetCount = ini_read_real("Settings", "MetroidsToA6", 36);
-global.rando = ini_read_real("Settings", "RandomizerMode", 1);
-oServer.syncedDifficulty = ini_read_real("Settings", "Difficulty", 1);
-oServer.syncedELM = ini_read_real("Settings", "ExtremeLabMetroids", 0);
-ini_close();
+    ini_open(working_directory + "\settings_coop.ini")
+global.healthSync = ini_read_real("Settings", "HealthSync", 0)
+global.ammoSync = ini_read_real("Settings", "AmmoSync", 0)
+global.itemSync = ini_read_real("Settings", "CollectedItemSync", 1)
+global.itemToggleSync = ini_read_real("Settings", "ItemToggleSync", 0)
+global.metroidSync = ini_read_real("Settings", "MetroidSync", 1)
+global.eventSync = ini_read_real("Settings", "EventSync", 1)
+global.mapSync = ini_read_real("Settings", "MapSync", 1)
+global.mapPlayerIconSync = ini_read_real("Settings", "PlayerMapLocationSync", 1)
+global.shortcuts = ini_read_real("Settings", "SAXModeShortcuts", global.saxmode)
+global.doomtime = ini_read_real("Settings", "StartingDoomsdayTime", 45)
+global.MetCount = ini_read_real("Settings", "MetroidsToA6", 36)
+global.rando = ini_read_real("Settings", "RandomizerMode", 1)
+oServer.syncedDifficulty = ini_read_real("Settings", "Difficulty", 1)
+oServer.syncedELM = ini_read_real("Settings", "ExtremeLabMetroids", 0)
+ini_close()

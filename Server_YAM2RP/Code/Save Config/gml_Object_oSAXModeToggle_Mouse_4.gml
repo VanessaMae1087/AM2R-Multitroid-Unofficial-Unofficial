@@ -16,7 +16,7 @@ if (instance_exists(oServer))
     ini_write_real("Settings", "EventSync", global.eventSync);
     ini_write_real("Settings", "MapSync", global.mapSync);
     ini_write_real("Settings", "PlayerMapLocationSync", global.mapPlayerIconSync);
-    ini_write_real("Settings", "Experimental", global.experimental);
+    ini_write_real("Settings", "SAXModeShortcuts", global.shortcuts)
     ini_write_real("Settings", "StartingDoomsdayTime", global.doomtime);
     ini_write_real("Settings", "MetroidsToA6", global.MetCount);
     ini_write_real("Settings", "RandomizerMode", global.rando);
