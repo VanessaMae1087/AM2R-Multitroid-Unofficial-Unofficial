@@ -8,7 +8,6 @@ if (syncID == 0 || syncID == 8 || syncID == 12)
 // increment it and reset it to 0 if it's over 2
 global.itemsyncs[syncID] += 1
 global.itemsyncs[syncID] %= 3
-image_index = global.itemsyncs[syncID]
 // get ready to write!!!
 sockets = ds_list_size(oServer.playerList)
 bfr = buffer_create(1024, buffer_grow, 1)

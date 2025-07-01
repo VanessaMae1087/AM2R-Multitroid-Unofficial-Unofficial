@@ -1,4 +1,5 @@
-draw_self()
+if (!global.syncpage)
+    draw_self()
 if (alarm[0] > 0)
 {
     draw_set_halign(fa_right)
