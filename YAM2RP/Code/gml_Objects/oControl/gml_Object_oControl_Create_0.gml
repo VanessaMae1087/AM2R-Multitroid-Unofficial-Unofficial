@@ -519,3 +519,4 @@ global.grayMap = 0
 global.canScrewMulti = 0
 global.awaitsyncs = 0
 global.saveEndChecker = 0
+global.revived = 0
