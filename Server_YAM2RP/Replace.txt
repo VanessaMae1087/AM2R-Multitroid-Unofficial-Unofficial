@@ -1,0 +1,7 @@
+# This file designates assets in the base file that should be renamed in the result file. This step takes place before anything else is imported
+# A '#' at the start of a line signifies a comment
+# Correct syntax is '[OriginalAssetName] -> [ReplacementAssetName]'
+# e.g oVanillaObject -> oModdedObject
+
+# experimental to shortcuts
+oExperimentalToggle -> oShortcutsToggle

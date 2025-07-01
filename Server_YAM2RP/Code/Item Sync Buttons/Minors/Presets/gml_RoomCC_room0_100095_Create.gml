@@ -1,0 +1,9 @@
+text = "Fusion: Everything"
+values[0] = 10
+values[1] = -1
+values[2] = 44
+values[3] = -1
+values[4] = 10
+values[5] = -1
+values[6] = 10
+values[7] = -1
