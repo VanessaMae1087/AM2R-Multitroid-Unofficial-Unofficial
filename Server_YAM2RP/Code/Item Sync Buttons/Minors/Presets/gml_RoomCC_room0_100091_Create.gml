@@ -1,4 +1,4 @@
-text = "SA-X: Reduced kit"
+text = "SA-X: Base Kit"
 values[0] = -1
 values[1] = 4
 values[2] = -1

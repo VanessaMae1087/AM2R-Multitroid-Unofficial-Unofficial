@@ -1,4 +1,4 @@
-text = "SA-X: Full kit"
+text = "SA-X: Maxed Kit"
 values[0] = -1
 values[1] = 10
 values[2] = -1
