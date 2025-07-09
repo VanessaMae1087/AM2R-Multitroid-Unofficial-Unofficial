@@ -24,7 +24,7 @@
     - Kicked - Buffer Overflow
     - Kicked from Server (if the server provides an unknown reason for being kicked)
 
-**F4 stops teh currently playing music**
+**F4 stops the currently playing music**
   - It likes to get stuck playing because oMusicV2 is evil.
 
 **Septoggs are now killable!**
@@ -50,9 +50,6 @@
 **Mebits die in one ice missile**
   - Previously it would take one missile to freeze it, and then one or two more to kill it. It meant farming them wasn't an option since you'd at best not gain or lose missiles, if every drop was a green X.
 
-**Late game speed shortcuts have a maze of shot blocks so you cannot hide in them as a Core-X**
-  - The ability to escape for free as an SA-X by hiding in speed blocks was a sour spot for players. In 1.9, the A6 and beyond speed blocks have significantly slower paths made of shot blocks to greatly reduce the effectiveness of hiding in them.
-
 ### Spectator
 **All rooms are always fully illuminated**
   - Previously, if a spectator teleported out of a dark room, it was very difficult to set the light level to normal again. Thank you BastionB56 for coding this!
@@ -65,26 +62,75 @@ Note: All shortcuts added by 1.9 can be toggled in the server, so you can have t
 
 **Main Caves**
   - Added a one-way pipe above the Entrance to Area 3, you can open it with a missile!
-  ![good morning steele](./DulesShortcutImages/a0h09.gif)
 
+    ![good morning steele](./DulesShortcutImages/a0h09.gif)
+  - Added a hiding spot in the A3 entrance maze, you cannot open it with a missile!
+
+    ![good morning variable](./DulesShortcutImages/a0h10.gif)
   - Added a screw-locked shortcut from the U-bend room near First Alpha to the A2 EMP Ball room.
-    - (possible example image pending)
+  - Added a speed-locked shortcut from the large drop near A4 to the Alpha Metroid in Mines.
   - Added a screw-locked shortcut between the cave with the shinespark item and the top right Gamma metroid.
-   
+
+**Golden Temple - A1**
+  - Added a power bomb-locked elevator between the A1 Gawron tunnel and the right side of GFS Thoth.
+
+    ![](./NonDulesShortcutImages/New_Piskel.png)  
+    Thanks to Haihaa for the example image.
+  - Added a crumble block shortcut from the Spiderball cave to inside A1.
+
+    ![](./DulesShortcutImages/a1h08.gif)
+
 **Hydro Station - A2**
   - Modified the layout of the breeding grounds missile room to allow for an exit through the Speed Booster entrance.
+  - Added a speed-locked shortcut from A2 exterior to the Main Caves crossroads.
+  - Added a screw-locked shortcut between the deepest Alpha in BG2 and the A4 exterior top-left.
+  - Added a super missile-locked shortcut from the BG2 crossroads to the top of the Omega Nest shaft.
+  - Added a missile-locked shortcut from A2 interior's top Alpha to the hole in the wall.
+
+    ![](./DulesShortcutImages/a2a05.gif)
+  - Added a fadetile where the A2 jumpscare Alpha emerges from.
+
+    ![](./DulesShortcutImages/a2h01.gif)
+  - Remodellers adjusted the A2 entrance area to be ADA compliant with a convenient slope.
+
+    ![](./DulesShortcutImages/a2h02.gif)
 
 **Industrial Complex - A3**
   - Added a speed-locked shortcut from deep A3 "the one I never want to hear about again" to the BG3 room before the final Gamma metroid.
   - Added a screw-locked pipe between deep A3 "the one I never want to hear about again" and the A1 EMP Ball room.
-   
+  - Added a screw-locked pipe between BG3 and the A4 exterior top-right.
+  - Added one-way missile shortcuts to not require players to build speed in combat.
+
+    ![](./DulesShortcutImages/a3a11.gif)
+    ![](./DulesShortcutImages/a3a12.gif)
+  - Added a missile shortcut into the deep A3 morph tunnels.
+
+    ![](./DulesShortcutImages/a3a13.gif)
+  - Added an alternate path out the bottom of the deep A3 morph tunnels.
+
+    ![](./DulesShortcutImages/a3a16.gif)
+  - Added power bomb blocks to allow players to skip Skippy.
+
+    ![](./DulesShortcutImages/a3a22.gif)
+
+**Distribution Center - A5**
+  - Added a one-way missile shortcut to not require players to build speed in combat.
+
+    ![](./DulesShortcutImages/a5b15.gif)
+
 **Deep Caves - A6**
+  - Added a side path through the chokepoint room with the Meboid.
+
+    ![](./DulesShortcutImages/a0h32.gif)
   - Added a path of shot blocks through the speed shortcut under the first Deep Caves save station.
     - This prevents an exploit where SA-X Core-X could go into the shortcut and hide in the speed blocks for an easy escape.
+  - Added a screw-locked pipe between the room at the right side of the A6 loop and the room to the right of the shinespark tunnel in Omega Nest.
 
 **Omega Nest - A7**
   - Added a path of shot blocks through the speed shortcut in the vertical shaft leading to the save station.
     - This prevents an exploit where SA-X Core-X could go into the shortcut and hide in the speed blocks for an easy escape.
+  - Added a bomb-locked shortcut between the top and bottom left Omega leadup rooms.
+  - Added a power bomb-locked shortcut from the middle Omega to the A4 top-left Gamma.
 
 ## Bug fixes
   - Changed the config location to prevent issues with new settings.
