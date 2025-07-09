@@ -262,3 +262,10 @@ if (global.saveStationCooldown > 0)
     global.saveStationCooldown--
 if (!instance_exists(oClient))
     global.shortcuts = 0
+// moved and slightly rewritten lobbyLock logic for the countdown.
+if !global.lobbyLocked 
+    global.countdowncontrol = 180
+else
+    global.countdowncontrol = max(global.countdowncontrol - 1, -60)
+if global.countdowncontrol == 0
+    sfx_play(sndSaxCountGO) //play sound regardless of if ingametime is enabled

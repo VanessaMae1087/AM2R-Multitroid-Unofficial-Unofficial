@@ -149,3 +149,4 @@ Note: All shortcuts added by 1.9 can be toggled in the server, so you can have t
   - Fixed the kick and ban buttons to properly handle connections coming from the same IP.
   - Improved fadetiles for developers (Thanks to TheyCallMeDangerIMeanXander for this).
   - Add background tiles in the surface rooms at night.
+  - Having the in-game timer disabled no longer breaks pausing logic.
