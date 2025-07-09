@@ -1,4 +1,4 @@
 targetroom = rm_a3m01
-targetx = 352
-targety = 112
+targetx = 360
+targety = 128
 direction = 0
