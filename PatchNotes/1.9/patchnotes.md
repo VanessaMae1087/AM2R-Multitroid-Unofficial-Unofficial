@@ -27,6 +27,16 @@
 **F4 stops the currently playing music**
   - It likes to get stuck playing because oMusicV2 is evil.
 
+**Server themes**
+  - Instead of just light gray, you can now also have a dark bluish gray and black background.
+
+**Server settings get saved per-mode between restarts**
+  - When closing the server or switching mode, it will save the settings and use those on startup.
+
+**Turned Experimental settings into its own menu**
+  - After itemsyncs were added, the Experimetnal toggle had no use, so it got replaced with the shortcut toggle. But we started having ideas of things we wanted to try, so instead of a toggle we gave it a full menu where individual settings could be edited.
+  - Currently, the only setting in there is teh ability to disable rollback gits, but more will be added in the future!
+
 **Septoggs are now killable!**
   - Someone tell M3D
 
@@ -150,3 +160,4 @@ Note: All shortcuts added by 1.9 can be toggled in the server, so you can have t
   - Improved fadetiles for developers (Thanks to TheyCallMeDangerIMeanXander for this).
   - Add background tiles in the surface rooms at night.
   - Having the in-game timer disabled no longer breaks pausing logic.
+  - The SA-X Mode round timer no longer ticks during the unpause countdown.
