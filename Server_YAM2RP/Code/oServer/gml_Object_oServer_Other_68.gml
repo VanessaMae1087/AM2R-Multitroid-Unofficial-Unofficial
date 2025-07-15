@@ -889,7 +889,7 @@ switch type_event
                 lag = ds_map_find_value(map, socket)
                 lagPositions = ds_map_find_value(posMap, tempSocket)
                 timeToCheck = current_time
-                if (lag != undefined && lag <= 750 && lagPositions != undefined)
+                if (lag != undefined && lag <= 750 && lagPositions != undefined && global.exp_rollbackhits)
                 {
                     buffer_delete(buffer)
                     size = 1024

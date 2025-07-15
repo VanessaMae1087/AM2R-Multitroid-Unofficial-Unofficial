@@ -1,9 +1,9 @@
 {
-  "name": "oBackground",
-  "sprite": "sBackground",
+  "name": "oEXP_RollbackHits",
+  "sprite": "sOption",
   "visible": true,
   "solid": false,
-  "depth": 50,
+  "depth": -20,
   "persistent": false,
   "parent_id": null,
   "texture_mask_id": null,
@@ -20,6 +20,35 @@
   "kinematic": false,
   "physics_vertices": [],
   "events": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "event_subtype": 4,
+        "actions": [
+          {
+            "lib_id": 0,
+            "id": 0,
+            "kind": 0,
+            "use_relative": false,
+            "is_question": false,
+            "use_apply_to": false,
+            "exe_type": 0,
+            "action_name": null,
+            "code_id": "gml_Object_oEXP_RollbackHits_Mouse_4",
+            "argument_count": 0,
+            "who": 0,
+            "relative": false,
+            "is_not": false
+          }
+        ]
+      }
+    ],
+    [],
     [
       {
         "event_subtype": 0,
@@ -33,7 +62,7 @@
             "use_apply_to": false,
             "exe_type": 0,
             "action_name": null,
-            "code_id": "gml_Object_oBackground_Create_0",
+            "code_id": "gml_Object_oEXP_RollbackHits_Draw_0",
             "argument_count": 0,
             "who": 0,
             "relative": false,
@@ -42,35 +71,6 @@
         ]
       }
     ],
-    [],
-    [],
-    [
-      {
-        "event_subtype": 2,
-        "actions": [
-          {
-            "lib_id": 0,
-            "id": 0,
-            "kind": 0,
-            "use_relative": false,
-            "is_question": false,
-            "use_apply_to": false,
-            "exe_type": 0,
-            "action_name": null,
-            "code_id": "gml_Object_oBackground_Step_0",
-            "argument_count": 0,
-            "who": 0,
-            "relative": false,
-            "is_not": false
-          }
-        ]
-      }
-    ],
-    [],
-    [],
-    [],
-    [],
-    [],
     [],
     [],
     [],

@@ -1,9 +1,9 @@
 {
-  "name": "oBackground",
-  "sprite": "sBackground",
+  "name": "oExperimentalPage",
+  "sprite": "sPages",
   "visible": true,
   "solid": false,
-  "depth": 50,
+  "depth": -20,
   "persistent": false,
   "parent_id": null,
   "texture_mask_id": null,
@@ -33,7 +33,7 @@
             "use_apply_to": false,
             "exe_type": 0,
             "action_name": null,
-            "code_id": "gml_Object_oBackground_Create_0",
+            "code_id": "gml_Object_oExperimentalPage_Create_0",
             "argument_count": 0,
             "who": 0,
             "relative": false,
@@ -44,9 +44,12 @@
     ],
     [],
     [],
+    [],
+    [],
+    [],
     [
       {
-        "event_subtype": 2,
+        "event_subtype": 4,
         "actions": [
           {
             "lib_id": 0,
@@ -57,7 +60,7 @@
             "use_apply_to": false,
             "exe_type": 0,
             "action_name": null,
-            "code_id": "gml_Object_oBackground_Step_0",
+            "code_id": "gml_Object_oExperimentalPage_Mouse_4",
             "argument_count": 0,
             "who": 0,
             "relative": false,
@@ -67,10 +70,28 @@
       }
     ],
     [],
-    [],
-    [],
-    [],
-    [],
+    [
+      {
+        "event_subtype": 0,
+        "actions": [
+          {
+            "lib_id": 0,
+            "id": 0,
+            "kind": 0,
+            "use_relative": false,
+            "is_question": false,
+            "use_apply_to": false,
+            "exe_type": 0,
+            "action_name": null,
+            "code_id": "gml_Object_oExperimentalPage_Draw_0",
+            "argument_count": 0,
+            "who": 0,
+            "relative": false,
+            "is_not": false
+          }
+        ]
+      }
+    ],
     [],
     [],
     [],
