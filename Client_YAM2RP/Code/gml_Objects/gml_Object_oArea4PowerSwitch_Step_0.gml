@@ -30,8 +30,11 @@ if (state == 1)
         global.darkness = 0
         with (oLightEngine)
             event_user(2)
-        with (127917)
-            lock = 0
+        with (oDoor)
+        {
+            if (x == 616 && y == 80)
+                lock = 0
+        }
         with (oA4PowerBG)
             event_user(0)
         mus_change(musArea4A)
