@@ -844,7 +844,7 @@ if global.shortcuts
         case rm_a3a16:
             with (oSolid)
             {
-                if (x == 32 && y == 352)
+                if ((x == 32 && y == 352) || (x == 272 && y == 704)|| (x == 240 && y == 784))
                 {
                     tl1_delete_layer = -500
                     tl2_delete_layer = -500
@@ -853,6 +853,7 @@ if global.shortcuts
             }
             tile_layer_delete(105)
             tile_layer_delete(-130)
+            instance_create(240, 784, oBlockSMissile)
             break
 
         case rm_a3a22:
