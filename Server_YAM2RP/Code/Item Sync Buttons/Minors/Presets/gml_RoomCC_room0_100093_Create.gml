@@ -1,9 +1,0 @@
-text = "SA-X: Minimal Kit"
-values[0] = -1
-values[1] = 2
-values[2] = -1
-values[3] = 4
-values[4] = -1
-values[5] = 0
-values[6] = -1
-values[7] = 1

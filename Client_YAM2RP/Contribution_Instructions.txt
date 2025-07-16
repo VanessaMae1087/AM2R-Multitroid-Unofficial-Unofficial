@@ -6,8 +6,8 @@ To contribute to a Repository with YAM2RP you will need 3 things:
 
 YAM2RP's instructions are available on it's Github in README.MD
 
-The Base Data.win we use to develop is from the 1.8.1U Profile. Do not save changes to the data.win itself, or you will need to obtain another data.win.
-The only legitimate way to obtain a data.win for 1.8.1U is to patch the 1.1 version using the 1.8.1U patch, preferably with the AM2RLauncher.
+The Base Data.win we use to develop is from the 1.9.0 Profile. Do not save changes to the data.win itself, or you will need to obtain another data.win.
+The only legitimate way to obtain a data.win for 1.9.0 is to patch the 1.1 version using the 1.9.0 patch, preferably with the AM2RLauncher.
 
 PLEASE ONLY PUT CHANGED FILES IN THE YAM2RP REPOSITORY
 TILESETS MUST BE PLACED IN BACKGROUNDS FOLDER FOUND IN "GRAPHICS"

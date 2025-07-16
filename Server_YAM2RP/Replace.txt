@@ -2,6 +2,3 @@
 # A '#' at the start of a line signifies a comment
 # Correct syntax is '[OriginalAssetName] -> [ReplacementAssetName]'
 # e.g oVanillaObject -> oModdedObject
-
-# experimental to shortcuts
-oExperimentalToggle -> oShortcutsToggle

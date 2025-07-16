@@ -1,9 +1,0 @@
-targetroom = rm_a6m03
-targetx = 352
-targety = 16
-height = 16
-direction = 270
-camstartx = 360
-camstarty = 120
-transitionx = 160
-transitiony = 4

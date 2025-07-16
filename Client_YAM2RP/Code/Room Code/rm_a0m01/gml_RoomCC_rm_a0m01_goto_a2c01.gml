@@ -1,9 +1,0 @@
-targetroom = rm_a2c01
-direction = 0
-height = 48
-targetx = 16
-targety = 192
-camstartx = 128
-camstarty = 176
-transitionx = 4
-transitiony = 134

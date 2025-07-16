@@ -1,2 +1,0 @@
-minortype = 6
-

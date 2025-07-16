@@ -1,9 +1,0 @@
-targetroom = rm_a6a10
-targetx = 600
-targety = 624
-height = 48
-direction = 180
-camstartx = 480
-camstarty = 608
-transitionx = 292 + oControl.widescreen_space / 2 - 48
-transitiony = 136

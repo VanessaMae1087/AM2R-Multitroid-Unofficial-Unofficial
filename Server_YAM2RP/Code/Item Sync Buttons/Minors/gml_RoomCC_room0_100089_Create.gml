@@ -1,1 +1,0 @@
-minortype = 4

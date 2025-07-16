@@ -7,8 +7,9 @@
 *.md    text
 *.ini   text
 *.json  text
+# internally these are json files
+*.ldtk  text
+*.ldtkl text
 
 *.gif   binary
 *.png   binary
-*.ldtk  binary
-*.ldtkl binary

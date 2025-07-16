@@ -1,9 +1,0 @@
-text = "SA-X: Maxed Kit"
-values[0] = -1
-values[1] = 10
-values[2] = -1
-values[3] = 44
-values[4] = -1
-values[5] = 10
-values[6] = -1
-values[7] = 10

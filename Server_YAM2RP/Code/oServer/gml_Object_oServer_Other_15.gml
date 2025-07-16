@@ -1,7 +1,0 @@
-buffer_delete(buffer)
-buffer = buffer_create(1024, buffer_grow, 1)
-buffer_seek(buffer, buffer_seek_start, 0)
-buffer_write(buffer, buffer_s32, 1)
-buffer_write(buffer, buffer_u8, 62)
-buffer_poke(buffer, 0, buffer_s32, (buffer_tell(buffer) - 4))
-network_send_packet(global.reviveSocket, buffer, buffer_tell(buffer))
