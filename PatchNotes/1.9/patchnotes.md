@@ -9,7 +9,7 @@
 **Players can see the item inside the Core-X**
   - No longer do people need to memorize a table of colors or what color Zazabi was, now the items can optionally be seen on the Core-X itself. Enabled through a setting in Display Options.
 
-**Major item snychronization and granular control of starting tanks**
+**Major item snuchronization and granular control of starting tanks**
   - If you're downloading this you're probably aware by now of the ItemSyncs mod, but I'm noting it anyway.
   - Allows the host to set up major items so that either both teams start with it, only the SA-X starts with it, or that neither team starts with it and when grabbed, both teams get it.
   - Also allows the host to specify how many of each tank type each team starts wil.
@@ -35,7 +35,7 @@
 
 **Turned Experimental settings into its own menu**
   - After itemsyncs were added, the Experimetnal toggle had no use, so it got replaced with the shortcut toggle. But we started having ideas of things we wanted to try, so instead of a toggle we gave it a full menu where individual settings could be edited.
-  - Currently, the only setting in there is teh ability to disable rollback gits, but more will be added in the future!
+  - Currently, the only setting in there is the ability to disable rollback gits, but more will be added in the future!
 
 **Septoggs are now killable!**
   - Someone tell M3D
