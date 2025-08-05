@@ -50,12 +50,13 @@ else
     }
 }
 
-if (maxClients > 16)
-    maxClients = 16;
+if (maxClients > 255)
+    maxClients = 255;
 
 server = network_create_server(type, port, maxClients);
-var _port = 64199;
-webpanel = network_create_server_raw(type, _port, 2);
+// this never got implemented so currently it just allows you to grief the server
+// var _port = 64199;
+// webpanel = network_create_server_raw(type, _port, 2);
 var size = 1024;
 type = 1;
 var alignment = 1;

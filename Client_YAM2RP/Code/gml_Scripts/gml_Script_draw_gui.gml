@@ -549,13 +549,14 @@ if (global.classicmode == 0 && global.opshowhud)
                 {
                     var arrList = ds_list_find_value(global.idList, f);
                     var ID = arrList[0, 0];
+                    var color = arrList[0, 4];
                     var _x = 10 * floor(f / 2);
                     var _y = 10 * (f % 2);
                     
                     if (ID == global.clientID)
-                        draw_sprite(oControl.MultitroidIcon, ID - 1, (240 - _x) + widescreen_space, 5 + _y);
+                        draw_sprite(oControl.MultitroidIcon, color - 1, (240 - _x) + widescreen_space, 5 + _y);
                     else
-                        draw_sprite(oControl.MultitroidIconDark, ID - 1, (240 - _x) + widescreen_space, 5 + _y);
+                        draw_sprite(oControl.MultitroidIconDark, color - 1, (240 - _x) + widescreen_space, 5 + _y);
                 }
             }
             else if (ds_list_size(global.idList) == 1 || ds_list_size(global.idList) == 0)
@@ -764,6 +765,18 @@ if (global.classicmode == 0 && global.opshowhud)
             for (var i = 0; i < ds_list_size(oClient.posData); i++)
             {
                 var arrData = ds_list_find_value(oClient.posData, i);
+                var color = 1;
+
+                for (var f = 0; f < ds_list_size(global.idList); f++)
+                {
+                    var arrList = ds_list_find_value(global.idList, f);
+                    if (arrList[0, 0] == arrData[0])
+                    {
+                        color = arrList[0, 4];
+                        break;
+                    }
+                }
+                
                 var xDiff = oClient.posX - arrData[1];
                 var yDiff = oClient.posY - arrData[2];
                 var sax = arrData[3];
@@ -803,13 +816,13 @@ if (global.classicmode == 0 && global.opshowhud)
                         {
                             if (combatState)
                             {
-                                draw_sprite_ext(oControl.MultitroidMapIcon, arrData[0] - 1, (276 + widescreen_space + 16) - (xDiff * 8), 12 - (yDiff * 8), 1, 1, direction, c_white, oControl.malpha);
+                                draw_sprite_ext(oControl.MultitroidMapIcon, color - 1, (276 + widescreen_space + 16) - (xDiff * 8), 12 - (yDiff * 8), 1, 1, direction, c_white, oControl.malpha);
                                 playerVisible = 1;
                             }
                         }
                         
                         if (!playerVisible && global.sax == sax)
-                            draw_sprite_ext(oControl.MultitroidMapIcon, arrData[0] - 1, (276 + widescreen_space + 16) - (xDiff * 8), 12 - (yDiff * 8), 1, 1, direction, c_white, oControl.malpha);
+                            draw_sprite_ext(oControl.MultitroidMapIcon, color - 1, (276 + widescreen_space + 16) - (xDiff * 8), 12 - (yDiff * 8), 1, 1, direction, c_white, oControl.malpha);
                     }
                 }
             }

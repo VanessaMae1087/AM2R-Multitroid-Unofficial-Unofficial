@@ -81,31 +81,44 @@ var ID;
 switch (type_event)
 {
     case 1:
-        var socket = ds_map_find_value(async_load, "socket");
-        var socketID = ds_map_find_value(async_load, "id");
-        var findsocket = ds_list_find_index(socketList, socket);
-        ds_list_add(socketList, socket);
-        
+
         if (ds_list_size(idList) > 0)
         {
-            ID = irandom_range(1, 16);
-            
+            ID = 1; // counting from 1 here because normal multitroid does. idk if starting from 0 would break something
+
             for (var i = 0; i < ds_list_size(idList); i++)
             {
                 var arrList = ds_list_find_value(idList, i);
-                
+
                 if (ID == arrList[0, 0])
                 {
-                    ID = irandom_range(1, 16);
+                    ID++;
                     i = -1;
+                }
+                if (ID > maxClients) // if the server is full, kick the client and don't finish connection logic
+                {
+                    global.kickReason = 3;
+                    buffer_delete(buffer);
+                    buffer = buffer_create(1024, buffer_grow, 1);
+                    buffer_seek(buffer, buffer_seek_start, 0);
+                    buffer_write(buffer, buffer_s32, 0);
+                    buffer_write(buffer, buffer_u8, 250);
+                    buffer_write(buffer, buffer_u8, ban);
+                    buffer_write(buffer, buffer_u8, global.kickReason);
+                    buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
+                    network_send_packet(banSocket, buffer, buffer_tell(buffer));
+
+                    exit;
                 }
             }
         }
         else
         {
-            ID = irandom_range(1, 16);
+            ID = 1;
         }
-        
+        var socket = ds_map_find_value(async_load, "socket");
+        ds_list_add(socketList, socket);
+
         buffer_delete(buffer);
         var size = 1024;
         var type = 1;
@@ -123,7 +136,9 @@ switch (type_event)
         var arr;
         arr[0, 0] = ID;
         arr[0, 1] = socket;
+        // [0, 2] is the player's name. idk where it gets initialized, but seems to display as "0" in the server when not set
         arr[0, 3] = ip;
+        arr[0, 4] = 1; // placeholder color just in case i messed up somewhere
         ds_list_add(idList, arr);
         
         if (global.seed != 0)
@@ -493,25 +508,12 @@ switch (type_event)
             
             case 200:
                 var clientID = safe_buffer_read(_buffer, 1);
-                var preferredID = safe_buffer_read(_buffer, 1);
+                var preferredColor = safe_buffer_read(_buffer, 1);
                 var sax = safe_buffer_read(_buffer, 1);
                 
                 if (global.bufferOverflow)
                     exit;
-                
-                tempList = ds_list_create();
-                
-                if (ds_list_size(idList) > 0)
-                {
-                    for (var i = 0; i < ds_list_size(idList); i++)
-                    {
-                        var arrList = ds_list_find_value(idList, i);
-                        ds_list_add(tempList, arrList[0, 0]);
-                    }
-                }
-                
-                findID = ds_list_find_index(tempList, preferredID);
-                
+
                 if (ds_list_size(idList) > 0)
                 {
                     for (var i = 0; i < ds_list_size(idList); i++)
@@ -520,92 +522,47 @@ switch (type_event)
                         
                         if (clientID == arrList[0, 0])
                         {
-                            if (preferredID >= 1 && preferredID <= 16)
+                            if (preferredColor >= 1 && preferredColor <= 16) // NOTE: CHANGE WHEN ADDING MORE COLORS
                             {
-                                if (findID == -1)
-                                {
-                                    arrList[0, 0] = preferredID;
-                                    ds_list_set(idList, i, arrList);
-                                    var sockets = ds_list_size(playerList);
-                                    buffer_delete(buffer);
-                                    var size = 1024;
-                                    var type = 1;
-                                    var alignment = 1;
-                                    buffer = buffer_create(size, type, alignment);
-                                    buffer_seek(buffer, buffer_seek_start, 0);
-                                    buffer_write(buffer, buffer_u8, 102);
-                                    buffer_write(buffer, buffer_string, strict_compress(ds_list_write(idList)));
-                                    bufferSize = buffer_tell(buffer);
-                                    buffer_seek(buffer, buffer_seek_start, 0);
-                                    buffer_write(buffer, buffer_s32, bufferSize);
-                                    buffer_write(buffer, buffer_u8, 102);
-                                    buffer_write(buffer, buffer_string, strict_compress(ds_list_write(idList)));
-                                    
-                                    for (i = 0; i < sockets; i++)
-                                        network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer));
-                                    
-                                    buffer_delete(buffer);
-                                    size = 1024;
-                                    type = 1;
-                                    alignment = 1;
-                                    buffer = buffer_create(size, type, alignment);
-                                    buffer_seek(buffer, buffer_seek_start, 0);
-                                    buffer_write(buffer, buffer_u8, 200);
-                                    bufferSize = buffer_tell(buffer);
-                                    buffer_seek(buffer, buffer_seek_start, 0);
-                                    buffer_write(buffer, buffer_s32, bufferSize);
-                                    buffer_write(buffer, buffer_u8, 200);
-                                    network_send_packet(socket, buffer, buffer_tell(buffer));
-                                    
-                                    if (sax == 0)
-                                    {
-                                        findID = ds_list_find_index(samusList, clientID);
-                                        
-                                        if (findID >= 0)
-                                            ds_list_delete(samusList, findID);
-                                    }
-                                    else
-                                    {
-                                        findID = ds_list_find_index(saxList, clientID);
-                                        
-                                        if (findID >= 0)
-                                            ds_list_delete(saxList, findID);
-                                    }
-                                    
-                                    for (i = 0; i < sockets; i++)
-                                    {
-                                        for (var f = 0; f < ds_list_size(idList); f++)
-                                        {
-                                            var arr = ds_list_find_value(idList, f);
-                                            var arrID = arr[0, 0];
-                                            var arrSocket = arr[0, 1];
-                                            
-                                            if (arrSocket == socket)
-                                            {
-                                                if (sax == 0)
-                                                {
-                                                    findID = ds_list_find_index(samusList, preferredID);
-                                                    
-                                                    if (findID < 0)
-                                                        ds_list_add(samusList, preferredID);
-                                                }
-                                                else
-                                                {
-                                                    findID = ds_list_find_index(saxList, preferredID);
-                                                    
-                                                    if (findID < 0)
-                                                        ds_list_add(saxList, preferredID);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                                arrList[0, 4] = preferredColor;
+                                ds_list_set(idList, i, arrList);
+                                var sockets = ds_list_size(playerList);
+                                buffer_delete(buffer);
+                                var size = 1024;
+                                var type = 1;
+                                var alignment = 1;
+                                buffer = buffer_create(size, type, alignment);
+                                buffer_seek(buffer, buffer_seek_start, 0);
+                                buffer_write(buffer, buffer_u8, 102);
+                                buffer_write(buffer, buffer_string, strict_compress(ds_list_write(idList)));
+                                bufferSize = buffer_tell(buffer);
+                                buffer_seek(buffer, buffer_seek_start, 0);
+                                buffer_write(buffer, buffer_s32, bufferSize);
+                                buffer_write(buffer, buffer_u8, 102);
+                                buffer_write(buffer, buffer_string, strict_compress(ds_list_write(idList)));
+                                
+                                for (i = 0; i < sockets; i++)
+                                    network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer));
+                                
+                                /* keeping this becasue it could be useful later for forcing color uniqueness
+                                buffer_delete(buffer);
+                                size = 1024;
+                                type = 1;
+                                alignment = 1;
+                                buffer = buffer_create(size, type, alignment);
+                                buffer_seek(buffer, buffer_seek_start, 0);
+                                buffer_write(buffer, buffer_u8, 200);
+                                bufferSize = buffer_tell(buffer);
+                                buffer_seek(buffer, buffer_seek_start, 0);
+                                buffer_write(buffer, buffer_s32, bufferSize);
+                                buffer_write(buffer, buffer_u8, 200);
+                                network_send_packet(socket, buffer, buffer_tell(buffer));
+                                break;
+                                */
                             }
                         }
                     }
                 }
-                
-                ds_list_destroy(tempList);
                 break;
             
             case 100:

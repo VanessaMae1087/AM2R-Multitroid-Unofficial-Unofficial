@@ -42,6 +42,17 @@ if (ds_list_size(roomListData) > 0)
         global.otherSAX = arrSAX;
         global.otherMosaic = arrMosaic;
         global.otherReform = arrReform;
+
+        var color = 1;
+        for (var f = 0; f < ds_list_size(global.idList); f++)
+        {
+            var arrList = ds_list_find_value(global.idList, f);
+            if (arrList[0, 0] == arrID)
+            {
+                color = arrList[0, 4];
+                break;
+            }
+        }
         
         for (var i = 0; i < ds_list_size(global.otherPlayerItems); i++)
         {
@@ -72,7 +83,7 @@ if (ds_list_size(roomListData) > 0)
                 
                 if (global.shaders_compiled && os_type != os_android)
                 {
-                    pal_swap_set(oControl.SpiderballPalette, arrID, 0);
+                    pal_swap_set(oControl.SpiderballPalette, color, 0);
                     draw_sprite_ext(sSpiderballFX, -1, arrX, arrY, 1, 1, 0, -1, 0.2 + (arrFXTimer * 0.1));
                 }
                 else if (global.shaders_compiled && os_type == os_android)
@@ -123,38 +134,38 @@ if (ds_list_size(roomListData) > 0)
             {
                 if (arrRoomPrev == room)
                 {
-                    draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, arrBlend, alpha, arrArmmsl, arrImage, arrID);
+                    draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, arrBlend, alpha, arrArmmsl, arrImage, color);
                     
                     if (arrSpeedboost == 1 || arrSpeedCharge > 0 || arrState == SJSTART || arrState == SUPERJUMP || arrState == SJEND)
                     {
                         if (arrFXTimer == 0 || arrFXTimer == 1)
                         {
                             draw_set_blend_mode(bm_add);
-                            draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, arrBlend, 1.1 + (arrFXTimer * 0.2), arrArmmsl, arrImage, arrID);
+                            draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, arrBlend, 1.1 + (arrFXTimer * 0.2), arrArmmsl, arrImage, color);
                             draw_set_blend_mode(bm_normal);
                         }
                         
                         if (arrFXTimer == 2 || arrFXTimer == 3)
                         {
                             draw_set_blend_mode(bm_add);
-                            draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 65535, alpha, arrArmmsl, arrImage, arrID);
-                            draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 16777215, alpha, arrArmmsl, arrImage, arrID);
+                            draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 65535, alpha, arrArmmsl, arrImage, color);
+                            draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 16777215, alpha, arrArmmsl, arrImage, color);
                             draw_set_blend_mode(bm_normal);
                         }
                         
                         if (arrFXTimer == 4 || arrFXTimer == 5)
                         {
                             draw_set_blend_mode(bm_add);
-                            draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 255, alpha, arrArmmsl, arrImage, arrID);
+                            draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 255, alpha, arrArmmsl, arrImage, color);
                             draw_set_blend_mode(bm_normal);
                         }
                     }
                     
                     if (arrInvincible > 0)
                     {
-                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 16711680, arrFXTimer * 0.2, arrArmmsl, arrImage, arrID);
+                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 16711680, arrFXTimer * 0.2, arrArmmsl, arrImage, color);
                         draw_set_blend_mode(bm_add);
-                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 16777215, 0.8 - (arrFXTimer * 0.2), arrArmmsl, arrImage, arrID);
+                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 16777215, 0.8 - (arrFXTimer * 0.2), arrArmmsl, arrImage, color);
                         draw_set_blend_mode(bm_normal);
                     }
                     
@@ -178,38 +189,38 @@ if (ds_list_size(roomListData) > 0)
             }
             else
             {
-                draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, arrBlend, alpha, arrArmmsl, arrImage, arrID);
+                draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, arrBlend, alpha, arrArmmsl, arrImage, color);
                 
                 if (arrSpeedboost == 1 || arrSpeedCharge > 0 || arrState == SJSTART || arrState == SUPERJUMP || arrState == SJEND)
                 {
                     if (arrFXTimer == 0 || arrFXTimer == 1)
                     {
                         draw_set_blend_mode(bm_add);
-                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, arrBlend, 1.1 + (arrFXTimer * 0.2), arrArmmsl, arrImage, arrID);
+                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, arrBlend, 1.1 + (arrFXTimer * 0.2), arrArmmsl, arrImage, color);
                         draw_set_blend_mode(bm_normal);
                     }
                     
                     if (arrFXTimer == 2 || arrFXTimer == 3)
                     {
                         draw_set_blend_mode(bm_add);
-                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 65535, alpha, arrArmmsl, arrImage, arrID);
-                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 16777215, alpha, arrArmmsl, arrImage, arrID);
+                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 65535, alpha, arrArmmsl, arrImage, color);
+                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 16777215, alpha, arrArmmsl, arrImage, color);
                         draw_set_blend_mode(bm_normal);
                     }
                     
                     if (arrFXTimer == 4 || arrFXTimer == 5)
                     {
                         draw_set_blend_mode(bm_add);
-                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 255, alpha, arrArmmsl, arrImage, arrID);
+                        draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 255, alpha, arrArmmsl, arrImage, color);
                         draw_set_blend_mode(bm_normal);
                     }
                 }
                 
                 if (arrInvincible > 0)
                 {
-                    draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 16711680, arrFXTimer * 0.2, arrArmmsl, arrImage, arrID);
+                    draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 16711680, arrFXTimer * 0.2, arrArmmsl, arrImage, color);
                     draw_set_blend_mode(bm_add);
-                    draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 16777215, 0.8 - (arrFXTimer * 0.2), arrArmmsl, arrImage, arrID);
+                    draw_character_ext(arrSprite, arrX, arrY, arrA1, arrA1X, arrA1Y, arrA2, arrA2X, arrA2Y, arrA2A, arrMirror, 16777215, 0.8 - (arrFXTimer * 0.2), arrArmmsl, arrImage, color);
                     draw_set_blend_mode(bm_normal);
                 }
                 
@@ -344,6 +355,17 @@ if (instance_exists(oMapCursor))
             var sax = arrMapIcon[3];
             var spectator = arrMapIcon[5];
             
+            var color = 1;
+            for (var f = 0; f < ds_list_size(global.idList); f++)
+            {
+                var arrList = ds_list_find_value(global.idList, f);
+                if (arrList[0, 0] == arrID)
+                {
+                    color = arrList[0, 4];
+                    break;
+                }
+            }
+
             if ((global.spectator && !global.sax) || (global.sax && global.juggActive))
             {
                 if (!sax)
@@ -368,7 +390,7 @@ if (instance_exists(oMapCursor))
             }
             else if (arrX != 3 && arrY != 3 && sax == global.sax && !spectator)
             {
-                draw_sprite_ext(oControl.MultitroidMapIcon, arrID - 1, arrX * 8, (arrY * 8) + 32, 1, 1, direction, c_white, oMapCursor.image_alpha);
+                draw_sprite_ext(oControl.MultitroidMapIcon, color - 1, arrX * 8, (arrY * 8) + 32, 1, 1, direction, c_white, oMapCursor.image_alpha);
             }
         }
     }
@@ -386,17 +408,18 @@ if (instance_exists(oMapCursor))
         {
             var arrList = ds_list_find_value(global.idList, f);
             var ID = arrList[0, 0];
+            var color = arrList[0, 4];
             var _x = 10 * floor(f / 2);
             var _y = 10 * (f % 2);
             
             if (ID == global.clientID)
-                draw_sprite_ext(oControl.MultitroidIcon, ID - 1, (view_xview[0] - (oControl.widescreen_space / 2)) + 2 + _x, view_yview[0] + 44 + 13 + _y, 1, 1, direction, c_white, 1);
+                draw_sprite_ext(oControl.MultitroidIcon, color - 1, (view_xview[0] - (oControl.widescreen_space / 2)) + 2 + _x, view_yview[0] + 44 + 13 + _y, 1, 1, direction, c_white, 1);
             else
-                draw_sprite_ext(oControl.MultitroidIconDark, ID - 1, (view_xview[0] - (oControl.widescreen_space / 2)) + 2 + _x, view_yview[0] + 44 + 13 + _y, 1, 1, direction, c_white, 1);
+                draw_sprite_ext(oControl.MultitroidIconDark, color - 1, (view_xview[0] - (oControl.widescreen_space / 2)) + 2 + _x, view_yview[0] + 44 + 13 + _y, 1, 1, direction, c_white, 1);
         }
     }
     else if (ds_list_size(global.idList) == 1 || ds_list_size(global.idList) == 0)
     {
-        draw_sprite_ext(oControl.MultitroidIcon, clamp(global.clientID - 1, 0, 16), (view_xview[0] - (oControl.widescreen_space / 2)) + 2, view_yview[0] + 44 + 13, 1, 1, direction, c_white, 1);
+        draw_sprite_ext(oControl.MultitroidIcon, color - 1, (view_xview[0] - (oControl.widescreen_space / 2)) + 2, view_yview[0] + 44 + 13, 1, 1, direction, c_white, 1);
     }
 }
