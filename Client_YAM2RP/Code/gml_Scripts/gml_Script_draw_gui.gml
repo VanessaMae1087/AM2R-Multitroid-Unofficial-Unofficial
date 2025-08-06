@@ -561,7 +561,7 @@ if (global.classicmode == 0 && global.opshowhud)
             }
             else if (ds_list_size(global.idList) == 1 || ds_list_size(global.idList) == 0)
             {
-                draw_sprite(oControl.MultitroidIcon, clamp(global.clientID - 1, 0, 8), 240 + widescreen_space, 5);
+                draw_sprite(oControl.MultitroidIcon, oClient.preferredcolor, 240 + widescreen_space, 5);
             }
         }
     }

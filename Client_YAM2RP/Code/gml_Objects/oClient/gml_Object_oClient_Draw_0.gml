@@ -420,6 +420,6 @@ if (instance_exists(oMapCursor))
     }
     else if (ds_list_size(global.idList) == 1 || ds_list_size(global.idList) == 0)
     {
-        draw_sprite_ext(oControl.MultitroidIcon, color - 1, (view_xview[0] - (oControl.widescreen_space / 2)) + 2, view_yview[0] + 44 + 13, 1, 1, direction, c_white, 1);
+        draw_sprite_ext(oControl.MultitroidIcon, preferredcolor - 1, (view_xview[0] - (oControl.widescreen_space / 2)) + 2, view_yview[0] + 44 + 13, 1, 1, direction, c_white, 1);
     }
 }

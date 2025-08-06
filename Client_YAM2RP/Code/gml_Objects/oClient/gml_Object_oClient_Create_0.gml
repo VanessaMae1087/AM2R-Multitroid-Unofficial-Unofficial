@@ -146,7 +146,7 @@ switch (preferredcolor)
         break;
     
     case "random":
-        preferredcolor = 17;
+        preferredcolor = irandom_range(1, 16);
         break;
 }
 
