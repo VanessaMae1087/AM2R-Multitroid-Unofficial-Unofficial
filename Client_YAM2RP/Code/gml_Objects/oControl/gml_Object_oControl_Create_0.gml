@@ -278,7 +278,7 @@ if (file_exists("lang/fonts/Glasstown_NBP.ttf"))
 ini_close();
 global.fontVersion = font_add_sprite_ext(sVersionFont, "V.0123456789", 1, 1);
 global.am2r_version = "V1.5.2";
-global.multitroid_version = "V1.9.0";
+global.multitroid_version = "V1.9.1";
 global.countdowncontrol = 0;
 global.TryConnect = 0;
 global.gamestarted = 0;
