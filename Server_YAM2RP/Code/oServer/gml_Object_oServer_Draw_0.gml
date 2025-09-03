@@ -1,4 +1,4 @@
-var str;
+var str, nameStr;
 
 if (server >= 0)
     str = "Running!   Port: " + string(port);
@@ -144,14 +144,16 @@ if (ds_list_size(idList) > 0)
                     color = make_color_rgb(163, 217, 184);
                     break;
             }
-            
-            draw_text_color(4, 206 + ((i + 1) * 30), arrList[0, 2], c_black, c_black, c_black, c_black, 1);
-            draw_text_color(6, 206 + ((i + 1) * 30), arrList[0, 2], c_black, c_black, c_black, c_black, 1);
-            draw_text_color(4, 207 + ((i + 1) * 30), arrList[0, 2], c_black, c_black, c_black, c_black, 1);
-            draw_text_color(6, 207 + ((i + 1) * 30), arrList[0, 2], c_black, c_black, c_black, c_black, 1);
-            draw_text_color(4, 208 + ((i + 1) * 30), arrList[0, 2], c_black, c_black, c_black, c_black, 1);
-            draw_text_color(6, 208 + ((i + 1) * 30), arrList[0, 2], c_black, c_black, c_black, c_black, 1);
-            draw_text_color(5, 207 + ((i + 1) * 30), arrList[0, 2], color, color, color, color, 1);
+
+            nameStr = string_replace_all(string(arrList[0, 2]), "#", "\#");
+
+            draw_text_color(4, 206 + ((i + 1) * 30), nameStr, c_black, c_black, c_black, c_black, 1);
+            draw_text_color(6, 206 + ((i + 1) * 30), nameStr, c_black, c_black, c_black, c_black, 1);
+            draw_text_color(4, 207 + ((i + 1) * 30), nameStr, c_black, c_black, c_black, c_black, 1);
+            draw_text_color(6, 207 + ((i + 1) * 30), nameStr, c_black, c_black, c_black, c_black, 1);
+            draw_text_color(4, 208 + ((i + 1) * 30), nameStr, c_black, c_black, c_black, c_black, 1);
+            draw_text_color(6, 208 + ((i + 1) * 30), nameStr, c_black, c_black, c_black, c_black, 1);
+            draw_text_color(5, 207 + ((i + 1) * 30), nameStr, color, color, color, color, 1);
         }
     }
 }

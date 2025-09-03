@@ -1,5 +1,8 @@
 network_set_config(network_config_connect_timeout, 5000);
 strict_init(working_directory + "/multitroid/dictionary.json");
+kicked = 0;
+kickReason = 255;
+banned = 0;
 queenHealthResetQueued = 0;
 canSend = 0;
 metroidCountChanged = 0;
@@ -52,8 +55,7 @@ syncedDifficulty = global.difficulty;
 elm = oControl.mod_monstersextremecheck;
 ini_open(working_directory + "/multitroid/mod_settings.ini");
 ipaddress = ini_read_string("ModSettings", "ipaddress", "127.0.0.1");
-name = ini_read_string("ModSettings", "displayname", "name");
-name = string_replace_all(name, "#", "");
+name = ini_read_string("ModSettings", "displayname", "");
 port = ini_read_real("ModSettings", "port", 64198);
 reactorsequence = string_lower(ini_read_string("ModSettings", "reactorsequence", "synced"));
 preferredcolor = string_lower(ini_read_string("ModSettings", "preferredcolor", "random"));
@@ -69,11 +71,12 @@ if (nameLength > 15)
     ini_close();
 }
 
-if (string_length(name) == 0)
+if (string_length(string_replace_all(name, "#", "")) == 0)
 {
     noName = 1;
     popup_text_ext("Set a name before connecting", 180);
     instance_destroy();
+    exit;
 }
 
 socket = network_create_socket(type);
@@ -199,9 +202,6 @@ posX = 3;
 posY = 3;
 time = 60;
 trail = 0;
-kicked = 0;
-kickReason = 255;
-banned = 0;
 SJSTART = 29;
 SUPERJUMP = 30;
 SJEND = 31;

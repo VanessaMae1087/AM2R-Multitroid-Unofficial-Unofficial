@@ -314,7 +314,7 @@ if (!file_exists(working_directory + "/multitroid/mod_settings.ini"))
 {
     ini_open(working_directory + "/multitroid/mod_settings.ini");
     ini_write_string("ModSettings", "ipaddress", "127.0.0.1");
-    ini_write_string("ModSettings", "displayname", "name");
+    ini_write_string("ModSettings", "displayname", "");
     ini_write_real("ModSettings", "port", 64198);
     ini_write_string("ModSettings", "reactorsequence", "synced");
     ini_write_string("ModSettings", "preferredcolor", "random");
@@ -328,7 +328,7 @@ if (!file_exists(working_directory + "/multitroid/mod_settings.ini"))
 
 ini_open(working_directory + "/multitroid/mod_settings.ini");
 ipaddress = ini_read_string("ModSettings", "ipaddress", "127.0.0.1");
-name = ini_read_string("ModSettings", "displayname", "name");
+name = ini_read_string("ModSettings", "displayname", "");
 port = ini_read_real("ModSettings", "port", 64198);
 reactorsequence = string_lower(ini_read_string("ModSettings", "reactorsequence", "synced"));
 preferredcolor = string_lower(ini_read_string("ModSettings", "preferredcolor", "random"));

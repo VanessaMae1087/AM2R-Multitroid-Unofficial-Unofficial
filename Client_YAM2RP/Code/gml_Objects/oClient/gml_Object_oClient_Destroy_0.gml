@@ -46,6 +46,7 @@ if (!noName)
 }
 
 global.canConnect = 0;
+global.TryConnect = 0;
 oControl.alarm[10] = 90;
 
 if (banned)
