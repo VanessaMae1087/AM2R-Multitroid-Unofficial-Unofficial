@@ -556,3 +556,4 @@ global.awaitsyncs = 0;
 global.saveEndChecker = 0;
 global.revived = 0;
 file_delete("multitroid_log.txt");
+global.ssmode = 0;
