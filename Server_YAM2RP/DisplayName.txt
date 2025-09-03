@@ -1,1 +1,1 @@
-AM2R Multitroid Server 1.9.1-dev
+AM2R Multitroid Server 1.9.1
