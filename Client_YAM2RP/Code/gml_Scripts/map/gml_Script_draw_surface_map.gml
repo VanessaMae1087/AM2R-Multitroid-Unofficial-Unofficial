@@ -1,22 +1,5 @@
 draw_clear(c_black);
 draw_background_tiled(bgMapScreenBG, 0, 0);
-map_draw_01();
-map_draw_02();
-map_draw_03();
-map_draw_04();
-map_draw_05();
-map_draw_06();
-map_draw_07();
-map_draw_08();
-map_draw_09();
-map_draw_10();
-map_draw_11();
-map_draw_12();
-map_draw_13();
-map_draw_14();
-map_draw_15();
-map_draw_16();
-map_draw_17();
 draw_map_surf(16, 4)
 draw_map_surf(16, 3)
 draw_map_surf(16, 5)

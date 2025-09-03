@@ -1,7 +1,4 @@
-// force enabled for debugging purposes
-// TODO: disable
-
-if (global.opwritelog == 1 || true)
+if (global.opwritelog == 1)
 {
     lfid = file_text_open_append("multitroid_log.txt");
     file_text_write_string(lfid, date_datetime_string(date_current_datetime()) + ": " + string(argument0));
