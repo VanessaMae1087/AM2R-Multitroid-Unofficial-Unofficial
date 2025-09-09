@@ -592,6 +592,7 @@ switch (type_event)
                 var shortcuts = buffer_read(_buffer, buffer_u8);
                 global.juggActive = buffer_read(_buffer, buffer_u8);
                 global.MetCount = buffer_read(_buffer, buffer_u8);
+                global.exp_gradualetanks = buffer_read(_buffer, buffer_u8);
                 global.damageMult = damageMult;
                 global.saxmode = saxmode;
                 global.shortcuts = shortcuts;
@@ -1404,19 +1405,27 @@ switch (type_event)
             case 15:
                 var maxhealth = buffer_read(_buffer, buffer_u16);
                 var clientID = buffer_read(_buffer, buffer_u8);
+                var oldMax = global.maxhealth;
                 
                 if (clientID != global.clientID && maxhealth != global.maxhealth)
                 {
-                    global.maxhealthPrev = maxhealth;
                     global.maxhealth = maxhealth;
+
+                    if (global.exp_gradualetanks)
+                    {
+                        if (instance_exists(oCharacter))
+                            oCharacter.fillhp = 1;
+
+                        global.playerhealth += (global.maxhealth - oldMax);
+                    }
+                    else
+                    {
+                        global.playerhealth = maxhealth;
+                    }
                 }
-                else if (clientID == global.clientID)
-                {
-                    global.maxhealthPrev = global.maxhealth;
-                }
-                
-                global.playerhealthPrev = maxhealth;
-                global.playerhealth = maxhealth;
+                global.maxhealthPrev = global.maxhealth;
+
+                global.playerhealthPrev = global.playerhealth;
                 maxhealthTimer = 1;
                 break;
             
@@ -1900,9 +1909,20 @@ switch (type_event)
                 
                 if (etankCount != global.etanks)
                 {
+                    var oldTanks = global.etanks;
                     global.etanks = etankCount;
                     global.maxhealth = (99 + (100 * global.etanks)) * oControl.mod_etankhealthmult;
-                    global.playerhealth = global.maxhealth;
+                    if (global.exp_gradualetanks)
+                    {
+                        if (instance_exists(oCharacter))
+                            oCharacter.fillhp = 1;
+
+                        global.playerhealth += (global.etanks - oldTanks);
+                    }
+                    else
+                    {
+                        global.playerhealth = global.maxhealth;
+                    }
                 }
                 
                 var stankCount = 0;
