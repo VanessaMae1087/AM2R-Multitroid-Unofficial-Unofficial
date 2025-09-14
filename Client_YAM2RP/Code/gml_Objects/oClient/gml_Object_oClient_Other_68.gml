@@ -1192,7 +1192,12 @@ switch (type_event)
                                     popup_text("EMP Activated");
                                 
                                 if (eventArr[f, 1] == 304)
+                                {
                                     popup_text("Hatchling Secured");
+                                    
+                                    if (instance_exists(oCharacter) && !instance_exists(oHatchling) && !instance_exists(oHatchlingIntro))
+                                        instance_create(oCharacter.x, oCharacter.y, oHatchling);
+                                }
                                 
                                 if (eventArr[f, 1] == 308)
                                 {
