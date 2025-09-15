@@ -414,12 +414,13 @@ if (hpAmmoSyncTimer <= 0 && connected && !is_on_menu() && (!global.spectator || 
         buffer_delete(buffer);
         buffer = buffer_create(1024, buffer_grow, 1);
         buffer_seek(buffer, buffer_seek_start, 0);
-        buffer_write(buffer, buffer_s32, 9);
+        buffer_write(buffer, buffer_s32, 10);
         buffer_write(buffer, buffer_u8, 102);
         buffer_write(buffer, buffer_s16, global.playerhealthPrev - global.playerhealth);
         buffer_write(buffer, buffer_s16, global.missilesPrev - global.missiles);
         buffer_write(buffer, buffer_s16, global.smissilesPrev - global.smissiles);
         buffer_write(buffer, buffer_s16, global.pbombsPrev - global.pbombs);
+        buffer_write(buffer, buffer_u8, global.sax);
         buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
         buffer_tell(buffer);
         network_send_packet(socket, buffer, buffer_tell(buffer));

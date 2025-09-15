@@ -787,6 +787,7 @@ switch (type_event)
                 var mslDiff = safe_buffer_read(_buffer, 4);
                 var smDiff = safe_buffer_read(_buffer, 4);
                 var pbDiff = safe_buffer_read(_buffer, 4);
+                var isSAX = safe_buffer_read(_buffer, buffer_u8);
                 
                 if (global.bufferOverflow)
                     exit;
@@ -813,10 +814,23 @@ switch (type_event)
                 buffer_write(buffer, buffer_s16, pbDiff);
                 buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
                 
-                for (var i = 0; i < sockets; i++)
+                var list = samusList;
+                if (isSAX)
+                    list = saxList;
+
+                var arrList, tempID, tempSocket;
+                for (var i = 0; i < ds_list_size(idList); i++)
                 {
-                    if (ds_list_find_value(playerList, i) != socket)
-                        network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer));
+                    arrList = ds_list_find_value(idList, i);
+                    tempID = arrList[0, 0];
+                    if (tempID == client_id)
+                        continue;
+                    tempSocket = arrList[0, 1];
+                    for (var j = 0; j < ds_list_size(list); j++)
+                    {
+                        if (ds_list_find_value(list, j) == tempID)
+                            network_send_packet(tempSocket, buffer, buffer_tell(buffer));
+                    }
                 }
                 
                 break;
