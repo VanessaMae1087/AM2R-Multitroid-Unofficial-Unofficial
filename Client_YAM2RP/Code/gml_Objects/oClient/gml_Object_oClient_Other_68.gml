@@ -636,24 +636,13 @@ switch (type_event)
             
             case 115:
                 global.freezeDisabled = buffer_read(_buffer, buffer_u8);
-                var val = 0;
                 
                 for (var i = 0; i < 15; i += 1)
                 {
-                    val = buffer_read(_buffer, buffer_u8);
-                    global.debug_syncs_shouldsync[i] = val;
-                    global.debug_syncs_saxmode = global.saxmode;
-                    global.debug_syncs_sax = global.sax;
-                    global.debug_syncs_item[i] = global.item[i];
-                    global.debug_syncs_cores = instance_number(oCoreXSyncedItem);
-                    global.debug_syncs_gameroom = string_count("rm_a", room_get_name(room));
-                    global.debug_syncs_corespawned = 0;
-                    
-                    if (val == 1 && global.saxmode && global.sax && !global.item[i] && instance_number(oCoreXSyncedItem) == 0 && string_count("rm_a", room_get_name(room)))
+                    if (buffer_read(_buffer, buffer_u8) == 1 && global.saxmode && global.sax && !global.item[i] && instance_number(oCoreXSyncedItem) == 0 && string_count("rm_a", room_get_name(room)))
                     {
                         var core = instance_create(irandom_range(0, room_width), -100, oCoreXSyncedItem);
                         core.itemtype = i;
-                        global.debug_syncs_corespawned = 1;
                     }
                 }
                 
