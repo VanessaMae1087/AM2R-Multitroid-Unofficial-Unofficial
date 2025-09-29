@@ -150,6 +150,6 @@ switch (argument0)
 }
 
 if (global.opcorexsensitivity)
-    coreStr += "Sens";
+    corestr += "Sens";
 
 return asset_get_index(corestr);
