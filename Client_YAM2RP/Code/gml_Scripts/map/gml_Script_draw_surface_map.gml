@@ -17,4 +17,5 @@ map_draw_14();
 map_draw_15();
 map_draw_16();
 map_draw_17();
-map_draw_multitroid();
+if (global.shortcuts)
+    map_draw_multitroid();
