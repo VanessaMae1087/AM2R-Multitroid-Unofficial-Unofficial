@@ -4,7 +4,7 @@ if (!oControl.useselfpalette)
     {
         if (oControl.mod_fusion)
         {
-            if (global.ibeam)
+            if (global.ibeam && global.saxmode)
                 pal_swap_set(1920, 1, 0);
             else if (global.currentsuit == 0)
                 pal_swap_set(1522, 1, 0);
