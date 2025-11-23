@@ -43,8 +43,9 @@ if (global.saxmode)
 else
     global.grayMap = 0;
 
-if (global.event[308] > 0 && !instance_exists(oClient))
+if (global.event[308] > 0 && !instance_exists(oClient) && global.ingame)
 {
+    global.event[308] = 0;
     remove_persistent_objects();
     sfx_stop_all();
     global.vibL = 0;
