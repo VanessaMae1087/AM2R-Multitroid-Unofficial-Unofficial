@@ -118,15 +118,6 @@ if (keyboard_check_pressed(vk_f2))
 if (keyboard_check_pressed(vk_f3))
     popup_text_ext(string(oControl.seed), 300);
 
-if (keyboard_check_pressed(vk_f4))
-{
-    if (oControl.showname == "disabled")
-        oControl.showname = "enabled";
-    
-    if (oControl.showname == "enabled")
-        oControl.showname = "disabled";
-}
-
 if (instance_exists(oCharacter))
 {
     posX = global.mapposx;
