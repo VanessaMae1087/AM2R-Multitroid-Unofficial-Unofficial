@@ -3041,6 +3041,27 @@ switch (type_event)
                 buffer_delete(bfr);
                 break;
             
+            case 69:
+                var clientID = buffer_read(_buffer, buffer_u8);
+                var damage_taken = buffer_read(_buffer, buffer_u16);
+                buffer_delete(buffer);
+                buffer = buffer_create(1024, buffer_grow, 1);
+                buffer_seek(buffer, buffer_seek_start, 0);
+                buffer_write(buffer, buffer_s32, 4);
+                buffer_write(buffer, buffer_u8, 69);
+                buffer_write(buffer, buffer_u8, clientID);
+                buffer_write(buffer, buffer_u16, damage_taken);
+                buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
+                var sockets = ds_list_size(playerList);
+                
+                for (var i = 0; i < sockets; i++)
+                {
+                    if (ds_list_find_value(playerList, i) != socket)
+                        network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer));
+                }
+
+                break;
+
             case 71:
                 var sockets = ds_list_size(playerList);
                 global.saveEndChecker = safe_buffer_read(_buffer, 1);

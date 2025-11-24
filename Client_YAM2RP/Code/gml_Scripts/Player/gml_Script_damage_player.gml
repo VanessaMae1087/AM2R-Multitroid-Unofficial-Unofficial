@@ -165,7 +165,23 @@ if (global.playerhealth > 0)
                         }
                     }
                 }
-                
+
+                if (global.multiDamageCollision)
+                {
+                    with (oClient)
+                    {
+                        var buffer = buffer_create(1024, buffer_grow, 1);
+                        buffer_seek(buffer, buffer_seek_start, 0);
+                        buffer_write(buffer, buffer_s32, 4);
+                        buffer_write(buffer, buffer_u8, 69);
+                        buffer_write(buffer, buffer_u8, global.clientID);
+                        buffer_write(buffer, buffer_u16, damage_taken);
+                        buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
+                        network_send_packet(socket, buffer, buffer_tell(buffer));
+                        buffer_delete(buffer);
+                    }
+                }
+
                 global.playerhealth -= damage_taken;
             }
         }
@@ -199,7 +215,23 @@ with (oCharacter)
             if (state == BALL || state == AIRBALL || state == SPIDERBALL)
                 fixedx = 0;
         }
-        
+
+        if (global.multiDamageCollision)
+        {
+            with (oClient)
+            {
+                var buffer = buffer_create(1024, buffer_grow, 1);
+                buffer_seek(buffer, buffer_seek_start, 0);
+                buffer_write(buffer, buffer_s32, 4);
+                buffer_write(buffer, buffer_u8, 69);
+                buffer_write(buffer, buffer_u8, global.clientID);
+                buffer_write(buffer, buffer_u16, damage_taken);
+                buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
+                network_send_packet(socket, buffer, buffer_tell(buffer));
+                buffer_delete(buffer);
+            }
+        }
+
         global.playerhealth -= damage_taken;
         
         if (global.playerhealth <= 0 && state != DEFEATED)

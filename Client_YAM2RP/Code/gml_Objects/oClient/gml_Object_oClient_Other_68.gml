@@ -2430,5 +2430,28 @@ switch (type_event)
                 }
                 
                 break;
+
+            case 69:
+                var clientID = buffer_read(_buffer, buffer_u8);
+                var damage = buffer_read(_buffer, buffer_u16);
+                
+                for (var i = 0; i < ds_list_size(roomListData); i++)
+                {
+                    var arrDraw = ds_list_find_value(roomListData, i);
+                    var arrID = arrDraw[0];
+                    
+                    if (clientID == arrID)
+                    {
+                        var arrX = arrDraw[1];
+                        var arrY = arrDraw[2];
+                        var arrRoom = arrDraw[14];
+                        
+                        if (room == arrRoom)
+                        {
+                            var number = instance_create(arrX - 4, arrY - 64, oDamageNumber);
+                            number.damage = damage;
+                        }
+                    }
+                }
         }
 }
