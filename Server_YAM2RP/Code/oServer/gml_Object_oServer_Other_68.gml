@@ -3063,42 +3063,43 @@ switch (type_event)
                 break;
 
             case 71:
-                var sockets = ds_list_size(playerList);
-                global.saveEndChecker = safe_buffer_read(_buffer, 1);
-                
-                if (global.bufferOverflow)
-                    exit;
-                
-                if (global.saveEndChecker == 1)
+                if (ds_list_size(samusList) > 0 && ds_list_size(deadList) > 0)
                 {
-                    if (ds_list_size(samusList) > 0 && ds_list_size(deadList) > 0)
+                    if (ds_list_size(samusList) == ds_list_size(deadList) || ds_list_size(deadList) > ds_list_size(samusList))
                     {
-                        if (ds_list_size(samusList) == ds_list_size(deadList) || ds_list_size(deadList) > ds_list_size(samusList))
-                        {
-                            var evnt = global.event[308];
-                            evnt++;
-                            
-                            if (global.event[308] < 4)
-                                global.event[308] = 4;
-                            
-                            ds_list_clear(deadList);
-                        }
+                        ds_list_clear(deadList);
+
+                        var savBfr = buffer_create(1024, buffer_grow, 1);
+                        buffer_seek(savBfr, buffer_seek_start, 0);
+                        buffer_write(savBfr, buffer_s32, 2);
+                        buffer_write(savBfr, buffer_u8, 72);
+                        buffer_write(savBfr, buffer_u8, 1);
+                        buffer_poke(savBfr, 0, buffer_s32, buffer_tell(savBfr) - 4);
+                        
+                        for (var i = 0; i < ds_list_size(playerList); i++)
+                            network_send_packet(ds_list_find_value(playerList, i), savBfr, buffer_tell(savBfr));
+                        
+                        buffer_delete(savBfr);
+                        matchEndResetTimer = 120;
                     }
-                    
-                    global.saveEndChecker = 2;
-                    var savBfr = buffer_create(1024, buffer_grow, 1);
-                    buffer_seek(savBfr, buffer_seek_start, 0);
-                    buffer_write(savBfr, buffer_s32, 18);
-                    buffer_write(savBfr, buffer_u8, 71);
-                    buffer_write(savBfr, buffer_u8, global.saveEndChecker);
-                    buffer_poke(savBfr, 0, buffer_s32, buffer_tell(savBfr) - 4);
-                    
-                    for (var i = 0; i < sockets; i++)
-                        network_send_packet(ds_list_find_value(playerList, i), savBfr, buffer_tell(savBfr));
-                    
-                    buffer_delete(savBfr);
                 }
+
+                break;
+
+            case 72:
+                var savBfr = buffer_create(1024, buffer_grow, 1);
+                buffer_seek(savBfr, buffer_seek_start, 0);
+                buffer_write(savBfr, buffer_s32, 2);
+                buffer_write(savBfr, buffer_u8, 72);
+                buffer_write(savBfr, buffer_u8, 0);
+                buffer_poke(savBfr, 0, buffer_s32, buffer_tell(savBfr) - 4);
                 
+                for (var i = 0; i < ds_list_size(playerList); i++)
+                    network_send_packet(ds_list_find_value(playerList, i), savBfr, buffer_tell(savBfr));
+                
+                buffer_delete(savBfr);
+                matchEndResetTimer = 780;
+
                 break;
         }
         

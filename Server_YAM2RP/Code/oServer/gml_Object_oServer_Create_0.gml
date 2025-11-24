@@ -138,3 +138,4 @@ else
     global.syncnumsfont = 0;
 
 global.kickReason = 255;
+matchEndResetTimer = 0;

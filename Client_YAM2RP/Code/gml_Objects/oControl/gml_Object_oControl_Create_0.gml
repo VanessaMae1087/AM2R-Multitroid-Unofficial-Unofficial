@@ -558,3 +558,6 @@ global.revived = 0;
 file_delete("multitroid_log.txt");
 global.ssmode = 0;
 global.exp_gradualetanks = 1;
+global.winningTeam = 0;
+global.endingGametime = 0;
+global.endingItemstaken = 0;

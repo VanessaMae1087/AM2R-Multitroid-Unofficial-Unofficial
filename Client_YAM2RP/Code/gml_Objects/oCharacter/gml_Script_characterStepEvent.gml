@@ -1862,15 +1862,13 @@ if (state == SAVINGFX)
     {
         if (instance_exists(oClient) && global.sax)
         {
-            global.saveEndChecker = 1;
-            global.saveCheckBuffer = buffer_create(1024, buffer_grow, 1);
-            buffer_seek(global.saveCheckBuffer, buffer_seek_start, 0);
-            buffer_write(global.saveCheckBuffer, buffer_s32, 18);
-            buffer_write(global.saveCheckBuffer, buffer_u8, 71);
-            buffer_write(global.saveCheckBuffer, buffer_u8, global.saveEndChecker);
-            buffer_poke(global.saveCheckBuffer, 0, buffer_s32, buffer_tell(global.saveCheckBuffer) - 4);
-            network_send_packet(oClient.socket, global.saveCheckBuffer, buffer_tell(global.saveCheckBuffer));
-            buffer_delete(global.saveCheckBuffer);
+            var saveCheckBuffer = buffer_create(1024, buffer_grow, 1);
+            buffer_seek(saveCheckBuffer, buffer_seek_start, 0);
+            buffer_write(saveCheckBuffer, buffer_s32, 1);
+            buffer_write(saveCheckBuffer, buffer_u8, 71);
+            buffer_poke(saveCheckBuffer, 0, buffer_s32, buffer_tell(saveCheckBuffer) - 4);
+            network_send_packet(oClient.socket, saveCheckBuffer, buffer_tell(saveCheckBuffer));
+            buffer_delete(saveCheckBuffer);
         }
     }
     
@@ -1920,18 +1918,30 @@ if (state == SAVINGSHIP)
     }
     else
     {
-        global.enablecontrol = 0;
-        
-        if (statetime == 5)
+        if (statetime == 0)
         {
             global.enablecontrol = 0;
+            oControl.handleGameEnd = 0;
             global.event[308] = 1;
+
+            if (instance_exists(oClient))
+            {
+                var buf = buffer_create(1024, buffer_grow, 1);
+                buffer_seek(buf, buffer_seek_start, 0);
+                buffer_write(buf, buffer_s32, 2); // size
+                buffer_write(buf, buffer_u8, 72); // id
+                buffer_write(buf, buffer_u8, 0); // winning team
+                buffer_poke(buf, 0, buffer_s32, buffer_tell(buf) - 4);
+                network_send_packet(oClient.socket, buf, buffer_tell(buf));
+                buffer_delete(buf);
+            }
         }
+
+        if (statetime == 5)
+            global.enablecontrol = 0;
         
         if (statetime == 120)
         {
-            global.event[308] = 2;
-            
             with (oSaveShip)
                 instance_destroy();
             
@@ -1951,14 +1961,15 @@ if (state == SAVINGSHIP)
         
         if (statetime == 420)
         {
-            global.event[308] = 3;
             instance_create(0, 0, oFinalFadeout);
             mus_fadeout(292);
         }
         
         if (statetime == 760)
         {
-            global.event[308] = 4;
+            global.endingGametime = global.gametime;
+            global.endingItemstaken = global.itemstaken;
+            global.event[308] = 0;
             remove_persistent_objects();
             sfx_stop_all();
             global.vibL = 0;

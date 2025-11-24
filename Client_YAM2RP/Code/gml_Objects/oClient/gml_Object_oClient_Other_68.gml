@@ -1187,103 +1187,6 @@ switch (type_event)
                                     if (instance_exists(oCharacter) && !instance_exists(oHatchling) && !instance_exists(oHatchlingIntro))
                                         instance_create(oCharacter.x, oCharacter.y, oHatchling);
                                 }
-                                
-                                if (eventArr[f, 1] == 308)
-                                {
-                                    if (eventArr[f, 0] == 1 && clientID != global.clientID)
-                                    {
-                                        if (instance_exists(oCharacter))
-                                        {
-                                            with (oCharacter)
-                                            {
-                                                facing = 0;
-                                                
-                                                if (global.currentsuit == 0)
-                                                    sprite_index = scr_suit_sprites(822, 1157);
-                                                
-                                                if (global.currentsuit == 1)
-                                                    sprite_index = scr_suit_sprites(1029, 1157);
-                                                
-                                                if (global.currentsuit == 2)
-                                                    sprite_index = scr_suit_sprites(848, 1157);
-                                                
-                                                canbehit = 0;
-                                                xVel = 0;
-                                                yVel = 0;
-                                                xAcc = 0;
-                                                yAcc = 0;
-                                            }
-                                        }
-                                        
-                                        global.enablecontrol = 0;
-                                        oControl.displaygui = 0;
-                                        popup_text_ext("Ship reached", 120);
-                                    }
-                                    
-                                    if (eventArr[f, 0] == 2 && clientID != global.clientID)
-                                    {
-                                        oControl.displaygui = 0;
-                                        global.enablecontrol = 0;
-                                        
-                                        if (instance_exists(oCharacter))
-                                        {
-                                            with (oCharacter)
-                                            {
-                                                xVel = 0;
-                                                yVel = 0;
-                                                xAcc = 0;
-                                                yAcc = 0;
-                                            }
-                                        }
-                                    }
-                                    
-                                    if (eventArr[f, 0] == 3 && clientID != global.clientID)
-                                    {
-                                        instance_create(0, 0, oFinalFadeout);
-                                        mus_fadeout(292);
-                                        global.enablecontrol = 0;
-                                        
-                                        if (instance_exists(oCharacter))
-                                        {
-                                            with (oCharacter)
-                                            {
-                                                xVel = 0;
-                                                yVel = 0;
-                                                xAcc = 0;
-                                                yAcc = 0;
-                                            }
-                                        }
-                                    }
-                                    
-                                    if (eventArr[f, 0] == 4 && clientID != global.clientID)
-                                    {
-                                        if (instance_exists(oCharacter))
-                                        {
-                                            with (oCharacter)
-                                            {
-                                                xVel = 0;
-                                                yVel = 0;
-                                                xAcc = 0;
-                                                yAcc = 0;
-                                                canbehit = 1;
-                                            }
-                                        }
-                                        
-                                        remove_persistent_objects();
-                                        sfx_stop_all();
-                                        global.vibL = 0;
-                                        global.vibR = 0;
-                                        global.ingame = 0;
-                                        global.darkness = 0;
-                                        global.gotolog = -1;
-                                        global.enablecontrol = 1;
-                                        global.transitiontype = 0;
-                                        oControl.displaygui = 1;
-                                        room_goto(rm_credits);
-                                        mus_stop_all();
-                                        mus_play_once(293);
-                                    }
-                                }
                             }
                         }
                     }
@@ -2041,103 +1944,6 @@ switch (type_event)
                         {
                             global.event[i] = receivedEvent;
                             global.eventPrev[i] = global.event[i];
-                            
-                            if (i == 308)
-                            {
-                                if (receivedEvent == 1)
-                                {
-                                    if (instance_exists(oCharacter))
-                                    {
-                                        with (oCharacter)
-                                        {
-                                            facing = 0;
-                                            
-                                            if (global.currentsuit == 0)
-                                                sprite_index = scr_suit_sprites(822, 1157);
-                                            
-                                            if (global.currentsuit == 1)
-                                                sprite_index = scr_suit_sprites(1029, 1157);
-                                            
-                                            if (global.currentsuit == 2)
-                                                sprite_index = scr_suit_sprites(848, 1157);
-                                            
-                                            global.enablecontrol = 0;
-                                            canbehit = 0;
-                                            oControl.displaygui = 0;
-                                            xVel = 0;
-                                            yVel = 0;
-                                            xAcc = 0;
-                                            yAcc = 0;
-                                        }
-                                    }
-                                    
-                                    popup_text_ext("Ship reached", 120);
-                                }
-                                
-                                if (receivedEvent == 2)
-                                {
-                                    oControl.displaygui = 0;
-                                    global.enablecontrol = 0;
-                                    
-                                    if (instance_exists(oCharacter))
-                                    {
-                                        with (oCharacter)
-                                        {
-                                            xVel = 0;
-                                            yVel = 0;
-                                            xAcc = 0;
-                                            yAcc = 0;
-                                        }
-                                    }
-                                }
-                                
-                                if (receivedEvent == 3)
-                                {
-                                    instance_create(0, 0, oFinalFadeout);
-                                    mus_fadeout(292);
-                                    global.enablecontrol = 0;
-                                    
-                                    if (instance_exists(oCharacter))
-                                    {
-                                        with (oCharacter)
-                                        {
-                                            xVel = 0;
-                                            yVel = 0;
-                                            xAcc = 0;
-                                            yAcc = 0;
-                                        }
-                                    }
-                                }
-                                
-                                if (receivedEvent == 4)
-                                {
-                                    if (instance_exists(oCharacter))
-                                    {
-                                        with (oCharacter)
-                                        {
-                                            xVel = 0;
-                                            yVel = 0;
-                                            xAcc = 0;
-                                            yAcc = 0;
-                                            canbehit = 1;
-                                        }
-                                    }
-                                    
-                                    remove_persistent_objects();
-                                    sfx_stop_all();
-                                    global.vibL = 0;
-                                    global.vibR = 0;
-                                    global.ingame = 0;
-                                    global.darkness = 0;
-                                    global.gotolog = -1;
-                                    global.enablecontrol = 1;
-                                    global.transitiontype = 0;
-                                    oControl.displaygui = 1;
-                                    room_goto(rm_credits);
-                                    mus_stop_all();
-                                    mus_play_once(293);
-                                }
-                            }
                         }
                         else if (floor(receivedEvent) < floor(global.event[i]) && i != 102)
                         {
@@ -2453,5 +2259,11 @@ switch (type_event)
                         }
                     }
                 }
+                break;
+
+            case 72:
+                global.winningTeam = buffer_read(_buffer, buffer_u8);
+                global.event[308] = 1;
+                break;
         }
 }
