@@ -115,7 +115,10 @@ if (global.spectator)
             global.reform = 0;
             global.spectator = 0;
             global.playerhealth = 50;
+            monster_drain = 0;
+            monster_drainfx = 0;
             invincible = 120;
+            reformIFrames = 1;
             reformTime = 0;
         }
         
@@ -4090,52 +4093,27 @@ else
 if (monster_drain > 0)
 {
     monster_drain -= 1;
-    dash = 0;
-    speedboost = 0;
-    
-    if (global.currentsuit == 0 && oControl.mod_monstersextreme == 0)
-        global.playerhealth -= (global.mod_monstersdrainPS * oControl.mod_diffmult);
-    else if (global.currentsuit == 0 && oControl.mod_monstersextreme != 0)
-        global.playerhealth -= (global.mod_monstersdrainPS * 4);
-    
-    if (global.currentsuit == 1 && oControl.mod_monstersextreme == 0)
-        global.playerhealth -= (global.mod_monstersdrainVS * oControl.mod_diffmult);
-    else if (global.currentsuit == 1 && oControl.mod_monstersextreme != 0)
-        global.playerhealth -= (global.mod_monstersdrainVS * 4);
-    
-    if (global.currentsuit == 2 && oControl.mod_monstersextreme == 0)
+    if (!reformIFrames)
     {
-        if (global.item[5] == 0)
-            global.playerhealth -= (global.mod_monstersdrainVS * oControl.mod_diffmult);
-        else
-            global.playerhealth -= (global.mod_monstersdrainGS * oControl.mod_diffmult);
-    }
-    else if (global.currentsuit == 2 && oControl.mod_monstersextreme != 0)
-    {
-        if (global.item[5] == 0)
-            global.playerhealth -= (global.mod_monstersdrainVS * 4);
-        else
-            global.playerhealth -= (global.mod_monstersdrainGS * 4);
-    }
-    
-    if (global.sax)
-    {
+        dash = 0;
+        speedboost = 0;
+        
         if (global.currentsuit == 0 && oControl.mod_monstersextreme == 0)
-            global.playerhealth -= (global.mod_monstersdrainPS * 2);
+            global.playerhealth -= (global.mod_monstersdrainPS * oControl.mod_diffmult);
         else if (global.currentsuit == 0 && oControl.mod_monstersextreme != 0)
             global.playerhealth -= (global.mod_monstersdrainPS * 4);
         
         if (global.currentsuit == 1 && oControl.mod_monstersextreme == 0)
-            global.playerhealth -= (global.mod_monstersdrainVS * 2);
+            global.playerhealth -= (global.mod_monstersdrainVS * oControl.mod_diffmult);
         else if (global.currentsuit == 1 && oControl.mod_monstersextreme != 0)
             global.playerhealth -= (global.mod_monstersdrainVS * 4);
         
         if (global.currentsuit == 2 && oControl.mod_monstersextreme == 0)
         {
             if (global.item[5] == 0)
-                global.playerhealth -= (global.mod_monstersdrainVS * 2);
+                global.playerhealth -= (global.mod_monstersdrainVS * oControl.mod_diffmult);
             else
-                global.playerhealth -= (global.mod_monstersdrainGS * 2);
+                global.playerhealth -= (global.mod_monstersdrainGS * oControl.mod_diffmult);
         }
         else if (global.currentsuit == 2 && oControl.mod_monstersextreme != 0)
         {
@@ -4144,21 +4122,49 @@ if (monster_drain > 0)
             else
                 global.playerhealth -= (global.mod_monstersdrainGS * 4);
         }
+        
+        if (global.sax)
+        {
+            if (global.currentsuit == 0 && oControl.mod_monstersextreme == 0)
+                global.playerhealth -= (global.mod_monstersdrainPS * 2);
+            else if (global.currentsuit == 0 && oControl.mod_monstersextreme != 0)
+                global.playerhealth -= (global.mod_monstersdrainPS * 4);
+            
+            if (global.currentsuit == 1 && oControl.mod_monstersextreme == 0)
+                global.playerhealth -= (global.mod_monstersdrainVS * 2);
+            else if (global.currentsuit == 1 && oControl.mod_monstersextreme != 0)
+                global.playerhealth -= (global.mod_monstersdrainVS * 4);
+            
+            if (global.currentsuit == 2 && oControl.mod_monstersextreme == 0)
+            {
+                if (global.item[5] == 0)
+                    global.playerhealth -= (global.mod_monstersdrainVS * 2);
+                else
+                    global.playerhealth -= (global.mod_monstersdrainGS * 2);
+            }
+            else if (global.currentsuit == 2 && oControl.mod_monstersextreme != 0)
+            {
+                if (global.item[5] == 0)
+                    global.playerhealth -= (global.mod_monstersdrainVS * 4);
+                else
+                    global.playerhealth -= (global.mod_monstersdrainGS * 4);
+            }
+        }
+        
+        if (global.playerhealth <= 0)
+        {
+            with (oControl)
+                event_user(1);
+        }
+        
+        if (monster_drainfx == 0)
+        {
+            sfx_loop(28);
+            monster_drainfx = 1;
+        }
+        
+        xVel *= 0.4;
     }
-    
-    if (global.playerhealth <= 0)
-    {
-        with (oControl)
-            event_user(1);
-    }
-    
-    if (monster_drainfx == 0)
-    {
-        sfx_loop(28);
-        monster_drainfx = 1;
-    }
-    
-    xVel *= 0.4;
 }
 else
 {
@@ -4557,7 +4563,11 @@ if (charge > 0)
     charge -= 1;
 
 if (invincible > 0)
+{
     invincible -= 1;
+    if (invincible == 0)
+        reformIFrames = 0;
+}
 
 if (juststarted > 0)
     juststarted -= 1;
