@@ -573,13 +573,19 @@ if (global.classicmode == 0 && global.opshowhud)
     }
     
     if (global.ophudshowmap && global.ophudshowmetrcount == 0)
+    {
         draw_background(bgGUIMapOnly, 272 + widescreen_space, 0);
+        xoff = 272;
+    }
     
     if (global.ophudshowmap == 0 && global.ophudshowmetrcount)
     {
         draw_background(bgGUIMetOnly, 296 + widescreen_space, 0);
         xoff = 296;
     }
+
+    if (global.ophudshowmap == 0 && global.ophudshowmetrcount == 0)
+        xoff = 320;
     
     if (instance_exists(oClient) && global.saxmode)
     {
@@ -597,21 +603,21 @@ if (global.classicmode == 0 && global.opshowhud)
         
         if (!global.juggActive)
         {
-            draw_sprite(sXPowerBar, 0, (xoffNew - 4) + oControl.widescreen_space, 30);
-            draw_sprite(sXPowerTanks, global.damageMult, xoffNew + 75 + oControl.widescreen_space, 38);
+            draw_sprite(sXPowerBar, 0, 201 + oControl.widescreen_space, 30);
+            draw_sprite(sXPowerTanks, global.damageMult, 280 + oControl.widescreen_space, 38);
             
             if (global.damageMult == 4)
-                draw_sprite_ext(sXPowerMeter, 3, xoffNew + 97 + oControl.widescreen_space, 31, -99, 1, 0, c_white, 1);
+                draw_sprite_ext(sXPowerMeter, 3, 302 + oControl.widescreen_space, 31, -99, 1, 0, c_white, 1);
             else
-                draw_sprite_ext(sXPowerMeter, global.damageMult, xoffNew + 97 + oControl.widescreen_space, 31, -((global.damageMult * 100) % 100), 1, 0, c_white, 1);
+                draw_sprite_ext(sXPowerMeter, global.damageMult, 302 + oControl.widescreen_space, 31, -((global.damageMult * 100) % 100), 1, 0, c_white, 1);
         }
         else
         {
             var shakeX = irandom_range(-1, 1);
             var shakeY = irandom_range(0, 1);
-            draw_sprite(sXPowerBar, 1, (xoffNew - 4) + oControl.widescreen_space + shakeX, 30 + shakeY);
-            draw_sprite(sXPowerTanks, 5, xoffNew + 75 + oControl.widescreen_space + shakeX, 38 + shakeY);
-            draw_sprite_ext(sXPowerMeter, 3, xoffNew + 97 + oControl.widescreen_space + shakeX, 31 + shakeY, -99, 1, 0, c_white, 1);
+            draw_sprite(sXPowerBar, 1, 201 + oControl.widescreen_space + shakeX, 30 + shakeY);
+            draw_sprite(sXPowerTanks, 5, 280 + oControl.widescreen_space + shakeX, 38 + shakeY);
+            draw_sprite_ext(sXPowerMeter, 3, 302 + oControl.widescreen_space + shakeX, 31 + shakeY, -99, 1, 0, c_white, 1);
         }
         
         var lowestDist = 1000;
@@ -710,6 +716,18 @@ if (global.classicmode == 0 && global.opshowhud)
         }
     }
     
+    if (global.saxmode)
+    {
+        draw_background(bgSamCount, (xoff - 20) + widescreen_space, 4);
+        
+        if (global.samCount < global.samsAlive)
+            global.samsAlpha = 1;
+        
+        draw_background_ext(bgSamCountRed, (xoff - 20) + widescreen_space, 4, 1, 1, 0, c_white, global.samsAlpha);
+        draw_text((xoff - 18) + widescreen_space, 21, to_string_lz(global.samCount));
+        global.samsAlpha -= 0.016;
+    }
+
     if (global.ophudshowmetrcount)
     {
         var metcount;
@@ -723,15 +741,7 @@ if (global.classicmode == 0 && global.opshowhud)
                 if (global.metdead[i] == 1)
                     metcount += 1;
             }
-            
-            draw_background(bgSamCount, (xoff - 20) + widescreen_space, 4);
-            
-            if (global.samCount < global.samsAlive)
-                global.samsAlpha = 1;
-            
-            draw_background_ext(bgSamCountRed, (xoff - 20) + widescreen_space, 4, 1, 1, 0, c_white, global.samsAlpha);
-            draw_text((xoff - 18) + widescreen_space, 21, to_string_lz(global.samCount));
-            global.samsAlpha -= 0.016;
+
         }
         
         if (global.saxmode && (global.MetCount - metcount) > 0)
