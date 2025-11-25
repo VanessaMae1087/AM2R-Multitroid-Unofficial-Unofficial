@@ -1,1 +1,1 @@
-AM2R Multitroid 1.9.2-dev
+AM2R Multitroid 1.9.2
