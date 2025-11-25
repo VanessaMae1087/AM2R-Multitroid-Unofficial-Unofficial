@@ -1092,46 +1092,13 @@ switch (type_event)
             
             case 1:
                 var name = safe_buffer_read(_buffer, 11);
+                var version = safe_buffer_read(_buffer, 11);
                 var sax = safe_buffer_read(_buffer, 1);
                 
                 if (global.bufferOverflow)
                     exit;
                 
-                var msg = name;
-                var splitBy = ",";
-                var slot = 0;
-                var str2 = "";
-                var splits;
-                
-                for (var i = 1; i < (string_length(msg) + 1); i++)
-                {
-                    var currStr = string_copy(msg, i, 1);
-                    
-                    if (currStr == splitBy)
-                    {
-                        splits[slot] = str2;
-                        slot++;
-                        str2 = "";
-                    }
-                    else
-                    {
-                        str2 = str2 + currStr;
-                        splits[slot] = str2;
-                    }
-                }
-                
-                var wrongVersion = 1;
-                name = splits[0];
-                
-                for (var i = 0; i < array_length_1d(splits); i++)
-                {
-                    show_debug_message(splits[i]);
-                    
-                    if (splits[i] == global.clientVersion)
-                        wrongVersion = 0;
-                }
-                
-                if (wrongVersion)
+                if (version != global.clientVersion)
                 {
                     ds_list_add(kickList, client_id);
                     global.kickReason = 1;

@@ -6,20 +6,14 @@ if (!connected)
         global.TryConnect = 0;
         popup_text("Connected");
         buffer_delete(buffer);
-        var size = 1024;
-        var type = 1;
-        var alignment = 1;
-        buffer = buffer_create(size, type, alignment);
+        buffer = buffer_create(1024, buffer_grow, 1);
         buffer_seek(buffer, buffer_seek_start, 0);
+        buffer_write(buffer, buffer_s32, 0); // placeholder buffer size
         buffer_write(buffer, buffer_u8, 1);
-        buffer_write(buffer, buffer_string, name + "," + global.multitroid_version);
+        buffer_write(buffer, buffer_string, name);
+        buffer_write(buffer, buffer_string, global.multitroid_version);
         buffer_write(buffer, buffer_u8, global.sax);
-        var bufferSize = buffer_tell(buffer);
-        buffer_seek(buffer, buffer_seek_start, 0);
-        buffer_write(buffer, buffer_s32, bufferSize);
-        buffer_write(buffer, buffer_u8, 1);
-        buffer_write(buffer, buffer_string, name + "," + global.multitroid_version);
-        buffer_write(buffer, buffer_u8, global.sax);
+        buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
         var result = network_send_packet(socket, buffer, buffer_tell(buffer));
         instance_create(x, y, oNametag);
     }
