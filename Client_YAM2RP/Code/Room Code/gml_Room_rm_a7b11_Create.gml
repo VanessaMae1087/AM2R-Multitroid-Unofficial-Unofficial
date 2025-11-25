@@ -39,7 +39,8 @@ if (global.event[303] > 0)
     tile_layer_delete(-104);
 }
 
-if ((instance_exists(oClient) && global.saxmode && !global.sax) || !instance_exists(oClient))
+//if ((instance_exists(oClient) && global.saxmode && !global.sax) || !instance_exists(oClient))
+if (true) // in case we want to bring these back later
 {
     with (oA7Crystal2)
         instance_destroy();
