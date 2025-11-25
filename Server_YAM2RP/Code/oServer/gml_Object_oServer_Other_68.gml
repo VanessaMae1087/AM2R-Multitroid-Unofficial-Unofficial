@@ -720,7 +720,7 @@ switch (type_event)
                 var findSamus = ds_list_find_index(samusList, clientID);
                 ds_map_replace(global.readyMap, clientID, clientRoom);
                 
-                if (findSamus != -1 && spectator && !sax && global.event[308] < 4)
+                if (findSamus != -1 && spectator && !sax)
                 {
                     if (ds_list_size(deadList) > 0)
                     {
