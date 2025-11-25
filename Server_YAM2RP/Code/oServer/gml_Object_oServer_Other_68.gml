@@ -718,21 +718,18 @@ switch (type_event)
                     exit;
                 
                 var findSamus = ds_list_find_index(samusList, clientID);
+                var findDead = ds_list_find_index(deadList, clientID);
                 ds_map_replace(global.readyMap, clientID, clientRoom);
                 
                 if (findSamus != -1 && spectator && !sax)
                 {
-                    if (ds_list_size(deadList) > 0)
-                    {
-                        var findDead = ds_list_find_index(deadList, clientID);
-                        
-                        if (findDead == -1)
-                            ds_list_add(deadList, clientID);
-                    }
-                    else
-                    {
+                    if (findDead == -1)
                         ds_list_add(deadList, clientID);
-                    }
+                }
+                if (findSamus != -1 && !spectator && !sax)
+                {
+                    if (findDead != -1)
+                        ds_list_delete(deadList, findDead);
                 }
                 
                 var sockets = ds_list_size(playerList);

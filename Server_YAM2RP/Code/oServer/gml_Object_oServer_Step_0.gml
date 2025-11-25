@@ -83,12 +83,11 @@ for (var a = 0; a < ds_list_size(saxList); a++)
 for (var a = 0; a < ds_list_size(deadList); a++)
 {
     var match = 0;
+    var deadID = ds_list_find_value(deadList, a);
     
-    for (var b = 0; b < ds_list_size(idList); b++)
+    for (var b = 0; b < ds_list_size(samusList); b++)
     {
-        var arrList = ds_list_find_value(idList, b);
-        
-        if (ds_list_find_value(deadList, a) == arrList[0, 0])
+        if (deadID == ds_list_find_value(samusList, b))
             match = 1;
     }
     
