@@ -17,6 +17,7 @@ global.MetCount = ini_read_real("Settings", "MetroidsToA6", 36);
 global.rando = ini_read_real("Settings", "RandomizerMode", 1);
 oServer.syncedDifficulty = ini_read_real("Settings", "Difficulty", 1);
 oServer.syncedELM = ini_read_real("Settings", "ExtremeLabMetroids", 0);
+global.forceUniqueColors = ini_read_real("Settings", "ForceUniqueColors", 0);
 global.exp_rollbackhits = ini_read_real("ExperimentalSettings", "RollbackHits", 1);
 global.exp_gradualetanks = ini_read_real("ExperimentalSettings", "GradualETanks", global.saxmode);
 ini_close();

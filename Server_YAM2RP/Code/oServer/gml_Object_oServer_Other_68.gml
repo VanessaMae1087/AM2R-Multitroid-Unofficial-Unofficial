@@ -514,6 +514,31 @@ switch (type_event)
                 if (global.bufferOverflow)
                     exit;
 
+                if (global.forceUniqueColors && ds_list_size(idList) <= 16)
+                {
+                    var usedColors = ds_list_create();
+                    if (ds_list_size(idList) > 0)
+                    {
+                        for (var i = 0; i < ds_list_size(idList); i++)
+                        {
+                            var arrList = ds_list_find_value(idList, i);
+                            if (clientID != arrList[0, 0])
+                                ds_list_add(usedColors, arrList[0, 4]);
+                        }
+
+                        if (ds_list_find_index(usedColors, preferredColor) != -1)
+                        {
+                            for (var i = 0; i < 128; i++)
+                            {
+                                preferredColor = irandom_range(1, 16);
+                                if (ds_list_find_index(usedColors, preferredColor) == -1)
+                                    break;
+                            }
+                        }
+                    }
+                    ds_list_destroy(usedColors);
+                }
+
                 if (ds_list_size(idList) > 0)
                 {
                     for (var i = 0; i < ds_list_size(idList); i++)
@@ -544,21 +569,15 @@ switch (type_event)
                                 for (i = 0; i < sockets; i++)
                                     network_send_packet(ds_list_find_value(playerList, i), buffer, buffer_tell(buffer));
                                 
-                                /* keeping this becasue it could be useful later for forcing color uniqueness
                                 buffer_delete(buffer);
-                                size = 1024;
-                                type = 1;
-                                alignment = 1;
-                                buffer = buffer_create(size, type, alignment);
+                                buffer = buffer_create(1024, buffer_grow, 1);
                                 buffer_seek(buffer, buffer_seek_start, 0);
+                                buffer_write(buffer, buffer_s32, 2);
                                 buffer_write(buffer, buffer_u8, 200);
-                                bufferSize = buffer_tell(buffer);
-                                buffer_seek(buffer, buffer_seek_start, 0);
-                                buffer_write(buffer, buffer_s32, bufferSize);
-                                buffer_write(buffer, buffer_u8, 200);
+                                buffer_write(buffer, buffer_u8, preferredColor);
+                                buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
                                 network_send_packet(socket, buffer, buffer_tell(buffer));
                                 break;
-                                */
                             }
                         }
                     }

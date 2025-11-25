@@ -82,7 +82,7 @@ switch (type_event)
                 break;
             
             case 200:
-                global.clientID = preferredcolor;
+                preferredcolor = buffer_read(_buffer, buffer_u8);
                 break;
             
             case 100:

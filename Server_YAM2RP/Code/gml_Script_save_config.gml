@@ -17,6 +17,7 @@ ini_write_real("Settings", "MetroidsToA6", global.MetCount);
 ini_write_real("Settings", "RandomizerMode", global.rando);
 ini_write_real("Settings", "Difficulty", oServer.syncedDifficulty);
 ini_write_real("Settings", "ExtremeLabMetroids", oServer.syncedELM);
+ini_write_real("Settings", "ForceUniqueColors", global.forceUniqueColors);
 ini_write_real("ExperimentalSettings", "RollbackHits", global.exp_rollbackhits);
 ini_write_real("ExperimentalSettings", "GradualETanks", global.exp_gradualetanks);
 ini_close();

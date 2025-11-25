@@ -1144,7 +1144,7 @@
     },
     {
       "x": 1248,
-      "y": 592,
+      "y": 624,
       "object_definition": "oExperimentalPage",
       "instance_id": 0,
       "creation_code": "gml_RoomCC_room0_EXPPage_Left",
@@ -1158,7 +1158,7 @@
     },
     {
       "x": 1312,
-      "y": 592,
+      "y": 624,
       "object_definition": "oExperimentalPage",
       "instance_id": 0,
       "creation_code": "gml_RoomCC_room0_EXPPage_Right",
@@ -1172,7 +1172,7 @@
     },
     {
       "x": 1312,
-      "y": 560,
+      "y": 592,
       "object_definition": "oEXP_RollbackHits",
       "instance_id": 0,
       "creation_code": null,
@@ -1186,8 +1186,22 @@
     },
     {
       "x": 1312,
-      "y": 528,
+      "y": 560,
       "object_definition": "oEXP_GradualETanks",
+      "instance_id": 0,
+      "creation_code": null,
+      "scale_x": 1,
+      "scale_y": 1,
+      "color": 4294967295,
+      "rotation": 0,
+      "pre_create_code": null,
+      "image_speed": 0,
+      "image_index": 0
+    },
+    {
+      "x": 1248,
+      "y": 592,
+      "object_definition": "oColorUniqueness",
       "instance_id": 0,
       "creation_code": null,
       "scale_x": 1,
