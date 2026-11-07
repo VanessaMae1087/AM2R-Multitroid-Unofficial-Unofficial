@@ -662,11 +662,11 @@ switch (type_event)
                 global.clientID = buffer_read(_buffer, buffer_u8);
                 show_debug_message(string(msgid) + " " + string(global.clientID));
                 global.receiving = 1;
-                buffer_delete(buffer);
+                
                 var size = 1024;
                 var type = 1;
                 var alignment = 1;
-                buffer = buffer_create(size, type, alignment);
+                buffer = global.buffer;
                 buffer_seek(buffer, buffer_seek_start, 0);
                 buffer_write(buffer, buffer_u8, 200);
                 buffer_write(buffer, buffer_u8, global.clientID);
@@ -1910,7 +1910,7 @@ switch (type_event)
                     var size = 1024;
                     var type = 1;
                     var alignment = 1;
-                    itemBuffer = buffer_create(size, type, alignment);
+                    itemBuffer = global.buffer;
                     buffer_seek(itemBuffer, buffer_seek_start, 0);
                     buffer_write(itemBuffer, buffer_u8, 50);
                     
@@ -1926,7 +1926,7 @@ switch (type_event)
                         buffer_write(itemBuffer, buffer_u8, global.item[i]);
                     
                     network_send_packet(socket, itemBuffer, buffer_tell(itemBuffer));
-                    buffer_delete(itemBuffer);
+                    
                 }
                 
                 break;
@@ -1957,7 +1957,7 @@ switch (type_event)
                     var size = 1024;
                     var type = 1;
                     var alignment = 1;
-                    eventBuffer = buffer_create(size, type, alignment);
+                    eventBuffer = global.buffer;
                     buffer_seek(eventBuffer, buffer_seek_start, 0);
                     buffer_write(eventBuffer, buffer_u8, 51);
                     
@@ -1973,7 +1973,7 @@ switch (type_event)
                         buffer_write(eventBuffer, buffer_u8, global.event[i]);
                     
                     network_send_packet(socket, eventBuffer, buffer_tell(eventBuffer));
-                    buffer_delete(eventBuffer);
+                    
                 }
                 
                 break;
@@ -2105,7 +2105,7 @@ switch (type_event)
                     var size = 1024;
                     var type = 1;
                     var alignment = 1;
-                    metdeadBuffer = buffer_create(size, type, alignment);
+                    metdeadBuffer = global.buffer;
                     buffer_seek(metdeadBuffer, buffer_seek_start, 0);
                     buffer_write(metdeadBuffer, buffer_u8, 52);
                     
@@ -2121,7 +2121,7 @@ switch (type_event)
                         buffer_write(metdeadBuffer, buffer_u8, global.metdead[i]);
                     
                     network_send_packet(socket, metdeadBuffer, buffer_tell(metdeadBuffer));
-                    buffer_delete(metdeadBuffer);
+                    
                 }
                 
                 break;
@@ -2156,7 +2156,7 @@ switch (type_event)
                     var size = 1024;
                     var type = 1;
                     var alignment = 1;
-                    dmapBuffer = buffer_create(size, type, alignment);
+                    dmapBuffer = global.buffer;
                     buffer_seek(dmapBuffer, buffer_seek_start, 0);
                     buffer_write(dmapBuffer, buffer_u8, 53);
                     
@@ -2178,7 +2178,7 @@ switch (type_event)
                     }
                     
                     network_send_packet(socket, dmapBuffer, buffer_tell(dmapBuffer));
-                    buffer_delete(dmapBuffer);
+                    
                 }
                 
                 if (global.ingame)

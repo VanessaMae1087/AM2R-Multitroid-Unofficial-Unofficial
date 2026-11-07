@@ -5,8 +5,8 @@ if (!connected)
         connected = 1;
         global.TryConnect = 0;
         popup_text("Connected");
-        buffer_delete(buffer);
-        buffer = buffer_create(1024, buffer_grow, 1);
+        
+        buffer = global.buffer;
         buffer_seek(buffer, buffer_seek_start, 0);
         buffer_write(buffer, buffer_s32, 0); // placeholder buffer size
         buffer_write(buffer, buffer_u8, 1);
@@ -198,11 +198,11 @@ if (maxpbombsTimer == 0 && connected && !is_on_menu() && (!global.spectator || g
 {
     if (global.maxpbombsPrev != global.maxpbombs)
     {
-        buffer_delete(buffer);
+        
         var size = 1024;
         var type = 1;
         var alignment = 1;
-        buffer = buffer_create(size, type, alignment);
+        buffer = global.buffer;
         buffer_seek(buffer, buffer_seek_start, 0);
         buffer_write(buffer, buffer_u8, 13);
         buffer_write(buffer, buffer_u8, global.maxpbombs);
@@ -231,11 +231,11 @@ if (maxhealthTimer == 0 && connected && !is_on_menu() && (!global.spectator || g
 {
     if (global.maxhealthPrev != global.maxhealth)
     {
-        buffer_delete(buffer);
+        
         var size = 1024;
         var type = 1;
         var alignment = 1;
-        buffer = buffer_create(size, type, alignment);
+        buffer = global.buffer;
         buffer_seek(buffer, buffer_seek_start, 0);
         buffer_write(buffer, buffer_u8, 14);
         buffer_write(buffer, buffer_u16, global.maxhealth);
@@ -264,11 +264,11 @@ if (etanksTimer == 0 && connected && !is_on_menu() && (!global.spectator || glob
 {
     if (global.etanksPrev != global.etanks)
     {
-        buffer_delete(buffer);
+        
         var size = 1024;
         var type = 1;
         var alignment = 1;
-        buffer = buffer_create(size, type, alignment);
+        buffer = global.buffer;
         buffer_seek(buffer, buffer_seek_start, 0);
         buffer_write(buffer, buffer_u8, 15);
         buffer_write(buffer, buffer_u8, global.etanks);
@@ -297,11 +297,11 @@ if (mtanksTimer == 0 && connected && !is_on_menu() && (!global.spectator || glob
 {
     if (global.mtanksPrev != global.mtanks)
     {
-        buffer_delete(buffer);
+        
         var size = 1024;
         var type = 1;
         var alignment = 1;
-        buffer = buffer_create(size, type, alignment);
+        buffer = global.buffer;
         buffer_seek(buffer, buffer_seek_start, 0);
         buffer_write(buffer, buffer_u8, 16);
         buffer_write(buffer, buffer_u8, global.mtanks);
@@ -330,11 +330,11 @@ if (stanksTimer == 0 && connected && !is_on_menu() && (!global.spectator || glob
 {
     if (global.stanksPrev != global.stanks)
     {
-        buffer_delete(buffer);
+        
         var size = 1024;
         var type = 1;
         var alignment = 1;
-        buffer = buffer_create(size, type, alignment);
+        buffer = global.buffer;
         buffer_seek(buffer, buffer_seek_start, 0);
         buffer_write(buffer, buffer_u8, 17);
         buffer_write(buffer, buffer_u8, global.stanks);
@@ -363,11 +363,11 @@ if (ptanksTimer == 0 && connected && !is_on_menu() && (!global.spectator || glob
 {
     if (global.ptanksPrev != global.ptanks)
     {
-        buffer_delete(buffer);
+        
         var size = 1024;
         var type = 1;
         var alignment = 1;
-        buffer = buffer_create(size, type, alignment);
+        buffer = global.buffer;
         buffer_seek(buffer, buffer_seek_start, 0);
         buffer_write(buffer, buffer_u8, 18);
         buffer_write(buffer, buffer_u8, global.ptanks);
@@ -396,8 +396,8 @@ if (hpAmmoSyncTimer <= 0 && connected && !is_on_menu() && (!global.spectator || 
 {
     if (global.playerhealthPrev != global.playerhealth || global.missilesPrev != global.missiles || global.smissilesPrev != global.smissiles || global.pbombsPrev != global.pbombs)
     {
-        buffer_delete(buffer);
-        buffer = buffer_create(1024, buffer_grow, 1);
+        
+        buffer = global.buffer;
         buffer_seek(buffer, buffer_seek_start, 0);
         buffer_write(buffer, buffer_s32, 10);
         buffer_write(buffer, buffer_u8, 102);
@@ -435,11 +435,11 @@ if (disconnectTimer <= 0)
 if (pingTimer <= 0)
 {
     pingTimer = 5;
-    buffer_delete(buffer);
+    
     var size = 1024;
     var type = 1;
     var alignment = 1;
-    buffer = buffer_create(size, type, alignment);
+    buffer = global.buffer;
     buffer_seek(buffer, buffer_seek_start, 0);
     buffer_write(buffer, buffer_u8, 103);
     buffer_write(buffer, buffer_u32, current_time);
@@ -455,11 +455,11 @@ if (pingTimer <= 0)
 
 if (resetTimer == 0)
 {
-    buffer_delete(buffer);
+    
     var size = 1024;
     var type = 1;
     var alignment = 1;
-    buffer = buffer_create(size, type, alignment);
+    buffer = global.buffer;
     buffer_seek(buffer, buffer_seek_start, 0);
     buffer_write(buffer, buffer_u8, 20);
     buffer_write(buffer, buffer_u8, global.clientID);
@@ -474,11 +474,11 @@ if (resetTimer == 0)
 if (currentItemsTimer == 0 && connected)
 {
     currentItemsTimer = 120;
-    buffer_delete(buffer);
+    
     var size = 1024;
     var type = 1;
     var alignment = 1;
-    buffer = buffer_create(size, type, alignment);
+    buffer = global.buffer;
     buffer_seek(buffer, buffer_seek_start, 0);
     buffer_write(buffer, buffer_u8, 104);
     buffer_write(buffer, buffer_u8, global.clientID);

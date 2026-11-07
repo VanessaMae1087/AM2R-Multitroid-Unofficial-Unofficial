@@ -1865,13 +1865,12 @@ if (state == SAVINGFX)
     {
         if (instance_exists(oClient) && global.sax)
         {
-            var saveCheckBuffer = buffer_create(1024, buffer_grow, 1);
+            var saveCheckBuffer = global.buffer;
             buffer_seek(saveCheckBuffer, buffer_seek_start, 0);
             buffer_write(saveCheckBuffer, buffer_s32, 1);
             buffer_write(saveCheckBuffer, buffer_u8, 71);
             buffer_poke(saveCheckBuffer, 0, buffer_s32, buffer_tell(saveCheckBuffer) - 4);
             network_send_packet(oClient.socket, saveCheckBuffer, buffer_tell(saveCheckBuffer));
-            buffer_delete(saveCheckBuffer);
         }
     }
     
@@ -1929,14 +1928,13 @@ if (state == SAVINGSHIP)
 
             if (instance_exists(oClient))
             {
-                var buf = buffer_create(1024, buffer_grow, 1);
+                var buf = global.buffer;
                 buffer_seek(buf, buffer_seek_start, 0);
                 buffer_write(buf, buffer_s32, 2); // size
                 buffer_write(buf, buffer_u8, 72); // id
                 buffer_write(buf, buffer_u8, 0); // winning team
                 buffer_poke(buf, 0, buffer_s32, buffer_tell(buf) - 4);
                 network_send_packet(oClient.socket, buf, buffer_tell(buf));
-                buffer_delete(buf);
             }
         }
 

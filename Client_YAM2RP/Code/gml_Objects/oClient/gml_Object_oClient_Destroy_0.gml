@@ -6,11 +6,10 @@ if (connected)
     else
         popup_text("Lost connection to server");
     
-    buffer_delete(buffer);
     var size = 1024;
     var type = 1;
     var alignment = 1;
-    buffer = buffer_create(size, type, alignment);
+    buffer = global.buffer;
     buffer_seek(buffer, buffer_seek_start, 0);
     buffer_write(buffer, buffer_u8, 254);
     buffer_write(buffer, buffer_u8, global.clientID);
@@ -27,7 +26,6 @@ if (connected)
 if (!noName)
 {
     network_destroy(socket);
-    buffer_delete(buffer);
     ds_grid_destroy(global.onlineList);
     ds_grid_destroy(global.onlineSend);
     ds_grid_destroy(global.onlineReceived);

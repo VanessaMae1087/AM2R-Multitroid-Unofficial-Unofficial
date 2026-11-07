@@ -156,7 +156,7 @@ switch (preferredcolor)
 var size = 1024;
 type = 1;
 var alignment = 1;
-buffer = buffer_create(size, type, alignment);
+buffer = global.buffer;
 global.queenhealthPrev = global.mod_queenHstart + (global.mtanks * 10);
 global.queenphasePrev = 0;
 global.prevX = 0;

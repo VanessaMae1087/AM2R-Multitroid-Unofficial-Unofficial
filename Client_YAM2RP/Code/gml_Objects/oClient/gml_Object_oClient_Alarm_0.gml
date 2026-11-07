@@ -17,11 +17,11 @@ for (var i = 0; i < ds_grid_height(global.onlineList); i++)
 
 if (canSend)
 {
-    buffer_delete(buffer);
+
     var size = 1024;
     var type = 1;
     var alignment = 1;
-    buffer = buffer_create(size, type, alignment);
+    buffer = global.buffer;
     buffer_seek(buffer, buffer_seek_start, 0);
     buffer_write(buffer, buffer_u8, 0);
     buffer_write(buffer, buffer_string, strict_compress(ds_grid_write(global.onlineSend)));
@@ -70,11 +70,10 @@ if (instance_exists(oQueen) && instance_exists(oQueenHead) && !is_undefined(oQue
     if (global.queenhealthPrev != oQueenHead.myhealth || oQueen.phase != phase)
     {
         show_debug_message("queen health sent " + string(oQueenHead.myhealth));
-        buffer_delete(buffer);
         var size = 1024;
         var type = 1;
         var alignment = 1;
-        buffer = buffer_create(size, type, alignment);
+        buffer = global.buffer;
         buffer_seek(buffer, buffer_seek_start, 0);
         buffer_write(buffer, buffer_u8, 2);
         buffer_write(buffer, buffer_s32, oQueenHead.myhealth);

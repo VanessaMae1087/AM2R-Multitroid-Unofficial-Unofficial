@@ -561,3 +561,4 @@ global.exp_gradualetanks = 1;
 global.winningTeam = 0;
 global.endingGametime = 0;
 global.endingItemstaken = 0;
+global.buffer = buffer_create(1024, buffer_grow, 1)

@@ -98,12 +98,11 @@ if (active)
             alarm[0] = 180;
             global.awaitsyncs = 1;
             popup_text("Fetching item syncs");
-            var buffer = buffer_create(1024, buffer_grow, 1);
+            var buffer = global.buffer;
             buffer_write(buffer, buffer_s32, 1);
             buffer_write(buffer, buffer_u8, 61);
             buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
             network_send_packet(oClient.socket, buffer, buffer_tell(buffer));
-            buffer_delete(buffer);
         }
     }
     
