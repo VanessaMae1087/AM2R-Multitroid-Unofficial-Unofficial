@@ -99,6 +99,7 @@ if (active)
             global.awaitsyncs = 1;
             popup_text("Fetching item syncs");
             var buffer = global.buffer;
+            buffer_seek(buffer, buffer_seek_start, 0);
             buffer_write(buffer, buffer_s32, 1);
             buffer_write(buffer, buffer_u8, 61);
             buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
