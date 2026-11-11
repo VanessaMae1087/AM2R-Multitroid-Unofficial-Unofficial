@@ -153,10 +153,6 @@ switch (preferredcolor)
         break;
 }
 
-var size = 1024;
-type = 1;
-var alignment = 1;
-buffer = global.buffer;
 global.queenhealthPrev = global.mod_queenHstart + (global.mtanks * 10);
 global.queenphasePrev = 0;
 global.prevX = 0;

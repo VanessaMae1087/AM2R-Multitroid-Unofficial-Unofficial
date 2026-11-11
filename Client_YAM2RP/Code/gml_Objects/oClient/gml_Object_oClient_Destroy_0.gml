@@ -5,22 +5,12 @@ if (connected)
         popup_text("Disconnected");
     else
         popup_text("Lost connection to server");
-    
-    var size = 1024;
-    var type = 1;
-    var alignment = 1;
-    buffer = global.buffer;
-    buffer_seek(buffer, buffer_seek_start, 0);
+
+    var buffer = multi_setup_buffer();
     buffer_write(buffer, buffer_u8, 254);
     buffer_write(buffer, buffer_u8, global.clientID);
     buffer_write(buffer, buffer_u8, global.sax);
-    var bufferSize = buffer_tell(buffer);
-    buffer_seek(buffer, buffer_seek_start, 0);
-    buffer_write(buffer, buffer_s32, bufferSize);
-    buffer_write(buffer, buffer_u8, 254);
-    buffer_write(buffer, buffer_u8, global.clientID);
-    buffer_write(buffer, buffer_u8, global.sax);
-    var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+    multi_send_buffer();
 }
 
 if (!noName)

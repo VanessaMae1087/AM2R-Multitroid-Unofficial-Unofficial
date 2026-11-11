@@ -1,14 +1,4 @@
-var size, type, alignment, bufferSize, result;
-size = 1024
-type = buffer_grow
-alignment = 1
-buffer3 = global.buffer;
-buffer_seek(buffer3, buffer_seek_start, 0)
-buffer_write(buffer3, buffer_u8, 30)
-buffer_write(buffer3, buffer_u8, elm)
-bufferSize = buffer_tell(buffer3)
-buffer_seek(buffer3, buffer_seek_start, 0)
-buffer_write(buffer3, buffer_s32, bufferSize)
-buffer_write(buffer3, buffer_u8, 30)
-buffer_write(buffer3, buffer_u8, elm)
-result = network_send_packet(socket, buffer3, buffer_tell(buffer3))
+var buffer3 = multi_setup_buffer();
+buffer_write(buffer3, buffer_u8, 30);
+buffer_write(buffer3, buffer_u8, elm);
+multi_send_buffer();

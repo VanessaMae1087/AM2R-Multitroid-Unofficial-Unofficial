@@ -1,4 +1,4 @@
-var v, f, size, type, alignment, bufferSize, result;
+var v, f;
 v = 0
 f = 0
 while (f < array_length_1d(global.event))
@@ -21,23 +21,13 @@ while (f < array_length_1d(global.event))
         continue
     }
 }
-if (eventChanged && (!is_on_menu()) && ((!global.spectator) || global.sax))
+if (eventChanged && !is_on_menu() && (!global.spectator || global.sax))
 {
-    size = 1024
-    type = buffer_grow
-    alignment = 1
-    buffer = global.buffer;
-    buffer_seek(buffer, buffer_seek_start, 0)
-    buffer_write(buffer, buffer_u8, 8)
-    buffer_write(buffer, buffer_string, strict_compress(ds_list_write(global.onlineEvent)))
-    buffer_write(buffer, buffer_u8, global.clientID)
-    bufferSize = buffer_tell(buffer)
-    buffer_seek(buffer, buffer_seek_start, 0)
-    buffer_write(buffer, buffer_s32, bufferSize)
-    buffer_write(buffer, buffer_u8, 8)
-    buffer_write(buffer, buffer_string, strict_compress(ds_list_write(global.onlineEvent)))
-    buffer_write(buffer, buffer_u8, global.clientID)
-    result = network_send_packet(socket, buffer, buffer_tell(buffer))
+    var buffer = multi_setup_buffer();
+    buffer_write(buffer, buffer_u8, 8);
+    buffer_write(buffer, buffer_string, strict_compress(ds_list_write(global.onlineEvent)));
+    buffer_write(buffer, buffer_u8, global.clientID);
+    multi_send_buffer();
 }
 if (!eventChanged)
     alarm[5] = 10

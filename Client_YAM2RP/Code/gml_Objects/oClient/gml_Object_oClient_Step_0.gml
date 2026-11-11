@@ -5,16 +5,12 @@ if (!connected)
         connected = 1;
         global.TryConnect = 0;
         popup_text("Connected");
-        
-        buffer = global.buffer;
-        buffer_seek(buffer, buffer_seek_start, 0);
-        buffer_write(buffer, buffer_s32, 0); // placeholder buffer size
+        var buffer = multi_setup_buffer();
         buffer_write(buffer, buffer_u8, 1);
         buffer_write(buffer, buffer_string, name);
         buffer_write(buffer, buffer_string, global.multitroid_version);
         buffer_write(buffer, buffer_u8, global.sax);
-        buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
-        var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+        multi_send_buffer();
         instance_create(x, y, oNametag);
     }
     else
@@ -198,22 +194,11 @@ if (maxpbombsTimer == 0 && connected && !is_on_menu() && (!global.spectator || g
 {
     if (global.maxpbombsPrev != global.maxpbombs)
     {
-        
-        var size = 1024;
-        var type = 1;
-        var alignment = 1;
-        buffer = global.buffer;
-        buffer_seek(buffer, buffer_seek_start, 0);
+        var buffer = multi_setup_buffer();
         buffer_write(buffer, buffer_u8, 13);
         buffer_write(buffer, buffer_u8, global.maxpbombs);
         buffer_write(buffer, buffer_u8, global.clientID);
-        var bufferSize = buffer_tell(buffer);
-        buffer_seek(buffer, buffer_seek_start, 0);
-        buffer_write(buffer, buffer_s32, bufferSize);
-        buffer_write(buffer, buffer_u8, 13);
-        buffer_write(buffer, buffer_u8, global.maxpbombs);
-        buffer_write(buffer, buffer_u8, global.clientID);
-        var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+        multi_send_buffer();
         maxpbombsChanged = 1;
     }
     
@@ -231,22 +216,11 @@ if (maxhealthTimer == 0 && connected && !is_on_menu() && (!global.spectator || g
 {
     if (global.maxhealthPrev != global.maxhealth)
     {
-        
-        var size = 1024;
-        var type = 1;
-        var alignment = 1;
-        buffer = global.buffer;
-        buffer_seek(buffer, buffer_seek_start, 0);
+        var buffer = multi_setup_buffer();
         buffer_write(buffer, buffer_u8, 14);
         buffer_write(buffer, buffer_u16, global.maxhealth);
         buffer_write(buffer, buffer_u8, global.clientID);
-        var bufferSize = buffer_tell(buffer);
-        buffer_seek(buffer, buffer_seek_start, 0);
-        buffer_write(buffer, buffer_s32, bufferSize);
-        buffer_write(buffer, buffer_u8, 14);
-        buffer_write(buffer, buffer_u16, global.maxhealth);
-        buffer_write(buffer, buffer_u8, global.clientID);
-        var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+        multi_send_buffer();
         maxhealthChanged = 1;
     }
     
@@ -264,22 +238,11 @@ if (etanksTimer == 0 && connected && !is_on_menu() && (!global.spectator || glob
 {
     if (global.etanksPrev != global.etanks)
     {
-        
-        var size = 1024;
-        var type = 1;
-        var alignment = 1;
-        buffer = global.buffer;
-        buffer_seek(buffer, buffer_seek_start, 0);
+        var buffer = multi_setup_buffer();
         buffer_write(buffer, buffer_u8, 15);
         buffer_write(buffer, buffer_u8, global.etanks);
         buffer_write(buffer, buffer_u8, global.clientID);
-        var bufferSize = buffer_tell(buffer);
-        buffer_seek(buffer, buffer_seek_start, 0);
-        buffer_write(buffer, buffer_s32, bufferSize);
-        buffer_write(buffer, buffer_u8, 15);
-        buffer_write(buffer, buffer_u8, global.etanks);
-        buffer_write(buffer, buffer_u8, global.clientID);
-        var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+        multi_send_buffer();
         etanksChanged = 1;
     }
     
@@ -297,22 +260,11 @@ if (mtanksTimer == 0 && connected && !is_on_menu() && (!global.spectator || glob
 {
     if (global.mtanksPrev != global.mtanks)
     {
-        
-        var size = 1024;
-        var type = 1;
-        var alignment = 1;
-        buffer = global.buffer;
-        buffer_seek(buffer, buffer_seek_start, 0);
+        var buffer = multi_setup_buffer();
         buffer_write(buffer, buffer_u8, 16);
         buffer_write(buffer, buffer_u8, global.mtanks);
         buffer_write(buffer, buffer_u8, global.clientID);
-        var bufferSize = buffer_tell(buffer);
-        buffer_seek(buffer, buffer_seek_start, 0);
-        buffer_write(buffer, buffer_s32, bufferSize);
-        buffer_write(buffer, buffer_u8, 16);
-        buffer_write(buffer, buffer_u8, global.mtanks);
-        buffer_write(buffer, buffer_u8, global.clientID);
-        var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+        multi_send_buffer();
         mtanksChanged = 1;
     }
     
@@ -330,22 +282,11 @@ if (stanksTimer == 0 && connected && !is_on_menu() && (!global.spectator || glob
 {
     if (global.stanksPrev != global.stanks)
     {
-        
-        var size = 1024;
-        var type = 1;
-        var alignment = 1;
-        buffer = global.buffer;
-        buffer_seek(buffer, buffer_seek_start, 0);
+        var buffer = multi_setup_buffer();
         buffer_write(buffer, buffer_u8, 17);
         buffer_write(buffer, buffer_u8, global.stanks);
         buffer_write(buffer, buffer_u8, global.clientID);
-        var bufferSize = buffer_tell(buffer);
-        buffer_seek(buffer, buffer_seek_start, 0);
-        buffer_write(buffer, buffer_s32, bufferSize);
-        buffer_write(buffer, buffer_u8, 17);
-        buffer_write(buffer, buffer_u8, global.stanks);
-        buffer_write(buffer, buffer_u8, global.clientID);
-        var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+        multi_send_buffer();
         stanksChanged = 1;
     }
     
@@ -363,22 +304,11 @@ if (ptanksTimer == 0 && connected && !is_on_menu() && (!global.spectator || glob
 {
     if (global.ptanksPrev != global.ptanks)
     {
-        
-        var size = 1024;
-        var type = 1;
-        var alignment = 1;
-        buffer = global.buffer;
-        buffer_seek(buffer, buffer_seek_start, 0);
+        var buffer = multi_setup_buffer();
         buffer_write(buffer, buffer_u8, 18);
         buffer_write(buffer, buffer_u8, global.ptanks);
         buffer_write(buffer, buffer_u8, global.clientID);
-        var bufferSize = buffer_tell(buffer);
-        buffer_seek(buffer, buffer_seek_start, 0);
-        buffer_write(buffer, buffer_s32, bufferSize);
-        buffer_write(buffer, buffer_u8, 18);
-        buffer_write(buffer, buffer_u8, global.ptanks);
-        buffer_write(buffer, buffer_u8, global.clientID);
-        var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+        multi_send_buffer();
         ptanksChanged = 1;
     }
     
@@ -396,19 +326,14 @@ if (hpAmmoSyncTimer <= 0 && connected && !is_on_menu() && (!global.spectator || 
 {
     if (global.playerhealthPrev != global.playerhealth || global.missilesPrev != global.missiles || global.smissilesPrev != global.smissiles || global.pbombsPrev != global.pbombs)
     {
-        
-        buffer = global.buffer;
-        buffer_seek(buffer, buffer_seek_start, 0);
-        buffer_write(buffer, buffer_s32, 10);
+        var buffer = multi_setup_buffer();
         buffer_write(buffer, buffer_u8, 102);
         buffer_write(buffer, buffer_s16, global.playerhealthPrev - global.playerhealth);
         buffer_write(buffer, buffer_s16, global.missilesPrev - global.missiles);
         buffer_write(buffer, buffer_s16, global.smissilesPrev - global.smissiles);
         buffer_write(buffer, buffer_s16, global.pbombsPrev - global.pbombs);
         buffer_write(buffer, buffer_u8, global.sax);
-        buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
-        buffer_tell(buffer);
-        network_send_packet(socket, buffer, buffer_tell(buffer));
+        multi_send_buffer();
     }
     
     hpAmmoSyncTimer = 30;
@@ -435,51 +360,23 @@ if (disconnectTimer <= 0)
 if (pingTimer <= 0)
 {
     pingTimer = 5;
-    
-    var size = 1024;
-    var type = 1;
-    var alignment = 1;
-    buffer = global.buffer;
-    buffer_seek(buffer, buffer_seek_start, 0);
+    var buffer = multi_setup_buffer();
     buffer_write(buffer, buffer_u8, 103);
     buffer_write(buffer, buffer_u32, current_time);
     buffer_write(buffer, buffer_u16, global.ping);
-    var bufferSize = buffer_tell(buffer);
-    buffer_seek(buffer, buffer_seek_start, 0);
-    buffer_write(buffer, buffer_s32, bufferSize);
-    buffer_write(buffer, buffer_u8, 103);
-    buffer_write(buffer, buffer_u32, current_time);
-    buffer_write(buffer, buffer_u16, global.ping);
-    var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+    multi_send_buffer();
 }
-
 if (resetTimer == 0)
 {
-    
-    var size = 1024;
-    var type = 1;
-    var alignment = 1;
-    buffer = global.buffer;
-    buffer_seek(buffer, buffer_seek_start, 0);
+    var buffer = multi_setup_buffer();
     buffer_write(buffer, buffer_u8, 20);
     buffer_write(buffer, buffer_u8, global.clientID);
-    var bufferSize = buffer_tell(buffer);
-    buffer_seek(buffer, buffer_seek_start, 0);
-    buffer_write(buffer, buffer_s32, bufferSize);
-    buffer_write(buffer, buffer_u8, 20);
-    buffer_write(buffer, buffer_u8, global.clientID);
-    var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+    multi_send_buffer();
 }
-
 if (currentItemsTimer == 0 && connected)
 {
     currentItemsTimer = 120;
-    
-    var size = 1024;
-    var type = 1;
-    var alignment = 1;
-    buffer = global.buffer;
-    buffer_seek(buffer, buffer_seek_start, 0);
+    var buffer = multi_setup_buffer();
     buffer_write(buffer, buffer_u8, 104);
     buffer_write(buffer, buffer_u8, global.clientID);
     buffer_write(buffer, buffer_u8, global.spacejump);
@@ -493,23 +390,7 @@ if (currentItemsTimer == 0 && connected)
     buffer_write(buffer, buffer_u8, global.sbeam);
     buffer_write(buffer, buffer_u8, global.cbeam);
     buffer_write(buffer, buffer_u8, global.canScrewMulti);
-    var bufferSize = buffer_tell(buffer);
-    buffer_seek(buffer, buffer_seek_start, 0);
-    buffer_write(buffer, buffer_s32, bufferSize);
-    buffer_write(buffer, buffer_u8, 104);
-    buffer_write(buffer, buffer_u8, global.clientID);
-    buffer_write(buffer, buffer_u8, global.spacejump);
-    buffer_write(buffer, buffer_u8, global.screwattack);
-    buffer_write(buffer, buffer_u8, global.spiderball);
-    buffer_write(buffer, buffer_u8, global.speedbooster);
-    buffer_write(buffer, buffer_u8, global.bomb);
-    buffer_write(buffer, buffer_u8, global.ibeam);
-    buffer_write(buffer, buffer_u8, global.wbeam);
-    buffer_write(buffer, buffer_u8, global.pbeam);
-    buffer_write(buffer, buffer_u8, global.sbeam);
-    buffer_write(buffer, buffer_u8, global.cbeam);
-    buffer_write(buffer, buffer_u8, global.canScrewMulti);
-    var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+    multi_send_buffer();
 }
 
 if (beginReceiveTimer == 0 && connected)

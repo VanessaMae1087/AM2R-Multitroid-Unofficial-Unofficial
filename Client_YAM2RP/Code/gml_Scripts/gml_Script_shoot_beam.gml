@@ -372,28 +372,14 @@ if instance_exists(oClient)
 {
     if (ds_list_size(oClient.roomListData) > 0)
     {
-        size = 1024
-        type = buffer_grow
-        alignment = 1
-        beamBuffer = global.buffer;
-        buffer_seek(beamBuffer, buffer_seek_start, 0)
-        buffer_write(beamBuffer, buffer_u8, 21)
-        buffer_write(beamBuffer, buffer_u8, global.clientID)
-        buffer_write(beamBuffer, buffer_s16, argument0)
-        buffer_write(beamBuffer, buffer_s16, beamX)
-        buffer_write(beamBuffer, buffer_s16, beamY)
-        buffer_write(beamBuffer, buffer_u8, chargebeam)
-        buffer_write(beamBuffer, buffer_u8, global.sax)
-        bufferSize = buffer_tell(beamBuffer)
-        buffer_seek(beamBuffer, buffer_seek_start, 0)
-        buffer_write(beamBuffer, buffer_s32, bufferSize)
-        buffer_write(beamBuffer, buffer_u8, 21)
-        buffer_write(beamBuffer, buffer_u8, global.clientID)
-        buffer_write(beamBuffer, buffer_s16, argument0)
-        buffer_write(beamBuffer, buffer_s16, beamX)
-        buffer_write(beamBuffer, buffer_s16, beamY)
-        buffer_write(beamBuffer, buffer_u8, chargebeam)
-        buffer_write(beamBuffer, buffer_u8, global.sax)
-        result = network_send_packet(oClient.socket, beamBuffer, buffer_tell(beamBuffer))
+        var beamBuffer = multi_setup_buffer();
+        buffer_write(beamBuffer, buffer_u8, 21);
+        buffer_write(beamBuffer, buffer_u8, global.clientID);
+        buffer_write(beamBuffer, buffer_s16, argument0);
+        buffer_write(beamBuffer, buffer_s16, beamX);
+        buffer_write(beamBuffer, buffer_s16, beamY);
+        buffer_write(beamBuffer, buffer_u8, chargebeam);
+        buffer_write(beamBuffer, buffer_u8, global.sax);
+        multi_send_buffer();
     }
 }

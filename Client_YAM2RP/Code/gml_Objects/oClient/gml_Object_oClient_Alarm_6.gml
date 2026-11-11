@@ -1,4 +1,4 @@
-var v, i, f, size, type, alignment, tileCount, bufferSize, result;
+var v, i, f;
 v = 0
 if global.ingame
 {
@@ -22,47 +22,27 @@ if global.ingame
 }
 if (mapChanged && (!is_on_menu()) && ((!global.spectator) || global.sax))
 {
-    size = 1024
-    type = buffer_grow
-    alignment = 1
-    buffer = global.buffer;
-    buffer_seek(buffer, buffer_seek_start, 0)
-    buffer_write(buffer, buffer_u8, 9)
-    tileCount = 0
-    for (i = 0; i < array_height_2d(global.dmap); i++)
+    var tileCount = 0;
+    var buffer = multi_setup_buffer();
+    buffer_write(buffer, buffer_u8, 9);
+    var savedPos = buffer_tell(buffer);
+    buffer_write(buffer, buffer_u16, tileCount); // this will get overwritten
+    for (var i = 0; i < array_height_2d(global.dmap); i++)
     {
-        for (f = 0; f < array_length_2d(global.dmap, i); f++)
+        for (var f = 0; f < array_length_2d(global.dmap, i); f++)
         {
             if (global.dmapPrev[i, f] != global.dmap[i, f])
             {
-                buffer_write(buffer, buffer_u8, i)
-                buffer_write(buffer, buffer_u8, f)
-                buffer_write(buffer, buffer_u8, global.dmap[i, f])
-                tileCount++
+                buffer_write(buffer, buffer_u8, i);
+                buffer_write(buffer, buffer_u8, f);
+                buffer_write(buffer, buffer_u8, global.dmap[i, f]);
+                tileCount++;
             }
         }
     }
-    buffer_write(buffer, buffer_u16, tileCount)
-    buffer_write(buffer, buffer_u8, global.clientID)
-    bufferSize = buffer_tell(buffer)
-    buffer_seek(buffer, buffer_seek_start, 0)
-    buffer_write(buffer, buffer_s32, bufferSize)
-    buffer_write(buffer, buffer_u8, 9)
-    buffer_write(buffer, buffer_u16, tileCount)
-    for (i = 0; i < array_height_2d(global.dmap); i++)
-    {
-        for (f = 0; f < array_length_2d(global.dmap, i); f++)
-        {
-            if (global.dmapPrev[i, f] != global.dmap[i, f])
-            {
-                buffer_write(buffer, buffer_u8, i)
-                buffer_write(buffer, buffer_u8, f)
-                buffer_write(buffer, buffer_u8, global.dmap[i, f])
-            }
-        }
-    }
-    buffer_write(buffer, buffer_u8, global.clientID)
-    result = network_send_packet(socket, buffer, buffer_tell(buffer))
+    buffer_poke(buffer, savedPos, buffer_u16, tileCount);
+    buffer_write(buffer, buffer_u8, global.clientID);
+    multi_send_buffer();
 }
 if (!mapChanged)
     alarm[6] = 10

@@ -662,24 +662,12 @@ switch (type_event)
                 global.clientID = buffer_read(_buffer, buffer_u8);
                 show_debug_message(string(msgid) + " " + string(global.clientID));
                 global.receiving = 1;
-                
-                var size = 1024;
-                var type = 1;
-                var alignment = 1;
-                buffer = global.buffer;
-                buffer_seek(buffer, buffer_seek_start, 0);
+                var buffer = multi_setup_buffer();
                 buffer_write(buffer, buffer_u8, 200);
                 buffer_write(buffer, buffer_u8, global.clientID);
                 buffer_write(buffer, buffer_u8, preferredcolor);
                 buffer_write(buffer, buffer_u8, global.sax);
-                bufferSize = buffer_tell(buffer);
-                buffer_seek(buffer, buffer_seek_start, 0);
-                buffer_write(buffer, buffer_s32, bufferSize);
-                buffer_write(buffer, buffer_u8, 200);
-                buffer_write(buffer, buffer_u8, global.clientID);
-                buffer_write(buffer, buffer_u8, preferredcolor);
-                buffer_write(buffer, buffer_u8, global.sax);
-                var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+                multi_send_buffer();
                 break;
             
             case 1:
@@ -1907,28 +1895,14 @@ switch (type_event)
                 
                 if (resend)
                 {
-                    var size = 1024;
-                    var type = 1;
-                    var alignment = 1;
-                    itemBuffer = global.buffer;
-                    buffer_seek(itemBuffer, buffer_seek_start, 0);
+                    var itemBuffer = multi_setup_buffer();
                     buffer_write(itemBuffer, buffer_u8, 50);
-                    
                     for (var i = 0; i < array_length_1d(global.item); i++)
+                    {
                         buffer_write(itemBuffer, buffer_u8, global.item[i]);
-                    
-                    bufferSize = buffer_tell(itemBuffer);
-                    buffer_seek(itemBuffer, buffer_seek_start, 0);
-                    buffer_write(itemBuffer, buffer_s32, bufferSize);
-                    buffer_write(itemBuffer, buffer_u8, 50);
-                    
-                    for (var i = 0; i < array_length_1d(global.item); i++)
-                        buffer_write(itemBuffer, buffer_u8, global.item[i]);
-                    
-                    network_send_packet(socket, itemBuffer, buffer_tell(itemBuffer));
-                    
+                    }
+                    multi_send_buffer();
                 }
-                
                 break;
             
             case 51:
@@ -1954,28 +1928,14 @@ switch (type_event)
                 
                 if (resend)
                 {
-                    var size = 1024;
-                    var type = 1;
-                    var alignment = 1;
-                    eventBuffer = global.buffer;
-                    buffer_seek(eventBuffer, buffer_seek_start, 0);
+                    var eventBuffer = multi_setup_buffer();
                     buffer_write(eventBuffer, buffer_u8, 51);
-                    
                     for (var i = 0; i < array_length_1d(global.event); i++)
+                    {
                         buffer_write(eventBuffer, buffer_u8, global.event[i]);
-                    
-                    bufferSize = buffer_tell(eventBuffer);
-                    buffer_seek(eventBuffer, buffer_seek_start, 0);
-                    buffer_write(eventBuffer, buffer_s32, bufferSize);
-                    buffer_write(eventBuffer, buffer_u8, 51);
-                    
-                    for (var i = 0; i < array_length_1d(global.event); i++)
-                        buffer_write(eventBuffer, buffer_u8, global.event[i]);
-                    
-                    network_send_packet(socket, eventBuffer, buffer_tell(eventBuffer));
-                    
+                    }
+                    multi_send_buffer();
                 }
-                
                 break;
             
             case 52:
@@ -2102,28 +2062,14 @@ switch (type_event)
                 
                 if (resend)
                 {
-                    var size = 1024;
-                    var type = 1;
-                    var alignment = 1;
-                    metdeadBuffer = global.buffer;
-                    buffer_seek(metdeadBuffer, buffer_seek_start, 0);
+                    var metdeadBuffer = multi_setup_buffer();
                     buffer_write(metdeadBuffer, buffer_u8, 52);
-                    
                     for (var i = 0; i < array_length_1d(global.metdead); i++)
+                    {
                         buffer_write(metdeadBuffer, buffer_u8, global.metdead[i]);
-                    
-                    bufferSize = buffer_tell(metdeadBuffer);
-                    buffer_seek(metdeadBuffer, buffer_seek_start, 0);
-                    buffer_write(metdeadBuffer, buffer_s32, bufferSize);
-                    buffer_write(metdeadBuffer, buffer_u8, 52);
-                    
-                    for (var i = 0; i < array_length_1d(global.metdead); i++)
-                        buffer_write(metdeadBuffer, buffer_u8, global.metdead[i]);
-                    
-                    network_send_packet(socket, metdeadBuffer, buffer_tell(metdeadBuffer));
-                    
+                    }
+                    multi_send_buffer();
                 }
-                
                 break;
             
             case 53:
@@ -2153,34 +2099,17 @@ switch (type_event)
                 
                 if (resend)
                 {
-                    var size = 1024;
-                    var type = 1;
-                    var alignment = 1;
-                    dmapBuffer = global.buffer;
-                    buffer_seek(dmapBuffer, buffer_seek_start, 0);
+                    var dmapBuffer = multi_setup_buffer();
                     buffer_write(dmapBuffer, buffer_u8, 53);
-                    
                     for (var i = 0; i < array_height_2d(global.dmap); i++)
                     {
                         for (var j = 0; j < array_length_2d(global.dmap, i); j++)
+                        {
                             buffer_write(dmapBuffer, buffer_u8, global.dmap[i, j]);
+                        }
                     }
-                    
-                    bufferSize = buffer_tell(dmapBuffer);
-                    buffer_seek(dmapBuffer, buffer_seek_start, 0);
-                    buffer_write(dmapBuffer, buffer_s32, bufferSize);
-                    buffer_write(dmapBuffer, buffer_u8, 53);
-                    
-                    for (var i = 0; i < array_height_2d(global.dmap); i++)
-                    {
-                        for (var j = 0; j < array_length_2d(global.dmap, i); j++)
-                            buffer_write(dmapBuffer, buffer_u8, global.dmap[i, j]);
-                    }
-                    
-                    network_send_packet(socket, dmapBuffer, buffer_tell(dmapBuffer));
-                    
+                    multi_send_buffer();
                 }
-                
                 if (global.ingame)
                 {
                     with (oControl)

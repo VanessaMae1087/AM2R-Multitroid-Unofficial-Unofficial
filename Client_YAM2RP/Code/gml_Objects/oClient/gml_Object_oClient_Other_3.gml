@@ -1,21 +1,10 @@
-var size, type, alignment, bufferSize, result;
-if connected
+if (connected)
 {
-    size = 1024
-    type = buffer_grow
-    alignment = 1
-    buffer = global.buffer;
-    buffer_seek(buffer, buffer_seek_start, 0)
-    buffer_write(buffer, buffer_u8, 254)
-    buffer_write(buffer, buffer_u8, global.clientID)
-    buffer_write(buffer, buffer_u8, global.sax)
-    bufferSize = buffer_tell(buffer)
-    buffer_seek(buffer, buffer_seek_start, 0)
-    buffer_write(buffer, buffer_s32, bufferSize)
-    buffer_write(buffer, buffer_u8, 254)
-    buffer_write(buffer, buffer_u8, global.clientID)
-    buffer_write(buffer, buffer_u8, global.sax)
-    result = network_send_packet(socket, buffer, buffer_tell(buffer))
+    var buffer = multi_setup_buffer();
+    buffer_write(buffer, buffer_u8, 254);
+    buffer_write(buffer, buffer_u8, global.clientID);
+    buffer_write(buffer, buffer_u8, global.sax);
+    multi_send_buffer();
 }
 if (!noName)
 {

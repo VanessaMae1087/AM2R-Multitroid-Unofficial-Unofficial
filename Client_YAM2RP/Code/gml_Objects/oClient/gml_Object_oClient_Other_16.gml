@@ -1,14 +1,4 @@
-var size, type, alignment, bufferSize, result;
-size = 1024
-type = buffer_grow
-alignment = 1
-buffer8 = global.buffer;
-buffer_seek(buffer8, buffer_seek_start, 0)
-buffer_write(buffer8, buffer_u8, 33)
-buffer_write(buffer8, buffer_u8, global.lobbyLocked)
-bufferSize = buffer_tell(buffer8)
-buffer_seek(buffer8, buffer_seek_start, 0)
-buffer_write(buffer8, buffer_s32, bufferSize)
-buffer_write(buffer8, buffer_u8, 33)
-buffer_write(buffer8, buffer_u8, global.lobbyLocked)
-result = network_send_packet(socket, buffer8, buffer_tell(buffer8))
+var buffer8 = multi_setup_buffer();
+buffer_write(buffer8, buffer_u8, 33);
+buffer_write(buffer8, buffer_u8, global.lobbyLocked);
+multi_send_buffer();

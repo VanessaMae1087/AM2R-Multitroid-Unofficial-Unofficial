@@ -170,14 +170,11 @@ if (global.playerhealth > 0)
                 {
                     with (oClient)
                     {
-                        var buffer = global.buffer;
-                        buffer_seek(buffer, buffer_seek_start, 0);
-                        buffer_write(buffer, buffer_s32, 4);
+                        var buffer = multi_setup_buffer();
                         buffer_write(buffer, buffer_u8, 69);
                         buffer_write(buffer, buffer_u8, global.clientID);
                         buffer_write(buffer, buffer_u16, damage_taken);
-                        buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
-                        network_send_packet(socket, buffer, buffer_tell(buffer));
+                        multi_send_buffer();
                     }
                 }
 
@@ -219,14 +216,11 @@ with (oCharacter)
         {
             with (oClient)
             {
-                var buffer = global.buffer;
-                buffer_seek(buffer, buffer_seek_start, 0);
-                buffer_write(buffer, buffer_s32, 4);
+                var buffer = multi_setup_buffer();
                 buffer_write(buffer, buffer_u8, 69);
                 buffer_write(buffer, buffer_u8, global.clientID);
                 buffer_write(buffer, buffer_u16, damage_taken);
-                buffer_poke(buffer, 0, buffer_s32, buffer_tell(buffer) - 4);
-                network_send_packet(socket, buffer, buffer_tell(buffer));
+                multi_send_buffer();
             }
         }
 

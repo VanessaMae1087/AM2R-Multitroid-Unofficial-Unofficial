@@ -8,24 +8,12 @@ if instance_exists(oClient)
 {
     if (ds_list_size(oClient.roomListData) > 0)
     {
-        size = 1024
-        type = buffer_grow
-        alignment = 1
-        pbombBuffer = global.buffer;
-        buffer_seek(pbombBuffer, buffer_seek_start, 0)
-        buffer_write(pbombBuffer, buffer_u8, 24)
-        buffer_write(pbombBuffer, buffer_u8, global.clientID)
-        buffer_write(pbombBuffer, buffer_s16, x)
-        buffer_write(pbombBuffer, buffer_s16, y)
-        buffer_write(pbombBuffer, buffer_u8, global.sax)
-        bufferSize = buffer_tell(pbombBuffer)
-        buffer_seek(pbombBuffer, buffer_seek_start, 0)
-        buffer_write(pbombBuffer, buffer_s32, bufferSize)
-        buffer_write(pbombBuffer, buffer_u8, 24)
-        buffer_write(pbombBuffer, buffer_u8, global.clientID)
-        buffer_write(pbombBuffer, buffer_s16, x)
-        buffer_write(pbombBuffer, buffer_s16, y)
-        buffer_write(pbombBuffer, buffer_u8, global.sax)
-        result = network_send_packet(oClient.socket, pbombBuffer, buffer_tell(pbombBuffer))
+        var pbombBuffer = multi_setup_buffer();
+        buffer_write(pbombBuffer, buffer_u8, 24);
+        buffer_write(pbombBuffer, buffer_u8, global.clientID);
+        buffer_write(pbombBuffer, buffer_s16, x);
+        buffer_write(pbombBuffer, buffer_s16, y);
+        buffer_write(pbombBuffer, buffer_u8, global.sax);
+        multi_send_buffer();
     }
 }

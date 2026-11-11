@@ -60,35 +60,18 @@ if (instance_exists(oClient) && instance_exists(oCharacter) && missileX != 0 && 
 {
     if (ds_list_size(oClient.roomListData) > 0)
     {
-        size = 1024
-        type = buffer_grow
-        alignment = 1
-        missileBuffer = global.buffer;
-        buffer_seek(missileBuffer, buffer_seek_start, 0)
-        buffer_write(missileBuffer, buffer_u8, 23)
-        buffer_write(missileBuffer, buffer_u8, global.clientID)
-        buffer_write(missileBuffer, buffer_u8, global.currentweapon)
-        buffer_write(missileBuffer, buffer_s16, argument0)
-        buffer_write(missileBuffer, buffer_s16, missileX)
-        buffer_write(missileBuffer, buffer_s16, missileY)
-        buffer_write(missileBuffer, buffer_u8, global.sax)
-        buffer_write(missileBuffer, buffer_s8, oCharacter.xVel)
-        buffer_write(missileBuffer, buffer_s8, oCharacter.yVel)
-        buffer_write(missileBuffer, buffer_u8, global.icemissiles)
-        bufferSize = buffer_tell(missileBuffer)
-        buffer_seek(missileBuffer, buffer_seek_start, 0)
-        buffer_write(missileBuffer, buffer_s32, bufferSize)
-        buffer_write(missileBuffer, buffer_u8, 23)
-        buffer_write(missileBuffer, buffer_u8, global.clientID)
-        buffer_write(missileBuffer, buffer_u8, global.currentweapon)
-        buffer_write(missileBuffer, buffer_s16, argument0)
-        buffer_write(missileBuffer, buffer_s16, missileX)
-        buffer_write(missileBuffer, buffer_s16, missileY)
-        buffer_write(missileBuffer, buffer_u8, global.sax)
-        buffer_write(missileBuffer, buffer_s8, oCharacter.xVel)
-        buffer_write(missileBuffer, buffer_s8, oCharacter.yVel)
-        buffer_write(missileBuffer, buffer_u8, global.icemissiles)
-        result = network_send_packet(oClient.socket, missileBuffer, buffer_tell(missileBuffer))
+        var missileBuffer = multi_setup_buffer();
+        buffer_write(missileBuffer, buffer_u8, 23);
+        buffer_write(missileBuffer, buffer_u8, global.clientID);
+        buffer_write(missileBuffer, buffer_u8, global.currentweapon);
+        buffer_write(missileBuffer, buffer_s16, argument0);
+        buffer_write(missileBuffer, buffer_s16, missileX);
+        buffer_write(missileBuffer, buffer_s16, missileY);
+        buffer_write(missileBuffer, buffer_u8, global.sax);
+        buffer_write(missileBuffer, buffer_s8, oCharacter.xVel);
+        buffer_write(missileBuffer, buffer_s8, oCharacter.yVel);
+        buffer_write(missileBuffer, buffer_u8, global.icemissiles);
+        multi_send_buffer();
     }
 }
 if (global.currentweapon == 2 && global.smissiles == 0)

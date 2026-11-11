@@ -1,4 +1,4 @@
-var v, f, size, type, alignment, bufferSize, result;
+var v, f;
 v = 0
 for (f = 0; f < array_length_1d(global.item); f++)
 {
@@ -11,23 +11,13 @@ for (f = 0; f < array_length_1d(global.item); f++)
         v++
     }
 }
-if itemChanged
+if (itemChanged)
 {
-    size = 1024
-    type = buffer_grow
-    alignment = 1
-    buffer = global.buffer;
-    buffer_seek(buffer, buffer_seek_start, 0)
-    buffer_write(buffer, buffer_u8, 6)
-    buffer_write(buffer, buffer_string, strict_compress(ds_list_write(global.onlineItem)))
-    buffer_write(buffer, buffer_u8, global.clientID)
-    bufferSize = buffer_tell(buffer)
-    buffer_seek(buffer, buffer_seek_start, 0)
-    buffer_write(buffer, buffer_s32, bufferSize)
-    buffer_write(buffer, buffer_u8, 6)
-    buffer_write(buffer, buffer_string, strict_compress(ds_list_write(global.onlineItem)))
-    buffer_write(buffer, buffer_u8, global.clientID)
-    result = network_send_packet(socket, buffer, buffer_tell(buffer))
+    var buffer = multi_setup_buffer();
+    buffer_write(buffer, buffer_u8, 6);
+    buffer_write(buffer, buffer_string, strict_compress(ds_list_write(global.onlineItem)));
+    buffer_write(buffer, buffer_u8, global.clientID);
+    multi_send_buffer();
 }
 if (!itemChanged)
     alarm[3] = 10
