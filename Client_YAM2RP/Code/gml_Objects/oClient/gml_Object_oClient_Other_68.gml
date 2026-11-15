@@ -2263,7 +2263,7 @@ switch (type_event)
 
             case 72:
                 global.winningTeam = buffer_read(_buffer, buffer_u8);
-                global.event[308] = 1;
+                global.gameEnding = true;
                 break;
         }
 }
