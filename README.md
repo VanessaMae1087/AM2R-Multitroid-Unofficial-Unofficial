@@ -10,7 +10,7 @@ This mod is created using [Undertale Mod Tool](https://github.com/krzys-h/Undert
 (UTMT). As of writing, YAM2RP's (see below) scripts do not work with UnderAnalyzer introduced
 in 0.8.x.y, so it's recommended to use 0.7.0.0.
 
-This repository is deisgned to use [YAM2RP](https://github.com/DodoBirby/YAM2RP) to patch a
+This repository is designed to use [YAM2RP](https://github.com/DodoBirby/YAM2RP) to patch a
 Multitroid 1.9.0 datafile. Download and unzip it either in a folder covered by PATH, or close
 to your copy of this repository and a 1.9.0 data.win. Open your favorite terminal and type
 something along the lines of 
