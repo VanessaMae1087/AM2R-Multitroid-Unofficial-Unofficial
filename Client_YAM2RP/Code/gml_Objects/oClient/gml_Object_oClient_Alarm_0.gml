@@ -17,24 +17,12 @@ for (var i = 0; i < ds_grid_height(global.onlineList); i++)
 
 if (canSend)
 {
-    buffer_delete(buffer);
-    var size = 1024;
-    var type = 1;
-    var alignment = 1;
-    buffer = buffer_create(size, type, alignment);
-    buffer_seek(buffer, buffer_seek_start, 0);
+    var buffer = multi_setup_buffer();
     buffer_write(buffer, buffer_u8, 0);
     buffer_write(buffer, buffer_string, strict_compress(ds_grid_write(global.onlineSend)));
     buffer_write(buffer, buffer_u8, global.clientID);
     buffer_write(buffer, buffer_u32, global.packetID);
-    var bufferSize = buffer_tell(buffer);
-    buffer_seek(buffer, buffer_seek_start, 0);
-    buffer_write(buffer, buffer_s32, bufferSize);
-    buffer_write(buffer, buffer_u8, 0);
-    buffer_write(buffer, buffer_string, strict_compress(ds_grid_write(global.onlineSend)));
-    buffer_write(buffer, buffer_u8, global.clientID);
-    buffer_write(buffer, buffer_u32, global.packetID);
-    var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+    multi_send_buffer();
     show_debug_message("packetID = " + string(global.packetID));
     global.packetID++;
     ds_grid_clear(global.onlineSend, -1);
@@ -70,26 +58,13 @@ if (instance_exists(oQueen) && instance_exists(oQueenHead) && !is_undefined(oQue
     if (global.queenhealthPrev != oQueenHead.myhealth || oQueen.phase != phase)
     {
         show_debug_message("queen health sent " + string(oQueenHead.myhealth));
-        buffer_delete(buffer);
-        var size = 1024;
-        var type = 1;
-        var alignment = 1;
-        buffer = buffer_create(size, type, alignment);
-        buffer_seek(buffer, buffer_seek_start, 0);
+        var buffer = multi_setup_buffer();
         buffer_write(buffer, buffer_u8, 2);
         buffer_write(buffer, buffer_s32, oQueenHead.myhealth);
         buffer_write(buffer, buffer_u8, global.clientID);
         buffer_write(buffer, buffer_s8, oQueen.phase);
         buffer_write(buffer, buffer_s8, oQueen.state);
-        var bufferSize = buffer_tell(buffer);
-        buffer_seek(buffer, buffer_seek_start, 0);
-        buffer_write(buffer, buffer_s32, bufferSize);
-        buffer_write(buffer, buffer_u8, 2);
-        buffer_write(buffer, buffer_s32, oQueenHead.myhealth);
-        buffer_write(buffer, buffer_u8, global.clientID);
-        buffer_write(buffer, buffer_s8, oQueen.phase);
-        buffer_write(buffer, buffer_s8, oQueen.state);
-        var result = network_send_packet(socket, buffer, buffer_tell(buffer));
+        multi_send_buffer();
     }
 }
 

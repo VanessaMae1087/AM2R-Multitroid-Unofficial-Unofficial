@@ -1,0 +1,12 @@
+global.showHealthIndicatorsTimer = 900;
+var buffer5 = multi_setup_buffer();
+buffer_write(buffer5, buffer_u8, 106);
+buffer_write(buffer5, buffer_u8, global.checkID);
+buffer_write(buffer5, buffer_s16, global.checkX);
+buffer_write(buffer5, buffer_s16, global.checkY);
+buffer_write(buffer5, buffer_u8, global.checkBeam);
+buffer_write(buffer5, buffer_u8, global.checkMissile);
+buffer_write(buffer5, buffer_u8, global.checkDamage);
+buffer_write(buffer5, buffer_u8, global.checkFreeze);
+buffer_write(buffer5, buffer_s16, global.checkDir);
+multi_send_buffer();
