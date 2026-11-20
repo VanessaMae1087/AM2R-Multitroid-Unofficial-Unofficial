@@ -43,9 +43,9 @@ if (global.saxmode)
 else
     global.grayMap = 0;
 
-if (global.event[308] > 0 && room != rm_credits)
+if (global.gameEnding && room != rm_credits)
 {
-    if (global.winningTeam == 0 && !is_on_menu() && handleGameEnd)
+    if (global.winningTeam == 0 && !is_on_menu())
     {
         if (gameEndTimer == 5)
         {
@@ -118,7 +118,8 @@ if (global.event[308] > 0 && room != rm_credits)
     {
         global.endingGametime = global.gametime;
         global.endingItemstaken = global.itemstaken;
-        global.event[308] = 0;
+        gameEndTimer = 0;
+        global.gameEnding = false;
         remove_persistent_objects();
         sfx_stop_all();
         global.vibL = 0;

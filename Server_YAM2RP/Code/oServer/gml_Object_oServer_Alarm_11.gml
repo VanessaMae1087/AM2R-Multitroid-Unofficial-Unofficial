@@ -1,6 +1,6 @@
 var samCount = ds_list_size(samusList) - ds_list_size(deadList);
 
-if (global.event[308] > 0)
+if (matchEndResetTimer > 0)
     samCount = 0;
 
 var sockets = ds_list_size(playerList);

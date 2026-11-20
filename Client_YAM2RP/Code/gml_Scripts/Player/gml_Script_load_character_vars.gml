@@ -30,7 +30,6 @@ global.stanks = 0;
 global.ptanks = 0;
 global.lavastate = 0;
 global.timeofday = 0;
-oControl.handleGameEnd = 1;
 oControl.gameEndTimer = 0;
 var i = 100;
 

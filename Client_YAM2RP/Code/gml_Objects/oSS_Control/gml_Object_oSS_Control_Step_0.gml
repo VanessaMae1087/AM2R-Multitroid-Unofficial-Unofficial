@@ -70,10 +70,10 @@ if (os_type == os_android && os_is_paused())
 
 if (!surface_exists(s_map))
 {
-    writelog("WARN: Surface s_map (ID " + string(s_map) + ") does not exist! Freeing and recreating... [oSS_Control Step]")
+    writelog("WARN: Surface s_map (ID " + string(s_map) + ") does not exist! Freeing and recreating... [oSS_Control Step]");
     surface_free(s_map);
     s_map = surface_create(2048, 1024);
-    writelog("Info: New surface s_map has ID " + string(s_map) + " [oSS_Control Step]")
+    writelog("INFO: New surface s_map has ID " + string(s_map) + " [oSS_Control Step]")
     surface_set_target(s_map);
     draw_surface_map();
     surface_reset_target();

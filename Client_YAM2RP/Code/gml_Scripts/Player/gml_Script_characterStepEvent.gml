@@ -1920,8 +1920,6 @@ if (state == SAVINGSHIP)
         if (statetime == 0)
         {
             global.enablecontrol = 0;
-            oControl.handleGameEnd = 0;
-            global.event[308] = 1;
 
             if (instance_exists(oClient))
             {
@@ -1964,7 +1962,6 @@ if (state == SAVINGSHIP)
         {
             global.endingGametime = global.gametime;
             global.endingItemstaken = global.itemstaken;
-            global.event[308] = 0;
             remove_persistent_objects();
             sfx_stop_all();
             global.vibL = 0;
